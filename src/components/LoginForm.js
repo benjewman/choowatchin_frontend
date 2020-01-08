@@ -2,11 +2,11 @@ import React from 'react'
 import { Button, Divider, Form, Grid, Segment, Container } from 'semantic-ui-react'
 
 const LoginForm = () => (
-// Container gives box some room on sides
-  <Container style={{width: 600}}>
+// Container gives box some room on sides and top
+  <Container style={{width: 500, marginTop: '6em'}}>
   <Segment placeholder>
-    <Grid columns={2} relaxed='very' stackable>
-      <Grid.Column >
+    <Grid style={{height: 330}} columns={2} relaxed='very' stackable>
+      <Grid.Column verticalAlign='middle'>
         <Form>
           <Form.Input
             icon='user'

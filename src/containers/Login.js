@@ -18,7 +18,7 @@ class Login extends React.Component {
     render() {
         return (
                 <div style={ sectionStyle } >
-                    <Header as='h1' textAlign='center'>ChooWatchin</Header>
+                    {/* <Header style={{marginTop: '0.5em', fontSize: '60px'}} as='h1' textAlign='center'>ChooWatchin</Header> */}
                     <LoginForm />
                 </div>
         )

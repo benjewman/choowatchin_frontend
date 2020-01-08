@@ -2,7 +2,7 @@ import React from 'react'
 import pic from '../theater.jpg'
 import { Header } from 'semantic-ui-react'
 import '../NoScroll.css'
-
+import SignupForm from '../components/SignupForm'
 const sectionStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -17,7 +17,8 @@ class Signup extends React.Component {
     render() {
         return (
             <div style={ sectionStyle } >
-                <Header as='h1'>ChooWatchin</Header>
+                {/* <Header as='h1'>ChooWatchin</Header> */}
+                <SignupForm />
             </div>
         )
     }
