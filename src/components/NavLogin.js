@@ -12,7 +12,7 @@ const NavLogin = (props) => {
         <Menu fixed="top">
             <Menu.Item
             name='home'
-            style={{ fontSize: '25px'}}
+            style={{ fontSize: '22px'}}
             >
             ChooWatchin
             </Menu.Item>

@@ -5,24 +5,37 @@ const SignupForm = () => (
 // Container gives box some room on sides and top
   <Container style={{width: 600, marginTop: '6em'}}>
     <Segment placeholder>
-        <Grid style={{height: 600}} relaxed='very' stackable>
+        <Grid style={{height: 500}} relaxed='very' stackable>
         <Grid.Row >
             <Grid.Column>
             <Form>
+            <Form.Group style={{marginTop: '3em'}} widths='equal'>
+            <Form.Input
+                icon='id card'
+                iconPosition='left'
+                placeholder='Full Name'
+            />
+            <Form.Input
+                icon='mail'
+                iconPosition='left'
+                type='password'
+                placeholder='Email'
+            />
+            </Form.Group>
+            <Form.Group style={{marginTop: '3em'}} widths='equal'>
             <Form.Input
                 icon='user'
                 iconPosition='left'
-                label='Username'
                 placeholder='Username'
             />
             <Form.Input
                 icon='lock'
                 iconPosition='left'
-                label='Password'
                 type='password'
+                placeholder='Password'
             />
-
-            <Button content='Create Account' primary />
+            </Form.Group>
+            <Button style={{marginTop: '4em'}} content='Create Account' primary />
             </Form>
             </Grid.Column>
         </Grid.Row>

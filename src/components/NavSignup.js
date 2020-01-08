@@ -12,6 +12,7 @@ const NavSignup = (props) => {
         <Menu fixed="top">
             <Menu.Item
             name='home'
+            style={{ fontSize: '22px'}}
             >
             ChooWatchin
             </Menu.Item>
