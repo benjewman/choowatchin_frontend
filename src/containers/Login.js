@@ -1,6 +1,5 @@
 import React from 'react'
 import '../NoScroll.css'
-import { Header } from 'semantic-ui-react'
 import pic from '../projector.jpg'
 import LoginForm from '../components/LoginForm'
 

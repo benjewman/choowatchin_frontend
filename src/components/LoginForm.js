@@ -15,6 +15,31 @@ class LoginForm extends React.Component {
         this.props.history.push('/signup')
     }
 
+    createLoginObj = () => {
+        return {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state)
+        }
+    }
+
+    handleLogin = () => {
+        // POST fetch request to create token 
+        //for authenticated user
+        const reqObj = this.createLoginObj()
+        
+
+        fetch('http://localhost:3000/auth', reqObj)
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+
+        // set store with logged in user
+        // 
+        // redirect to user's homepage
+    }
+
     handleInputChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -23,7 +48,7 @@ class LoginForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        console.log(event.target)
+        this.handleLogin()
     }
     
     render() {

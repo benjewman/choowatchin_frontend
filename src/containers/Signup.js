@@ -1,6 +1,5 @@
 import React from 'react'
 import pic from '../theater.jpg'
-import { Header } from 'semantic-ui-react'
 import '../NoScroll.css'
 import SignupForm from '../components/SignupForm'
 const sectionStyle = {
