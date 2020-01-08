@@ -1,7 +1,8 @@
 import React from 'react'
-import '../App.css'
+import '../NoScroll.css'
 import { Header } from 'semantic-ui-react'
 import pic from '../projector.jpg'
+import LoginForm from '../components/LoginForm'
 
 const sectionStyle = {
     backgroundPosition: 'center',
@@ -17,7 +18,8 @@ class Login extends React.Component {
     render() {
         return (
                 <div style={ sectionStyle } >
-                    <Header as='h1'>ChooWatchin</Header>
+                    <Header as='h1' textAlign='center'>ChooWatchin</Header>
+                    <LoginForm />
                 </div>
         )
     }
