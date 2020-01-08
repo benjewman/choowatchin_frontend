@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, Divider, Form, Grid, Segment, Container } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loginSuccess } from '../actions/index'
 
 class LoginForm extends React.Component {
     constructor() {
@@ -25,6 +27,14 @@ class LoginForm extends React.Component {
         }
     }
 
+    setUserAndRedirect = (data) => {
+        this.props.loginSuccess(data.user)
+        localStorage.setItem('token', data.token)
+        
+        // push to homepage when homepage is set up
+        this.props.history.push('/home')
+    }
+
     handleLogin = () => {
         // POST fetch request to create token 
         //for authenticated user
@@ -33,7 +43,7 @@ class LoginForm extends React.Component {
 
         fetch('http://localhost:3000/auth', reqObj)
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => data.error ? alert('invalid credentials') : this.setUserAndRedirect(data))
 
         // set store with logged in user
         // 
@@ -93,4 +103,10 @@ class LoginForm extends React.Component {
     }
 }
 
-export default withRouter(LoginForm)
+const mapDispatchToProps = dispatch => {
+    return {
+        loginSuccess: user => dispatch(loginSuccess(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(LoginForm))
