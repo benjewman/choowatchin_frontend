@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, Divider, Form, Grid, Segment, Container, Header } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loginSuccess } from '../actions/index'
 
 class SignupForm extends React.Component {
     constructor() {
@@ -17,6 +19,17 @@ class SignupForm extends React.Component {
         this.props.history.push('/login')
     }
 
+    handleFetch = data => {
+        if (data.error) {
+            alert('Unable to create user. Please try again.')
+        } else {
+            localStorage.setItem('token', data.token)
+            this.props.setUser(data.user)
+            this.props.history.push('/home')
+        }
+
+    }
+
     createUserFetch = () => {
         const reqObj = {
             method: 'POST',
@@ -28,7 +41,7 @@ class SignupForm extends React.Component {
 
         fetch('http://localhost:3000/users', reqObj)
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => this.handleFetch(data))
 
         // redirect to homepage 
 
@@ -116,4 +129,10 @@ class SignupForm extends React.Component {
 
 }
 
-export default withRouter(SignupForm)
+const mapDispatchToProps = dispatch => {
+    return {
+        setUser: user => dispatch(loginSuccess(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(SignupForm))

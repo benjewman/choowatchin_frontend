@@ -2,27 +2,37 @@ import React from 'react'
 import { Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { loginSuccess } from '../actions/index'
+import Authorize from '../components/Authorize'
+
 class Dashboard extends React.Component {
-    componentDidMount() {
-        const token = localStorage.getItem('token')
+    // handleFetch = user => {
+    //     if (user.error) {
+    //         this.props.history.push('/login')
+    //     } else {
+    //         this.props.setUser(user)
+    //     }
+    // }
+    
+    // componentDidMount() {
+    //     const token = localStorage.getItem('token')
 
-        if (!token) {
-            this.props.history.push('/login')
-        } else {
-            const reqObj = {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            }
+    //     if (!token) {
+    //         this.props.history.push('/login')
+    //     } else {
+    //         const reqObj = {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${token}`
+    //             }
+    //         }
 
-            fetch('http://localhost:3000/current_user', reqObj)
-            .then(resp => resp.json())
-            // .then(user => user.error ? this.props.history.push('/login') : this.props.setUser(user))
-            .then(user => this.props.setUser(user))
-        }
-    }
+    //         fetch('http://localhost:3000/current_user', reqObj)
+    //         .then(resp => resp.json())
+    //         // .then(user => user.error ? this.props.history.push('/login') : this.props.setUser(user))
+    //         .then(user => this.handleFetch(user))
+    //     }
+    // }
 
     render() {
         return (
@@ -37,4 +47,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Dashboard)
+export default connect(null, mapDispatchToProps)(Authorize(Dashboard))
