@@ -28,7 +28,6 @@ class LoginForm extends React.Component {
     }
 
     setUserAndRedirect = (data) => {
-        debugger
         this.props.loginSuccess(data.user)
         localStorage.setItem('token', data.token)
         
