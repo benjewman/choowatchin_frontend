@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from 'semantic-ui-react'
+import { Header, Grid, Image } from 'semantic-ui-react'
 // import { connect } from 'react-redux'
 import WithAuth from '../components/WithAuth'
 // import { loginSuccess } from '../actions/index'
@@ -8,7 +8,19 @@ class Dashboard extends React.Component {
     
     render() {
         return (
-            <Header style={{marginTop: '1em', marginLeft: '1em'}} as="h1">Dashboard</Header>
+            <Grid columns={3} divided>
+                <Grid.Column width={3}>
+                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                </Grid.Column>
+
+                <Grid.Column width={8}>
+                    <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                </Grid.Column>
+
+                <Grid.Column width={4}>
+                    <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+                </Grid.Column>
+            </Grid>
         )
     }
 }

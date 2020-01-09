@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Grid>
-        <Grid.Row style={{ marginBottom: '1em'}}>
+        <Grid.Row style={{ marginBottom: '5em'}}>
           <Navbar />
         </Grid.Row>
         <Grid.Row >
