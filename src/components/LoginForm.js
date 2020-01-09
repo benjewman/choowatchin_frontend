@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Divider, Form, Grid, Segment, Container } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loginSuccess } from '../actions/index'
+import { setUser } from '../actions/index'
 
 class LoginForm extends React.Component {
     constructor() {
@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
     }
 
     setUserAndRedirect = (data) => {
-        this.props.loginSuccess(data.user)
+        this.props.setUser(data.user)
         localStorage.setItem('token', data.token)
         
         // push to homepage when homepage is set up
@@ -105,7 +105,7 @@ class LoginForm extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loginSuccess: user => dispatch(loginSuccess(user))
+        setUser: user => dispatch(setUser(user))
     }
 }
 

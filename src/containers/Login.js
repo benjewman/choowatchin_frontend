@@ -2,7 +2,7 @@ import React from 'react'
 import '../NoScroll.css'
 import pic from '../projector.jpg'
 import LoginForm from '../components/LoginForm'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import WithAuth from '../components/WithAuth'
 
 const sectionStyle = {
@@ -16,7 +16,9 @@ const sectionStyle = {
 
 class Login extends React.Component {
     componentDidMount() {
-        console.log(this.props)
+        if (this.props.history.location.pathname === '/') {
+            this.props.history.push('/login')
+        }
     }
     
     render() {
@@ -27,11 +29,5 @@ class Login extends React.Component {
         )
     }
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         user: state.user
-//     }
-// }
 
 export default WithAuth(Login)

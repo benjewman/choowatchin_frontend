@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loginSuccess } from '../actions/index'
+import { setUser } from '../actions/index'
 
 export default function WithAuth(WrappedComponent) {
      class Auth extends React.Component {
@@ -45,7 +45,7 @@ export default function WithAuth(WrappedComponent) {
 
     const mapDispatchToProps = dispatch => {
         return {
-            setUser: user => dispatch(loginSuccess(user))
+            setUser: user => dispatch(setUser(user))
         }
     }
     

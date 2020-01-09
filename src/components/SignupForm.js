@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Divider, Form, Grid, Segment, Container, Header } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loginSuccess } from '../actions/index'
+import { setUser } from '../actions/index'
 
 class SignupForm extends React.Component {
     constructor() {
@@ -131,7 +131,7 @@ class SignupForm extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setUser: user => dispatch(loginSuccess(user))
+        setUser: user => dispatch(setUser(user))
     }
 }
 

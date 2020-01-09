@@ -1,6 +1,6 @@
-export const loginSuccess = user => {
+export const setUser = user => {
     return {
-        type: 'LOGIN_SUCCESS',
+        type: 'SET_USER',
         user
     }
 }

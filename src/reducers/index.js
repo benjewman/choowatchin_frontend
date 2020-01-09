@@ -1,6 +1,6 @@
 export default function mainReducer(state = {}, action) {
     switch (action.type) {
-        case 'LOGIN_SUCCESS':
+        case 'SET_USER':
             return {...action.user}
         default: 
             return state
