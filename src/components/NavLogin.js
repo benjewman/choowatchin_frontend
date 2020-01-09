@@ -12,14 +12,16 @@ const NavLogin = (props) => {
         <Menu fixed="top">
             <Menu.Item
             name='home'
-            style={{ fontSize: '22px'}}
+            style={{ fontSize: '30px'}}
             >
             ChooWatchin
             </Menu.Item>
     
+            
             <Menu.Item
             onClick={routeToSignup}
             name='signup'
+            style={{ fontSize: '22px'}}
             >
             Signup
             </Menu.Item>

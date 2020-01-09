@@ -12,7 +12,7 @@ const NavSignup = (props) => {
         <Menu fixed="top">
             <Menu.Item
             name='home'
-            style={{ fontSize: '22px'}}
+            style={{ fontSize: '30px'}}
             >
             ChooWatchin
             </Menu.Item>
@@ -20,6 +20,7 @@ const NavSignup = (props) => {
             <Menu.Item
             onClick={routeToLogin}
             name='reviews'
+            style={{ fontSize: '22px'}}
             >
             Login
             </Menu.Item>

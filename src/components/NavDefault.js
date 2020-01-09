@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Input } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import { withRouter } from 'react-router-dom'
 import { setUser } from '../actions/index'
@@ -23,47 +23,59 @@ const NavDefault = (props) => {
             <Menu.Item
             onClick={routeToHome}
             name='home'
-            style={{ fontSize: '22px'}}
+            style={{ fontSize: '30px'}}
             >
             ChooWatchin
             </Menu.Item>
     
             <Menu.Item
             name='movies'
+            style={{ fontSize: '20px'}}
             >
             Movies
             </Menu.Item>
 
             <Menu.Item
             name='shows'
+            style={{ fontSize: '20px'}}
             >
             Shows
             </Menu.Item>
 
             <Menu.Item
             name='friends'
+            style={{ fontSize: '20px'}}
             >
             Friends
             </Menu.Item>
 
             <Menu.Item
             name='myProfile'
+            style={{ fontSize: '20px'}}
             >
             My Profile
             </Menu.Item>
 
             <Menu.Item
             name='createReview'
+            style={{ fontSize: '20px'}}
             >
-            New Review
+            Create Review
             </Menu.Item>
 
-            <Menu.Item
-            onClick={handleLogout}
-            name='logout'
-            >
-            Logout
-            </Menu.Item>
+            <Menu.Menu position='right'>
+                <Menu.Item
+                onClick={handleLogout}
+                name='logout'
+                style={{ fontSize: '20px'}}
+                >
+                Logout
+                </Menu.Item>
+
+                <Menu.Item>
+                    <Input size="big" icon='search' placeholder='Search...' />
+                </Menu.Item>
+            </Menu.Menu>
         </Menu>
     )
 }
