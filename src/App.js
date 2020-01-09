@@ -8,6 +8,7 @@ import { Grid } from 'semantic-ui-react'
 import './App.css'
 
 function App() {
+  
   return (
     <BrowserRouter>
       <Grid>
@@ -16,6 +17,7 @@ function App() {
         </Grid.Row>
         <Grid.Row >
           <Switch>
+            <Route exact path='/' component={Login} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
             <Route path='/home' component={Dashboard} />

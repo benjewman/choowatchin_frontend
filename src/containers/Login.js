@@ -2,6 +2,8 @@ import React from 'react'
 import '../NoScroll.css'
 import pic from '../projector.jpg'
 import LoginForm from '../components/LoginForm'
+import { connect } from 'react-redux'
+import WithAuth from '../components/WithAuth'
 
 const sectionStyle = {
     backgroundPosition: 'center',
@@ -13,15 +15,23 @@ const sectionStyle = {
 }
 
 class Login extends React.Component {
-
+    componentDidMount() {
+        console.log(this.props)
+    }
+    
     render() {
         return (
                 <div style={ sectionStyle } >
-                    {/* <Header style={{marginTop: '0.5em', fontSize: '60px'}} as='h1' textAlign='center'>ChooWatchin</Header> */}
                     <LoginForm />
                 </div>
         )
     }
 }
 
-export default Login
+// const mapStateToProps = state => {
+//     return {
+//         user: state.user
+//     }
+// }
+
+export default WithAuth(Login)
