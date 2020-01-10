@@ -7,7 +7,7 @@ const sectionStyle = {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundImage: `url(${pic})`,
-    height: '100vh',
+    height: '90vh',
     width: '200vh'
 }
 

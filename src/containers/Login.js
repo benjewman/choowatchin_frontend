@@ -9,20 +9,16 @@ const sectionStyle = {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundImage: `url(${pic})`,
-    height: '100vh',
+    height: '90vh',
     width: '200vh'
 }
 
 class Login extends React.Component {
-    body = document.querySelector('body')
-    
- 
-    
+        
      componentDidMount() {
         if (this.props.history.location.pathname === '/') {
             this.props.history.push('/login')
         }
-        // this.body.classList.add('stop-scrolling')
     }
 
     render() {
