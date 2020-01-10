@@ -1,13 +1,12 @@
 import React from 'react'
-import { Header, Grid, Image } from 'semantic-ui-react'
-// import { connect } from 'react-redux'
+import { Grid, Image } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import WithAuth from '../components/WithAuth'
-// import { loginSuccess } from '../actions/index'
-
+import FeedContainer from './FeedContainer'
 class Dashboard extends React.Component {
     
     componentDidMount() {
-        
+
     }
     
     render() {
@@ -19,7 +18,8 @@ class Dashboard extends React.Component {
 
                 <Grid.Column width={9}>
                     {/*  fetch user's friends and their reviews */}
-                    <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                    <FeedContainer followedReviews={this.props.followedReviews}/>
+                    {/* <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' /> */}
                 </Grid.Column>
 
                 <Grid.Column width={3}>
@@ -30,10 +30,10 @@ class Dashboard extends React.Component {
     }
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         setUser: user => dispatch(loginSuccess(user))
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        followedReviews: state.followedReviews
+    }
+}
 
-export default WithAuth(Dashboard)
+export default connect(mapStateToProps, null)(WithAuth(Dashboard))
