@@ -5,6 +5,14 @@ export default function mainReducer(state = {}, action) {
             
         case 'SET_FOLLOWED_REVIEWS':
             return {...state, followedReviews: action.followedReviews}
+
+        case 'SET_TOP_FIVE':
+            return {
+                ...state, 
+                topFive: action.topFive, 
+                followerCountArray: action.followerCountArray
+            }
+            
         default: 
             return state
     }

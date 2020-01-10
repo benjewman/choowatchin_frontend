@@ -47,17 +47,18 @@ class ReviewFeedCard extends React.Component {
                             <Grid.Column>
                                 {/* Put a cool looking stamp here */}
                                 {/* probably use one of five pics I'll create */}
-                                <h3>Stamp Here</h3>
+                                <h3>Stamp Here: {this.props.review.stamp}</h3>
                             </Grid.Column>
-                            <Grid.Column>
-                                {/* User Card of Reviewer */}
-                                <Card>
+                            <Grid.Column floated="right">
+                                {/* Reformat to float right */}
+                                <Card style={{maxWidth: '8em'}}>
+                                    {/* Placeholder image for the user's prof pic */}
+                                    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
                                     <Card.Content>
                                         {/* Make username clickable */}
                                         <Card.Header>{this.state.reviewUser.username}</Card.Header>
                                     </Card.Content>
                                 </Card>
-                                {/* <h3> User Here</h3> */}
                             </Grid.Column>
                         </Grid>
                     </Grid.Row>

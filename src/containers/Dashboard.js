@@ -3,16 +3,21 @@ import { Grid, Image, Menu, Sticky } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import WithAuth from '../components/WithAuth'
 import FeedContainer from './FeedContainer'
+import PopularReviewers from './PopularReviewers'
+import { setTopFive } from '../actions/index'
+
 class Dashboard extends React.Component {
     
     componentDidMount() {
-
+        fetch('http://localhost:3000/topfive')
+        .then(resp => resp.json())
+        .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
     }
     
     render() {
         return (
             <Grid columns={3} >
-                <Grid.Column width={3} >
+                <Grid.Column width={3}>
                     <Menu pointing vertical>
                         <Menu.Item
                         name='all'
@@ -30,13 +35,11 @@ class Dashboard extends React.Component {
                 </Grid.Column>
 
                 <Grid.Column width={9}>
-                    {/*  fetch user's friends and their reviews */}
                     <FeedContainer followedReviews={this.props.followedReviews}/>
-                    {/* <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' /> */}
                 </Grid.Column>
 
                 <Grid.Column width={3} >
-                    <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+                    <PopularReviewers />
                 </Grid.Column>
             </Grid>
         )
@@ -49,4 +52,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(WithAuth(Dashboard))
+const mapDispatchToProps = dispatch => {
+    return {
+        setTopFive: topFive => dispatch(setTopFive(topFive.top_five, topFive.follower_count_array))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WithAuth(Dashboard))
