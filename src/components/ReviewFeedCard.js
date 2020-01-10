@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Grid } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 class ReviewFeedCard extends React.Component {
@@ -24,9 +24,45 @@ class ReviewFeedCard extends React.Component {
 
     renderCard = () => {
         return (
-            <Card>
-                <Image src={this.state.reviewShow.poster} />
-            </Card>
+            <Grid columns={2} style={{borderBottom: 'dotted red'}}>
+                <Grid.Column width={5}>
+                    {/* Make card clickable */}
+                    <Card>
+                        <Card.Content>
+                            <Image src={this.state.reviewShow.poster} />
+                        </Card.Content>
+                        <Card.Content>
+                            <Card.Header>{this.state.reviewShow.title}({this.state.reviewShow.year})</Card.Header>
+                        </Card.Content>
+                    </Card>
+                </Grid.Column >
+                <Grid.Column width={10} >
+                    <Grid.Row style={{marginTop: '3em'}}>
+                        <div style={{border: 'thin dotted black'}}>
+                            <h3 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>{this.props.review.content}</h3>
+                        </div>
+                    </Grid.Row>
+                    <Grid.Row style={{marginTop: '8em'}}>
+                        <Grid columns={2}>
+                            <Grid.Column>
+                                {/* Put a cool looking stamp here */}
+                                {/* probably use one of five pics I'll create */}
+                                <h3>Stamp Here</h3>
+                            </Grid.Column>
+                            <Grid.Column>
+                                {/* User Card of Reviewer */}
+                                <Card>
+                                    <Card.Content>
+                                        {/* Make username clickable */}
+                                        <Card.Header>{this.state.reviewUser.username}</Card.Header>
+                                    </Card.Content>
+                                </Card>
+                                {/* <h3> User Here</h3> */}
+                            </Grid.Column>
+                        </Grid>
+                    </Grid.Row>
+                </Grid.Column>
+            </Grid>
         )
     }
     

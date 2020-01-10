@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Menu, Sticky } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import WithAuth from '../components/WithAuth'
 import FeedContainer from './FeedContainer'
@@ -11,9 +11,22 @@ class Dashboard extends React.Component {
     
     render() {
         return (
-            <Grid columns={3} divided>
-                <Grid.Column width={3}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+            <Grid columns={3} >
+                <Grid.Column width={3} >
+                    <Menu pointing vertical>
+                        <Menu.Item
+                        name='all'
+                        active={true}
+                        />
+                        <Menu.Item
+                        name='just movies'
+                        active={false}
+                        />
+                        <Menu.Item
+                        name='just series'
+                        active={false}
+                        /> 
+                    </Menu>
                 </Grid.Column>
 
                 <Grid.Column width={9}>
@@ -22,7 +35,7 @@ class Dashboard extends React.Component {
                     {/* <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' /> */}
                 </Grid.Column>
 
-                <Grid.Column width={3}>
+                <Grid.Column width={3} >
                     <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
                 </Grid.Column>
             </Grid>
