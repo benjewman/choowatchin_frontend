@@ -1,15 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setUser } from '../actions/index'
+import { setUser, setFollowedReviews } from '../actions/index'
 
 export default function WithAuth(WrappedComponent) {
      class Auth extends React.Component {
         
-        handleFetch = user => {
-            if (user.error && this.props.history.location.pathname !== '/login') {
+        handleFetch = userInfo => {
+            if (userInfo.error && this.props.history.location.pathname !== '/login') {
                 this.props.history.push('/login')
             } else {
-                this.props.setUser(user)
+                this.props.setUser(userInfo.user)
+                //  dispatch followed reviews to store
+                this.props.setFollowedReviews(userInfo.followed_reviews)
                 if (this.props.history.location.pathname === '/login') {
                     this.props.history.push('/home')
                 }
@@ -34,7 +36,7 @@ export default function WithAuth(WrappedComponent) {
     
                 fetch('http://localhost:3000/current_user', reqObj)
                 .then(resp => resp.json())
-                .then(user => this.handleFetch(user))
+                .then(userInfo => this.handleFetch(userInfo))
             }
         }
 
@@ -45,7 +47,9 @@ export default function WithAuth(WrappedComponent) {
 
     const mapDispatchToProps = dispatch => {
         return {
-            setUser: user => dispatch(setUser(user))
+            setUser: user => dispatch(setUser(user)),
+            // use action to dispatch followed users to store
+            setFollowedReviews: followedReviews => dispatch(setFollowedReviews(followedReviews))
         }
     }
     

@@ -4,3 +4,10 @@ export const setUser = user => {
         user
     }
 }
+
+export const setFollowedReviews = followedReviews => {
+    return {
+        type: 'SET_FOLLOWED_REVIEWS',
+        followedReviews: followedReviews
+    }
+}
