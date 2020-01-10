@@ -19,46 +19,46 @@ const NavDefault = (props) => {
     }
     
     return (
-        <Menu fixed="top">
+        <Menu style={{backgroundColor: 'red'}} fixed="top">
             <Menu.Item
             onClick={routeToHome}
             name='home'
-            style={{ fontSize: '30px'}}
+            style={{ fontSize: '30px', color: 'white'}}
             >
             ChooWatchin
             </Menu.Item>
     
             <Menu.Item
             name='movies'
-            style={{ fontSize: '20px'}}
+            style={{ fontSize: '20px', color: 'white'}}
             >
             Movies
             </Menu.Item>
 
             <Menu.Item
             name='shows'
-            style={{ fontSize: '20px'}}
+            style={{ fontSize: '20px', color: 'white'}}
             >
             Shows
             </Menu.Item>
 
             <Menu.Item
             name='friends'
-            style={{ fontSize: '20px'}}
+            style={{ fontSize: '20px', color: 'white'}}
             >
             Friends
             </Menu.Item>
 
             <Menu.Item
             name='myProfile'
-            style={{ fontSize: '20px'}}
+            style={{ fontSize: '20px', color: 'white'}}
             >
             My Profile
             </Menu.Item>
 
             <Menu.Item
             name='createReview'
-            style={{ fontSize: '20px'}}
+            style={{ fontSize: '20px', color: 'white'}}
             >
             Create Review
             </Menu.Item>
@@ -67,7 +67,7 @@ const NavDefault = (props) => {
                 <Menu.Item
                 onClick={handleLogout}
                 name='logout'
-                style={{ fontSize: '20px'}}
+                style={{ fontSize: '20px', color: 'white'}}
                 >
                 Logout
                 </Menu.Item>
