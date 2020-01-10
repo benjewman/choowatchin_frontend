@@ -1,4 +1,6 @@
 import React from 'react'
+import { Card, Image } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 
 class ReviewFeedCard extends React.Component {
     constructor() {
@@ -19,11 +21,19 @@ class ReviewFeedCard extends React.Component {
             // .then(show => this.setState({reviewShow: show}))
         })
     }
+
+    renderCard = () => {
+        return (
+            <Card>
+                <Image src={this.state.reviewShow.poster} />
+            </Card>
+        )
+    }
     
     render() {
         console.log('review card state', this.state)
         return (
-            this.state.reviewShow ? <h1>{this.state.reviewShow.title}</h1> : null
+            this.state.reviewShow ? this.renderCard() : null
         )
     }
 }

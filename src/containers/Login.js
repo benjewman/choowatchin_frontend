@@ -1,5 +1,4 @@
 import React from 'react'
-import '../NoScroll.css'
 import pic from '../projector.jpg'
 import LoginForm from '../components/LoginForm'
 // import { connect } from 'react-redux'
@@ -15,12 +14,14 @@ const sectionStyle = {
 }
 
 class Login extends React.Component {
+     body = document.querySelector('body')
+    
     componentDidMount() {
         if (this.props.history.location.pathname === '/') {
             this.props.history.push('/login')
         }
     }
-    
+
     render() {
         return (
                 <div style={ sectionStyle } >

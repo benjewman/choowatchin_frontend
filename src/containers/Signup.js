@@ -15,7 +15,7 @@ const sectionStyle = {
 class Signup extends React.Component {
     render() {
         return (
-            <div style={ sectionStyle } >
+            <div className='noScroll' style={ sectionStyle } >
                 {/* <Header as='h1'>ChooWatchin</Header> */}
                 <SignupForm />
             </div>

@@ -6,6 +6,7 @@ import Signup from './containers/Signup'
 import Dashboard from './containers/Dashboard'
 import { Grid } from 'semantic-ui-react'
 import './App.css'
+import ScrollLock, { TouchScrollable } from 'react-scrolllock';
 
 function App() {
   
