@@ -25,7 +25,6 @@ export default function WithAuth(WrappedComponent) {
                 // console.log(this.props.history.location.pathname)
                 this.props.history.push('/login')
             } else if (token) {
-                console.log('foo')
                 const reqObj = {
                     method: 'GET',
                     headers: {
