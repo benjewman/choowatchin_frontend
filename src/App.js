@@ -6,7 +6,7 @@ import Signup from './containers/Signup'
 import Dashboard from './containers/Dashboard'
 import { Grid } from 'semantic-ui-react'
 import './App.css'
-import ScrollLock, { TouchScrollable } from 'react-scrolllock';
+// import ScrollLock, { TouchScrollable } from 'react-scrolllock';
 
 function App() {
   
@@ -19,7 +19,9 @@ function App() {
         <Grid.Row >
           <Switch>
             <Route exact path='/' component={Login} />
-            <Route path='/login' component={Login} />
+            <Route path='/login'>
+              <Login />
+            </Route>
             <Route path='/signup' component={Signup} />
             <Route path='/home' component={Dashboard} />
           </Switch>

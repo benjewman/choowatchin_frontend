@@ -14,12 +14,15 @@ const sectionStyle = {
 }
 
 class Login extends React.Component {
-     body = document.querySelector('body')
+    body = document.querySelector('body')
     
-    componentDidMount() {
+ 
+    
+     componentDidMount() {
         if (this.props.history.location.pathname === '/') {
             this.props.history.push('/login')
         }
+        // this.body.classList.add('stop-scrolling')
     }
 
     render() {
