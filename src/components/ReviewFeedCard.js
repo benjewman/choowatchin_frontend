@@ -52,7 +52,7 @@ class ReviewFeedCard extends React.Component {
                             </Grid.Column>
                             <Grid.Column floated="right">
                                 {/* Reformat to float right */}
-                                <Card style={{maxWidth: '8em'}}>
+                                <Card style={{maxWidth: '8em', marginLeft: '8em'}}>
                                     {/* Placeholder image for the user's prof pic */}
                                     <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
                                     <Card.Content>
