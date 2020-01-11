@@ -19,7 +19,7 @@ class PopularReviewers extends React.Component {
 
     renderUserCard = (user, index) => {
         return (
-            <Card style={{maxWidth: '11em'}}>
+            <Card style={{maxWidth: '10em', marginLeft: '8em'}}>
                 <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
                 <Card.Content>
                     <Card.Header>{user.full_name}</Card.Header>

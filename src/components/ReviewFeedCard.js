@@ -29,7 +29,7 @@ class ReviewFeedCard extends React.Component {
                     {/* Make card clickable */}
                     <Card>
                         <Card.Content>
-                            <Image src={this.state.reviewShow.poster} />
+                            <Image src={this.state.reviewShow.poster}/>
                         </Card.Content>
                         <Card.Content>
                             <Card.Header>{this.state.reviewShow.title}({this.state.reviewShow.year})</Card.Header>

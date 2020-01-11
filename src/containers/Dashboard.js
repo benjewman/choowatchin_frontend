@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
                     <FeedContainer followedReviews={this.props.followedReviews}/>
                 </Grid.Column>
 
-                <Grid.Column width={3} >
+                <Grid.Column floated="right" width={3} >
                     <PopularReviewers />
                 </Grid.Column>
             </Grid>
