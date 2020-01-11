@@ -39,7 +39,8 @@ class ReviewFeedCard extends React.Component {
                 <Grid.Column width={10} >
                     <Grid.Row style={{marginTop: '3em'}}>
                         <div style={{border: 'thin dotted black'}}>
-                            <h3 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>{this.props.review.content}</h3>
+                            <h3 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>"{this.props.review.content}"</h3>
+                            <h5 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>-{this.state.reviewUser.full_name}</h5>
                         </div>
                     </Grid.Row>
                     <Grid.Row style={{marginTop: '8em'}}>
@@ -56,7 +57,7 @@ class ReviewFeedCard extends React.Component {
                                     <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
                                     <Card.Content>
                                         {/* Make username clickable */}
-                                        <Card.Header>{this.state.reviewUser.username}</Card.Header>
+                                        <Card.Header>@{this.state.reviewUser.username}</Card.Header>
                                     </Card.Content>
                                 </Card>
                             </Grid.Column>

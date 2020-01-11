@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 
@@ -17,20 +17,31 @@ class PopularReviewers extends React.Component {
         // .then(topFiveInfo => this.setState(topFiveInfo))
     }
 
-    renderUserCard = user => {
+    renderUserCard = (user, index) => {
         return (
-            <Card>
-                
+            <Card style={{maxWidth: '11em'}}>
+                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                <Card.Content>
+                    <Card.Header>{user.full_name}</Card.Header>
+                    {/* Make username clickable */}
+                    <Card.Description>@{user.username}</Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <Card.Description>
+                        <Icon name='user' />
+                        {this.props.followerCountArray[index]} Followers
+                    </Card.Description>
+                </Card.Content>
             </Card>
         )
     }
 
     renderTopFiveCards = () => {
-        this.props.topFive.map(user => this.renderUserCard(user))
+        return this.props.topFive.map((user, index)  => this.renderUserCard(user, index))
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.props)
         return (
             <div>
                 <h1>Popular Reviewers</h1>
