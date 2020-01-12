@@ -6,6 +6,7 @@ import Signup from './containers/Signup'
 import Dashboard from './containers/Dashboard'
 import { Grid } from 'semantic-ui-react'
 import './App.css'
+import InTheaters from './containers/InTheaters'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
             <Route path='/login' component={Login} />>
             <Route path='/signup' component={Signup} />
             <Route path='/home' component={Dashboard} />
+            <Route path='/movies' component={InTheaters} />
           </Switch>
         </Grid.Row>
       </Grid>

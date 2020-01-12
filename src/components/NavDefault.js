@@ -6,9 +6,9 @@ import { setUser } from '../actions/index'
 import { connect } from 'react-redux'
 
 const NavDefault = (props) => {
-    const routeToHome = () => {
-        if (props.history.location.pathname !== '/home') {
-            props.history.push('/home')
+    const routeToHome = (path) => {
+        if (props.history.location.pathname !== path) {
+            props.history.push(path)
         }
     }
 
@@ -21,7 +21,7 @@ const NavDefault = (props) => {
     return (
         <Menu style={{backgroundColor: 'red'}} fixed="top">
             <Menu.Item
-            onClick={routeToHome}
+            onClick={() => routeToHome('/home')}
             name='home'
             style={{ fontSize: '30px', color: 'white'}}
             >
@@ -29,10 +29,11 @@ const NavDefault = (props) => {
             </Menu.Item>
     
             <Menu.Item
+            onClick={() => routeToHome('/movies')}
             name='movies'
             style={{ fontSize: '20px', color: 'white'}}
             >
-            Movies
+            In Theaters
             </Menu.Item>
 
             <Menu.Item
