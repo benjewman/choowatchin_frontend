@@ -9,10 +9,10 @@ const NavLogin = (props) => {
     }
     
     return (
-        <Menu fixed="top">
+        <Menu style={{backgroundColor: '#741906'}} fixed="top">
             <Menu.Item
             name='home'
-            style={{ fontSize: '30px'}}
+            style={{ fontSize: '30px', color: 'white'}}
             >
             ChooWatchin
             </Menu.Item>
@@ -21,7 +21,7 @@ const NavLogin = (props) => {
             <Menu.Item
             onClick={routeToSignup}
             name='signup'
-            style={{ fontSize: '22px'}}
+            style={{ fontSize: '22px', color: 'white'}}
             >
             Signup
             </Menu.Item>

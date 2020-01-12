@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setUser, setFollowedReviews } from '../actions/index'
+import { withRouter } from 'react-router-dom'
 
 export default function WithAuth(WrappedComponent) {
      class Auth extends React.Component {
@@ -8,7 +9,7 @@ export default function WithAuth(WrappedComponent) {
         handleFetch = userInfo => {
             if (userInfo.error && this.props.history.location.pathname !== '/login') {
                 this.props.history.push('/login')
-            } else {
+            } else if (!userInfo.error) {
                 this.props.setUser(userInfo.user)
                 //  dispatch followed reviews to store
                 this.props.setFollowedReviews(userInfo.followed_reviews)
@@ -54,7 +55,7 @@ export default function WithAuth(WrappedComponent) {
     
 
 
-    return connect(null, mapDispatchToProps)(Auth)
+    return connect(null, mapDispatchToProps)(withRouter(Auth))
 
 }
 

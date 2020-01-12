@@ -4,7 +4,6 @@ import ReviewFeedCard from '../components/ReviewFeedCard'
 class FeedContainer extends React.Component {
 
     renderReviewCards = () => {
-        // return <h1>hi</h1>
         return this.props.followedReviews.map(review => <ReviewFeedCard review={review} key={review.id}/>)
     }
     

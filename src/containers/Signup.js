@@ -1,13 +1,12 @@
 import React from 'react'
 import pic from '../theater.jpg'
-import '../NoScroll.css'
 import SignupForm from '../components/SignupForm'
 const sectionStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundImage: `url(${pic})`,
-    height: '100vh',
+    height: '90vh',
     width: '200vh'
 }
 
@@ -15,8 +14,7 @@ const sectionStyle = {
 class Signup extends React.Component {
     render() {
         return (
-            <div className='noScroll' style={ sectionStyle } >
-                {/* <Header as='h1'>ChooWatchin</Header> */}
+            <div style={ sectionStyle } >
                 <SignupForm />
             </div>
         )
