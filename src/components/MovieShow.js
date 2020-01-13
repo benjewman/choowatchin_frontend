@@ -40,7 +40,7 @@ class MovieShow extends React.Component {
         // so CreateReview page can set the show
         // automatically
         this.props.setReviewShow(this.state)
-        this.props.history.push('/reviews/new')
+        this.props.history.push(`/reviews/movies/${this.state.movie.id}/new`)
     }
     
     renderCreateButton = () => {

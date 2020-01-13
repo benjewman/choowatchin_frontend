@@ -30,7 +30,7 @@ function App() {
             <Route path='/movies/:id' component={MovieShow} />
             <Route exact path='/series' component={OnAir} />
             <Route path='/series/:id' component={SeriesShow} />
-            <Route path='/reviews/new' component={CreateReview} />
+            <Route path='/reviews/:medium/:id/new' component={CreateReview} />
           </Switch>
         </Grid.Row>
       </Grid>

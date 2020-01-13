@@ -37,9 +37,9 @@ class InTheaters extends React.Component {
         return (
             <div>
                 <h1 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>Check Out These Movies In Theaters</h1>
-            <Grid columns={6} style={{marginLeft: '0.25em'}}>
-                {this.renderMovies()}
-            </Grid>
+                <Grid columns={6} style={{marginLeft: '0.25em'}}>
+                    {this.renderMovies()}
+                </Grid>
             </div>
         )
     }
