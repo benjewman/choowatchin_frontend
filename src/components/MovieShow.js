@@ -33,11 +33,6 @@ class MovieShow extends React.Component {
     }
 
     routeToCreate = () => {
-        console.log('got here')
-        // dispatching this show to state
-        // so CreateReview page can set the show
-        // automatically
-        this.props.setReviewShow(this.state)
         this.props.history.push(`/reviews/movies/${this.state.movie.id}/new`)
     }
     

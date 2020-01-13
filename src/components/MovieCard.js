@@ -13,7 +13,7 @@ const MovieCard = (props) => {
         <Grid.Column>
             <Card onClick={routeToMoviePage}>
                 {/* Improve Quality of image on card */}
-                <Image src={'http://image.tmdb.org/t/p/w185' + props.movie.poster_path}/>
+                <Image src={'http://image.tmdb.org/t/p/w780' + props.movie.poster_path}/>
                 <Card.Content>
                     <Card.Header>
                         {props.movie.title}

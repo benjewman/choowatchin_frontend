@@ -29,7 +29,7 @@ class ReviewFeedCard extends React.Component {
                     {/* Make card clickable */}
                     <Card>
                         <Card.Content>
-                            <Image src={this.state.reviewShow.poster}/>
+                            <Image src={'http://image.tmdb.org/t/p/w780' + this.state.reviewShow.poster}/>
                         </Card.Content>
                         <Card.Content>
                             <Card.Header style={{textAlign: 'center'}}>{this.state.reviewShow.title}</Card.Header>

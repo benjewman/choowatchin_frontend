@@ -60,9 +60,6 @@ class SeriesShow extends React.Component {
     }
 
     routeToCreate = () => {
-        // dispatching show so create page 
-        // can set it automatically
-        this.props.setReviewShow(this.state)
         this.props.history.push(`/reviews/series/${this.state.tvShow.id}/new`)
     }
     
