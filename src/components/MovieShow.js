@@ -1,6 +1,8 @@
 import React from 'react'
 import WithAuth from './WithAuth'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { setReviewShow } from '../actions/index'
 
 class MovieShow extends React.Component {
     constructor(props) {
@@ -32,6 +34,23 @@ class MovieShow extends React.Component {
         )
     }
 
+    routeToCreate = () => {
+        console.log('got here')
+        // dispatching this show to state
+        // so CreateReview page can set the show
+        // automatically
+        this.props.setReviewShow(this.state)
+        this.props.history.push('/reviews/new')
+    }
+    
+    renderCreateButton = () => {
+        return (
+            <Grid.Row style={{marginTop: '8em', textAlign: 'center'}}>
+                <Button onClick={this.routeToCreate}>Create Review <Icon name="comment alternate outline"/></Button>
+            </Grid.Row>
+        )
+    }
+
     renderTitleAndPlot = () => {
         return (
             <Grid.Column width={7}>
@@ -44,9 +63,7 @@ class MovieShow extends React.Component {
                 <Grid.Row style={{marginTop: '4em'}}>
                     <p style={{fontSize: '20px'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
                 </Grid.Row>
-                <Grid.Row style={{marginTop: '8em', textAlign: 'center'}}>
-                    <Button>Create Review <Icon name="comment alternate outline"/></Button>
-                </Grid.Row>
+                {this.renderCreateButton()}
             </Grid.Column>
         )
     }
@@ -86,5 +103,11 @@ class MovieShow extends React.Component {
     }
 } 
 
-export default WithAuth(MovieShow)
+const mapDispatchToProps = dispatch => {
+    return {
+        setReviewShow: show => dispatch(setReviewShow(show))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(WithAuth(MovieShow))
 

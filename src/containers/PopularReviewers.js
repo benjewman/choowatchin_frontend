@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image, Icon, Grid } from 'semantic-ui-react'
+import { Image, Icon, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 const cardStyle = {
