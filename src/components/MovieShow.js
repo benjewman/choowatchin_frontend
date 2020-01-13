@@ -1,8 +1,6 @@
 import React from 'react'
 import WithAuth from './WithAuth'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
-import { connect } from 'react-redux'
-import { setReviewShow } from '../actions/index'
 
 class MovieShow extends React.Component {
     constructor(props) {
@@ -103,11 +101,5 @@ class MovieShow extends React.Component {
     }
 } 
 
-const mapDispatchToProps = dispatch => {
-    return {
-        setReviewShow: show => dispatch(setReviewShow(show))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(WithAuth(MovieShow))
+export default WithAuth(MovieShow)
 

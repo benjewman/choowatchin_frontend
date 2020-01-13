@@ -19,10 +19,3 @@ export const setTopFive = (topFive, followerCountArray) => {
         followerCountArray: followerCountArray
     }
 }
-
-export const setReviewShow = show => {
-    return {
-        type: 'SET_REVIEW_SHOW',
-        reviewShow: show
-    }
-}

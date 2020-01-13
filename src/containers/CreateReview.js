@@ -48,30 +48,32 @@ class CreateReview extends React.Component {
 
    handleSubmit = (event) => {
        event.preventDefault()
-    //    fetch post to backend reviews 
-    // to create new review for specific user
-    // send form information along with movie and user info
+        //    fetch post to backend reviews 
+        // to create new review for specific user
+        // send form information along with movie and user info
 
-    const bodyObj = {
-        show: this.state.show,
-        user_id: this.props.user.id,
-        content: this.state.userReview,
-        stamp: this.state.radioValue,
-        medium: this.props.match.params.medium
-    }
-    
-    const fetchObj = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(bodyObj)
-    }
+        const bodyObj = {
+            show: this.state.show,
+            user_id: this.props.user.id,
+            content: this.state.userReview,
+            stamp: this.state.radioValue,
+            medium: this.props.match.params.medium
+        }
+        
+        const fetchObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyObj)
+        }
 
-    fetch('http://localhost:3000/reviews', fetchObj)
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-   }
+        fetch('http://localhost:3000/reviews', fetchObj)
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+
+        this.props.history.push('/home')
+    }
 
    handleReviewChange = (event) => {
        console.log(event.target.value)
@@ -165,7 +167,6 @@ class CreateReview extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        reviewShow: state.reviewShow,
         user: state.user
     }
 }
