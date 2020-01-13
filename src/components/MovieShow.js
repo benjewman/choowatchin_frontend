@@ -24,15 +24,8 @@ class MovieShow extends React.Component {
         })
     }
 
-    renderGenres = () => {
-        return (
-            <Grid.Row style={{marginTop: '2em'}}>
-                <h3 style={{fontSize: '20px'}}>Genres:</h3>
-                {this.state.movie.genres.map(genre => <li style={{fontSize: '15px'}}>{genre.name}</li>)}
-            </Grid.Row>
-        )
-    }
 
+    // might wanna refactor code below
     render() {
         console.log(this.state)
         return (
@@ -50,7 +43,6 @@ class MovieShow extends React.Component {
                     <Grid.Row style={{marginTop: '4em'}}>
                         <p style={{fontSize: '20px'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
                     </Grid.Row>
-                    {/* {this.state.movie.genres ? this.renderGenres() : null} */}
                 </Grid.Column>
                 {/* Add dividers to the column below */}
                 <Grid.Column style={{marginTop: '3em'}} width={3}>
