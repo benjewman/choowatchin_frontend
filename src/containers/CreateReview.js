@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid, Header, Image, Form, TextArea, Radio } from 'semantic-ui-react'
+import { Grid, Header, Image, Form, TextArea, Radio, Button } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 
 class CreateReview extends React.Component {
@@ -8,7 +8,8 @@ class CreateReview extends React.Component {
         super()
         this.state = {
             show: {},
-            radioValue: 3
+            radioValue: 3,
+            userReview: ''
         }
     }
     
@@ -45,26 +46,73 @@ class CreateReview extends React.Component {
        )
    }
 
+   handleSubmit = (event) => {
+       event.preventDefault()
+    //    fetch post to backend reviews 
+    // to create new review for specific user
+    // send form information along with movie and user info
+   }
+
+   handleReviewChange = (event) => {
+       console.log(event.target.value)
+       this.setState({ userReview: event.target.value })
+   }
+   
    renderForm = () => {
        return (
            <Grid.Row style={{marginTop: '8em'}}>
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
                         <Form.Field
                             control={TextArea}
                             label='This show in 60 characters or less'
                             placeholer='This show in 60 characters or less'
+                            value={this.state.userReview}
+                            onChange={this.handleReviewChange}
                             width={14}
                         />
                     </Form.Group>
-                    <Form.Group>
+                    <h2 style={{marginTop: '3em'}}>Stamp</h2>
+                    <Form.Group style={{marginTop: '3em'}}>
                         <Form.Field
                             control={Radio}
-                            label='So Bad It Hurts'
+                            label='Awful'
                             value='1'
-                            checked={this.radioValue === '1'}
+                            checked={this.state.radioValue === 1}
                             onChange={() => this.handleChange(1)}
                         />
+                        <Form.Field
+                            control={Radio}
+                            label='Bad'
+                            value='2'
+                            checked={this.state.radioValue === 2}
+                            onChange={() => this.handleChange(2)}
+                        />
+                        <Form.Field
+                            control={Radio}
+                            label='Meh'
+                            value='3'
+                            checked={this.state.radioValue === 3}
+                            onChange={() => this.handleChange(3)}
+                        />
+                        <Form.Field
+                            control={Radio}
+                            label='Good'
+                            value='4'
+                            checked={this.state.radioValue === 4}
+                            onChange={() => this.handleChange(4)}
+                        />
+                        <Form.Field
+                            control={Radio}
+                            label='Must Watch'
+                            value='5'
+                            checked={this.state.radioValue === 5}
+                            onChange={() => this.handleChange(5)}
+                        />
+                    </Form.Group>
+                    {/* Find way to center button */}
+                    <Form.Group style={{marginTop: '3em'}}>
+                        <Form.Field control={Button} >Post Review</Form.Field>
                     </Form.Group>
                 </Form>
            </Grid.Row>
