@@ -8,7 +8,7 @@ class CreateReview extends React.Component {
         super()
         this.state = {
             show: {},
-            radioValue: 3,
+            radioValue: 'Meh',
             userReview: ''
         }
     }
@@ -51,6 +51,26 @@ class CreateReview extends React.Component {
     //    fetch post to backend reviews 
     // to create new review for specific user
     // send form information along with movie and user info
+
+    const bodyObj = {
+        show: this.state.show,
+        user_id: this.props.user.id,
+        content: this.state.userReview,
+        stamp: this.state.radioValue,
+        medium: this.props.match.params.medium
+    }
+    
+    const fetchObj = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bodyObj)
+    }
+
+    fetch('http://localhost:3000/reviews', fetchObj)
+    .then(resp => resp.json())
+    .then(data => console.log(data))
    }
 
    handleReviewChange = (event) => {
@@ -78,36 +98,36 @@ class CreateReview extends React.Component {
                             control={Radio}
                             label='Awful'
                             value='1'
-                            checked={this.state.radioValue === 1}
-                            onChange={() => this.handleChange(1)}
+                            checked={this.state.radioValue === 'Awful'}
+                            onChange={() => this.handleChange('Awful')}
                         />
                         <Form.Field
                             control={Radio}
                             label='Bad'
                             value='2'
-                            checked={this.state.radioValue === 2}
-                            onChange={() => this.handleChange(2)}
+                            checked={this.state.radioValue === 'Bad'}
+                            onChange={() => this.handleChange('Bad')}
                         />
                         <Form.Field
                             control={Radio}
                             label='Meh'
                             value='3'
-                            checked={this.state.radioValue === 3}
-                            onChange={() => this.handleChange(3)}
+                            checked={this.state.radioValue === 'Meh'}
+                            onChange={() => this.handleChange('Meh')}
                         />
                         <Form.Field
                             control={Radio}
                             label='Good'
                             value='4'
-                            checked={this.state.radioValue === 4}
-                            onChange={() => this.handleChange(4)}
+                            checked={this.state.radioValue === 'Good'}
+                            onChange={() => this.handleChange('Good')}
                         />
                         <Form.Field
                             control={Radio}
                             label='Must Watch'
                             value='5'
-                            checked={this.state.radioValue === 5}
-                            onChange={() => this.handleChange(5)}
+                            checked={this.state.radioValue === 'Must Watch'}
+                            onChange={() => this.handleChange('Must Watch')}
                         />
                     </Form.Group>
                     {/* Find way to center button */}
@@ -145,7 +165,8 @@ class CreateReview extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        reviewShow: state.reviewShow
+        reviewShow: state.reviewShow,
+        user: state.user
     }
 }
 

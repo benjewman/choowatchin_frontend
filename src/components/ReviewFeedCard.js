@@ -32,7 +32,7 @@ class ReviewFeedCard extends React.Component {
                             <Image src={this.state.reviewShow.poster}/>
                         </Card.Content>
                         <Card.Content>
-                            <Card.Header>{this.state.reviewShow.title}({this.state.reviewShow.year})</Card.Header>
+                            <Card.Header style={{textAlign: 'center'}}>{this.state.reviewShow.title}</Card.Header>
                         </Card.Content>
                     </Card>
                 </Grid.Column >
