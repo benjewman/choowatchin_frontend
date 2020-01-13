@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid, Header, Image, Form, TextArea, Input } from 'semantic-ui-react'
+import { Grid, Header, Image, Form, TextArea, Radio } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 
 class CreateReview extends React.Component {
     constructor() {
         super()
         this.state = {
-            show: {}
+            show: {},
+            radioValue: 3
         }
     }
     
@@ -29,7 +30,7 @@ class CreateReview extends React.Component {
    renderPoster = () => {
        return (
             <Grid.Column>
-                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster_path}/>
+                <Image centered size='large' src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster_path}/>
             </Grid.Column>
        )
    }
@@ -56,25 +57,39 @@ class CreateReview extends React.Component {
                             width={14}
                         />
                     </Form.Group>
+                    <Form.Group>
+                        <Form.Field
+                            control={Radio}
+                            label='So Bad It Hurts'
+                            value='1'
+                            checked={this.radioValue === '1'}
+                            onChange={() => this.handleChange(1)}
+                        />
+                    </Form.Group>
                 </Form>
            </Grid.Row>
        )
+   }
+
+   handleChange = (radioValue) => {
+    //    handle radio button choice
+    console.log(radioValue)
+    this.setState({ radioValue: radioValue })
    }
 
     render() {
         console.log(this.state)
         return (
             // duct tape fix for centering this stupid header
-            <Grid columns={3} centered>
+            <Grid columns={2} centered>
                 {this.renderPoster()}
                 <Grid.Column>
                     <Header as="h1" style={{textAlign: 'center'}}>Create Review for: </Header>
                     {this.renderTitle()}
                     {this.renderForm()}
                 </Grid.Column>
-                <Grid.Column>
-
-                </Grid.Column>
+                {/* <Grid.Column>
+                </Grid.Column> */}
             </Grid>
         )
     }
