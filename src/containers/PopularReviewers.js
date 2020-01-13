@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 const cardStyle = {
     border: 'thin dotted black',
     marginLeft: '0.5em'
-    // paddingLeft: '2em', 
-    // paddingRight: '2em'
 }
 
 class PopularReviewers extends React.Component {
