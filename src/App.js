@@ -11,6 +11,7 @@ import MovieShow from './components/MovieShow'
 import OnAir from './containers/OnAir'
 import SeriesShow from './components/SeriesShow'
 import CreateReview from './containers/CreateReview'
+import Friends from './containers/Friends'
 
 function App() {
   
@@ -31,6 +32,7 @@ function App() {
             <Route exact path='/series' component={OnAir} />
             <Route path='/series/:id' component={SeriesShow} />
             <Route path='/reviews/:medium/:id/new' component={CreateReview} />
+            <Route exact path='/friends' component={Friends} />
           </Switch>
         </Grid.Row>
       </Grid>
