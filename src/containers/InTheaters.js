@@ -35,9 +35,12 @@ class InTheaters extends React.Component {
     render() {
         console.log(this.state.movies)
         return (
+            <div>
+                <h1 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>Check Out These Movies In Theaters</h1>
             <Grid columns={6} style={{marginLeft: '0.25em'}}>
                 {this.renderMovies()}
             </Grid>
+            </div>
         )
     }
 }

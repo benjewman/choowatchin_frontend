@@ -30,9 +30,12 @@ class OnAir extends React.Component {
     render() {
         console.log(this.state.series)
         return (
-            <Grid columns={6} style={{marginLeft: '0.25em'}}>
-                {this.renderSeries()}
-            </Grid>
+            <div>
+                <h1 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>Check Out These Series On the Air</h1>
+                <Grid columns={6} style={{marginLeft: '0.25em'}}>
+                    {this.renderSeries()}
+                </Grid>
+            </div>
         )
     }
 }
