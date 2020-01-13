@@ -7,6 +7,7 @@ import Dashboard from './containers/Dashboard'
 import { Grid } from 'semantic-ui-react'
 import './App.css'
 import InTheaters from './containers/InTheaters'
+import MovieShow from './components/MovieShow'
 
 function App() {
   
@@ -22,7 +23,8 @@ function App() {
             <Route path='/login' component={Login} />>
             <Route path='/signup' component={Signup} />
             <Route path='/home' component={Dashboard} />
-            <Route path='/movies' component={InTheaters} />
+            <Route exact path='/movies' component={InTheaters} />
+            <Route path='/movies/:id' component={MovieShow} />
           </Switch>
         </Grid.Row>
       </Grid>

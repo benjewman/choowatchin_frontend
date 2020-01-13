@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Image, Card } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
+import MovieCard from '../components/MovieCard'
 
 class InTheaters extends React.Component {
     constructor() {
@@ -24,23 +25,23 @@ class InTheaters extends React.Component {
     }
 
     routeToMoviePage = (movie) => {
-        
+        this.props.history.push(`/movies/${movie.id}`)
     }
 
     renderMovies = () => {
-        // return <Image src='http://image.tmdb.org/t/p/w185/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg'/>
         return this.state.movies.map(movie => {
             return (
-                <Grid.Column>
+                {/* <Grid.Column>
                     <Card>
-                        <Image src={'http://image.tmdb.org/t/p/w185' + movie.poster_path}/>
+                        <Image onClick={() => this.routeToMoviePage(movie)} src={'http://image.tmdb.org/t/p/w185' + movie.poster_path}/>
                         <Card.Content>
                             <Card.Header>
                                 {movie.title}
                             </Card.Header>
                         </Card.Content>
                     </Card>
-                </Grid.Column>
+                </Grid.Column> */}
+                <MovieCard movie={movie} key={movie.id} />
             )
         })
     }
