@@ -1,15 +1,18 @@
 import React from 'react'
 import { Grid, Image, Card } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
 const MovieCard = (props) => {
+    console.log(props)
+    
     const routeToMoviePage = () => {
-        props.history.push('/home')
+        props.history.push(`/movies/${props.movie.id}`)
     }
     
     return (
         <Grid.Column>
-            <Card>
-                <Image onClick={routeToMoviePage()} src={'http://image.tmdb.org/t/p/w185' + props.movie.poster_path}/>
+            <Card onClick={routeToMoviePage}>
+                <Image src={'http://image.tmdb.org/t/p/w185' + props.movie.poster_path}/>
                 <Card.Content>
                     <Card.Header>
                         {props.movie.title}
@@ -20,4 +23,4 @@ const MovieCard = (props) => {
     )
 }
 
-export default MovieCard
+export default withRouter(MovieCard)

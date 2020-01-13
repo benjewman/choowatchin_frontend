@@ -29,27 +29,13 @@ class InTheaters extends React.Component {
     }
 
     renderMovies = () => {
-        return this.state.movies.map(movie => {
-            return (
-                {/* <Grid.Column>
-                    <Card>
-                        <Image onClick={() => this.routeToMoviePage(movie)} src={'http://image.tmdb.org/t/p/w185' + movie.poster_path}/>
-                        <Card.Content>
-                            <Card.Header>
-                                {movie.title}
-                            </Card.Header>
-                        </Card.Content>
-                    </Card>
-                </Grid.Column> */}
-                <MovieCard movie={movie} key={movie.id} />
-            )
-        })
+        return this.state.movies.map(movie => <MovieCard movie={movie} key={movie.id} />)
     }
     
     render() {
         console.log(this.state.movies)
         return (
-            <Grid columns={6} divided style={{marginLeft: '1.5em'}}>
+            <Grid columns={6} style={{marginLeft: '0.25em'}}>
                 {this.renderMovies()}
             </Grid>
         )

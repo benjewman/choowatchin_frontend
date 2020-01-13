@@ -48,7 +48,7 @@ class ReviewFeedCard extends React.Component {
                             <Grid.Column>
                                 {/* Put a cool looking stamp here */}
                                 {/* probably use one of five pics I'll create */}
-                                <h3>Stamp Here: {this.props.review.stamp}</h3>
+                                <h3>Stamp: {this.props.review.stamp}</h3>
                             </Grid.Column>
                             <Grid.Column floated="right">
                                 {/* Reformat to float right */}
