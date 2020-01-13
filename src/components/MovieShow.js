@@ -1,6 +1,6 @@
 import React from 'react'
 import WithAuth from './WithAuth'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 
 class MovieShow extends React.Component {
     constructor(props) {
@@ -42,6 +42,9 @@ class MovieShow extends React.Component {
                     </Grid.Row>
                     <Grid.Row style={{marginTop: '4em'}}>
                         <p style={{fontSize: '20px'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
+                    </Grid.Row>
+                    <Grid.Row style={{marginTop: '8em', textAlign: 'center'}}>
+                        <Button>Create Review <Icon name="comment alternate outline"/></Button>
                     </Grid.Row>
                 </Grid.Column>
                 {/* Add dividers to the column below */}
