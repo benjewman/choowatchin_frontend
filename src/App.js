@@ -8,6 +8,7 @@ import { Grid } from 'semantic-ui-react'
 import './App.css'
 import InTheaters from './containers/InTheaters'
 import MovieShow from './components/MovieShow'
+import OnAir from './containers/OnAir'
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
             <Route path='/home' component={Dashboard} />
             <Route exact path='/movies' component={InTheaters} />
             <Route path='/movies/:id' component={MovieShow} />
+            <Route exact path='/series' component={OnAir} />
           </Switch>
         </Grid.Row>
       </Grid>

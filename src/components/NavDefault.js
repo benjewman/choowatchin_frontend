@@ -37,10 +37,11 @@ const NavDefault = (props) => {
             </Menu.Item>
 
             <Menu.Item
+            onClick={() => routeToHome('/series')}
             name='shows'
             style={{ fontSize: '20px', color: 'white'}}
             >
-            Shows
+            TV On Air
             </Menu.Item>
 
             <Menu.Item
