@@ -12,6 +12,7 @@ const TVCard = (props) => {
     return (
         <Grid.Column>
             <Card onClick={routeToTVPage}>
+                {/* Improve Quality of image on card */}
                 <Image src={'http://image.tmdb.org/t/p/w185' + props.tvShow.poster_path}/>
                 <Card.Content>
                     <Card.Header>
