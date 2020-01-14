@@ -29,16 +29,22 @@ class SeriesShow extends React.Component {
     renderCreators = () => {
         // map through created by attribute to combine
         // the creators into a single string
+        const creatorString = this.state.tvShow.created_by.map(creator => creator.name).join(', ')
+        return creatorString
     }
 
     renderNetworks = () => {
         // map through networks and combine
         // them into a string
+        const networkString = this.state.tvShow.networks.map(network => network.name).join(', ')
+        return networkString
     }
 
     renderGenres = () => {
         // map through genres and combine
         // them into a string
+        const genreString = this.state.tvShow.genres.map(genre => genre.name).join(', ')
+        return genreString
     }
 
     renderLastEpisode = () => {
@@ -89,15 +95,15 @@ class SeriesShow extends React.Component {
             <Grid.Column style={{marginTop: '3em'}} width={3}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left'}}>Creators:</h3>
-                    <p style={{textAlign: 'right'}}>{this.renderCreators()}</p>
+                    <p style={{textAlign: 'right'}}>{this.state.tvShow.created_by ? this.renderCreators() : null}</p>
                 </Grid.Row>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left', marginTop: '2em'}}>Network:</h3>
-                    <p style={{textAlign: 'right'}}>{this.renderNetworks()}</p>
+                    <p style={{textAlign: 'right'}}>{this.state.tvShow.networks ? this.renderNetworks() : null}</p>
                 </Grid.Row>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left', marginTop: '2em'}}>Genres:</h3>
-                    <p style={{textAlign: 'right'}}>{this.renderGenres()}</p>
+                    <p style={{textAlign: 'right'}}>{this.state.tvShow.genres ? this.renderGenres() : null}</p>
                 </Grid.Row>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left', marginTop: '2em'}}>Seasons:</h3>
