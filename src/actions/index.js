@@ -19,3 +19,17 @@ export const setTopFive = (topFive, followerCountArray) => {
         followerCountArray: followerCountArray
     }
 }
+
+export const setLeaders = leaders => {
+    return {
+        type: 'SET_LEADERS',
+        leaders: leaders
+    }
+}
+
+export const addLeader = leader => {
+    return {
+        type: 'ADD_LEADER',
+        leader: leader
+    }
+}

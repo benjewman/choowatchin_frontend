@@ -12,7 +12,19 @@ export default function mainReducer(state = {}, action) {
                 topFive: action.topFive, 
                 followerCountArray: action.followerCountArray
             }
+
+        case 'SET_LEADERS':
+            return {
+                ...state,
+                leaders: action.leaders
+            }
             
+        case 'ADD_LEADER':
+            return {
+                ...state,
+                leaders: [...state.leaders, action.leader]
+            }
+
         default: 
             return state
     }

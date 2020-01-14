@@ -33,9 +33,6 @@ class Friends extends React.Component {
         }
     }
     
-    handleSearchSubmit = () => {
-    }
-    
     handleSelectChange = () => {
         this.setState({filterJustFriends: !this.state.filterJustFriends})
     }
@@ -50,28 +47,25 @@ class Friends extends React.Component {
             { key: 'everyone', text: 'Everyone', value: 'everyone' },
           ]
         return (
-                <Input value={this.state.filter} onChange={this.handleInputChange} type='text' placeholder='Search...' action>
-                    <input />
-                    <Select compact onChange={this.handleSelectChange} options={options} defaultValue='your friends' />
-                    <Button onClick={this.handleSearchSubmit} type='submit'>Search</Button>
-                </Input>
+            <div>
+                <Input value={this.state.filter} onChange={this.handleInputChange} type='text' placeholder='Search...' action />
+                <Select compact onChange={this.handleSelectChange} options={options} defaultValue='your friends' />
+                {/* <Button onClick={this.handleSearchSubmit} type='submit'>Search</Button> */}
+            </div>
         )
     }
 
-    renderUsers = () => {
-        return (
-            <Grid columns={4}>
-
-            </Grid>
-        )
+    addFriend = (friend) => {
+        this.setState({friends: [...this.state.friends, friend]})
     }
 
     renderPeople = (type) => {
-        const filteredUsers = this.state[type].filter(user => user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
+        // filter out current user from all users list
+        // filter based on search bar
+        const filteredUsers = this.state[type].filter(user => user.id !== this.props.user.id &&  user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
         return (
             <Grid celled='internally' style={{marginTop: '2em'}} columns={4}>
-                {/* {this.state[type].map(person => <UserCard user={person} />)} */}
-                {filteredUsers.map(person => <UserCard user={person} />)}
+                {filteredUsers.map(friend => <UserCard addFriend={this.addFriend} friend={friend} />)}
             </Grid>
         )
     }

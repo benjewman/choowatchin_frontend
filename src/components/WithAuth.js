@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setUser, setFollowedReviews } from '../actions/index'
+import { setUser, setFollowedReviews, setLeaders } from '../actions/index'
 import { withRouter } from 'react-router-dom'
 
 export default function WithAuth(WrappedComponent) {
@@ -10,7 +10,9 @@ export default function WithAuth(WrappedComponent) {
             if (userInfo.error && this.props.history.location.pathname !== '/login') {
                 this.props.history.push('/login')
             } else if (!userInfo.error) {
+                console.log(userInfo)
                 this.props.setUser(userInfo.user)
+                this.props.setLeaders(userInfo.leaders)
                 //  dispatch followed reviews to store
                 this.props.setFollowedReviews(userInfo.followed_reviews)
                 if (this.props.history.location.pathname === '/login') {
@@ -49,7 +51,8 @@ export default function WithAuth(WrappedComponent) {
         return {
             setUser: user => dispatch(setUser(user)),
             // use action to dispatch followed users to store
-            setFollowedReviews: followedReviews => dispatch(setFollowedReviews(followedReviews))
+            setFollowedReviews: followedReviews => dispatch(setFollowedReviews(followedReviews)),
+            setLeaders: leaders => dispatch(setLeaders(leaders))
         }
     }
     
