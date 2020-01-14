@@ -27,7 +27,7 @@ class Profile extends React.Component {
     }
 
     handleEditProfile = () => {
-        
+        this.props.history.push(`/profile/${this.state.user.id}/edit`)
     }
 
     renderProfileCard = () => {

@@ -13,7 +13,7 @@ import SeriesShow from './components/SeriesShow'
 import CreateReview from './containers/CreateReview'
 import Friends from './containers/Friends'
 import Profile from './containers/Profile'
-import EditReview from './containers/EditReview'
+import EditProfile from './containers/EditProfile'
 
 function App() {
   
@@ -35,8 +35,9 @@ function App() {
             <Route path='/series/:id' component={SeriesShow} />
             <Route path='/reviews/:medium/:id/new' component={CreateReview} />
             <Route exact path='/friends' component={Friends} />
-            <Route path='/profile/:id' component={Profile} />
+            <Route exact path='/profile/:id' component={Profile} />
             <Route path='/reviews/:id/edit' component={CreateReview} />
+            <Route path='/profile/:id/edit' component={EditProfile} />
           </Switch>
         </Grid.Row>
       </Grid>
