@@ -59,13 +59,18 @@ class Friends extends React.Component {
         this.setState({friends: [...this.state.friends, friend]})
     }
 
+    removeFriend = (friend_id) => {
+        const updatedFriends = this.state.friends.filter(friend => friend.id !== friend_id)
+        this.setState({friends: updatedFriends})
+    }
+    
     renderPeople = (type) => {
         // filter out current user from all users list
         // filter based on search bar
         const filteredUsers = this.state[type].filter(user => user.id !== this.props.user.id &&  user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
         return (
             <Grid celled='internally' style={{marginTop: '2em'}} columns={4}>
-                {filteredUsers.map(friend => <UserCard addFriend={this.addFriend} friend={friend} />)}
+                {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
             </Grid>
         )
     }

@@ -25,6 +25,13 @@ export default function mainReducer(state = {}, action) {
                 leaders: [...state.leaders, action.leader]
             }
 
+        case 'REMOVE_LEADER':
+            const updatedLeaders = state.leaders.filter(leader => leader.id !== action.leader_id)
+            return {
+                ...state,
+                leaders: updatedLeaders
+            }
+        
         default: 
             return state
     }

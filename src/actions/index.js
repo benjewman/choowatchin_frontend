@@ -33,3 +33,10 @@ export const addLeader = leader => {
         leader: leader
     }
 }
+
+export const removeLeader = leader_id => {
+    return {
+        type: 'REMOVE_LEADER',
+        leader_id: leader_id
+    }
+}

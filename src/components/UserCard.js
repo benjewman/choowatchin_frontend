@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { addLeader } from '../actions/index'
+import { addLeader, removeLeader } from '../actions/index'
 
 function UserCard(props) {
 
@@ -17,13 +17,21 @@ function UserCard(props) {
         if (postOrDelete === 'POST') {
             fetch('http://localhost:3000/follows', fetchObj)
             .then(resp => resp.json())
-            // need to rerender page after that 
             .then(leader => {
                 props.addLeader(leader)
+                // next line adds this person to the 
+                // state in parent component
                 props.addFriend(leader)
             })
         } else {
             // fetch delete needs to go to a follow id
+            // or maybe create a custom route to delete based off leader and follower ids
+            fetch(`http://localhost:3000/follows/1`, fetchObj)
+            .then(resp => resp.json())
+            .then(data => {
+                props.removeLeader(data.leader_id)
+                props.removeFriend(data.leader_id)
+            })
         }
     }
     
@@ -65,7 +73,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addLeader: leader => dispatch(addLeader(leader))
+        addLeader: leader => dispatch(addLeader(leader)),
+        removeLeader: leader_id => dispatch(removeLeader(leader_id))
     }
 }
 
