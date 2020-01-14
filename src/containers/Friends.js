@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Input, Select, Button, Icon } from 'semantic-ui-react'
+import { Grid, Input, Select, Button } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import UserCard from '../components/UserCard'
@@ -39,6 +39,10 @@ class Friends extends React.Component {
     handleSelectChange = () => {
         this.setState({filterJustFriends: !this.state.filterJustFriends})
     }
+
+    handleInputChange = (event) => {
+        this.setState({filter: event.target.value})
+    }
     
     renderSearchBar = () => {
         const options = [
@@ -46,7 +50,7 @@ class Friends extends React.Component {
             { key: 'everyone', text: 'Everyone', value: 'everyone' },
           ]
         return (
-                <Input type='text' placeholder='Search...' action>
+                <Input value={this.state.filter} onChange={this.handleInputChange} type='text' placeholder='Search...' action>
                     <input />
                     <Select compact onChange={this.handleSelectChange} options={options} defaultValue='your friends' />
                     <Button onClick={this.handleSearchSubmit} type='submit'>Search</Button>
@@ -63,9 +67,11 @@ class Friends extends React.Component {
     }
 
     renderPeople = (type) => {
+        const filteredUsers = this.state[type].filter(user => user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
         return (
             <Grid celled='internally' style={{marginTop: '2em'}} columns={4}>
-                {this.state[type].map(person => <UserCard user={person} />)}
+                {/* {this.state[type].map(person => <UserCard user={person} />)} */}
+                {filteredUsers.map(person => <UserCard user={person} />)}
             </Grid>
         )
     }

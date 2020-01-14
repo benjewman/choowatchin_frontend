@@ -1,11 +1,6 @@
 import React from 'react'
 import { Grid, Image } from 'semantic-ui-react'
 
-const cardStyle = {
-    border: 'thin dotted black',
-    marginLeft: '0.5em'
-}
-
 function UserCard(props) {
     return (
          <Grid columns={2}>

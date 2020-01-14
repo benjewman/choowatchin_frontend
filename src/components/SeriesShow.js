@@ -1,7 +1,6 @@
 import React from 'react'
 import WithAuth from './WithAuth'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
-import { connect } from 'react-redux'
 
 class SeriesShow extends React.Component {
     constructor(props) {
