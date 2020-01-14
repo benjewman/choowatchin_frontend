@@ -1,6 +1,7 @@
 import React from 'react'
-import { Card, Image, Grid } from 'semantic-ui-react'
+import { Card, Image, Grid, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import { withRouter } from 'react-router-dom'
 
 class ReviewFeedCard extends React.Component {
     constructor() {
@@ -39,7 +40,6 @@ class ReviewFeedCard extends React.Component {
         return (
             <Grid columns={2} style={{borderBottom: 'dotted red'}}>
                 <Grid.Column width={5}>
-                    {/* Make card clickable */}
                     <Card>
                         <Card.Content>
                             <Image src={'http://image.tmdb.org/t/p/w780' + this.state.reviewShow.poster}/>
@@ -48,7 +48,7 @@ class ReviewFeedCard extends React.Component {
                             <Card.Header style={{textAlign: 'center'}}>{this.state.reviewShow.title}</Card.Header>
                         </Card.Content>
                     </Card>
-                </Grid.Column >
+                </Grid.Column>
                 <Grid.Column width={10} >
                     <Grid.Row style={{marginTop: '3em'}}>
                         <div style={{border: 'thin dotted black'}}>
@@ -59,18 +59,25 @@ class ReviewFeedCard extends React.Component {
                     <Grid.Row style={{marginTop: '8em'}}>
                         <Grid columns={2}>
                             <Grid.Column>
-                                {/* Put a cool looking stamp here */}
-                                {/* probably use one of five pics I'll create */}
                                 <h3>Stamp: {this.props.review.stamp}</h3>
                             </Grid.Column>
                             <Grid.Column floated="right">
-                                {/* Reformat to float right */}
-                                {this.props.noProfPic ? null : this.renderReviewUserCard()}
+                                {this.props.noProfPic ? this.renderEditButton() : this.renderReviewUserCard()}
                             </Grid.Column>
                         </Grid>
                     </Grid.Row>
                 </Grid.Column>
             </Grid>
+        )
+    }
+
+    routeToEdit = () => {
+        this.props.history.push(`/reviews/${this.props.review.id}/edit`)
+    }
+
+    renderEditButton = () => {
+        return (
+            <Button onClick={this.routeToEdit} content='Edit Review' />
         )
     }
     
@@ -82,4 +89,4 @@ class ReviewFeedCard extends React.Component {
     }
 }
 
-export default ReviewFeedCard
+export default withRouter(ReviewFeedCard)

@@ -13,6 +13,7 @@ import SeriesShow from './components/SeriesShow'
 import CreateReview from './containers/CreateReview'
 import Friends from './containers/Friends'
 import Profile from './containers/Profile'
+import EditReview from './containers/EditReview'
 
 function App() {
   
@@ -35,6 +36,7 @@ function App() {
             <Route path='/reviews/:medium/:id/new' component={CreateReview} />
             <Route exact path='/friends' component={Friends} />
             <Route path='/profile/:id' component={Profile} />
+            <Route path='/reviews/:id/edit' component={CreateReview} />
           </Switch>
         </Grid.Row>
       </Grid>

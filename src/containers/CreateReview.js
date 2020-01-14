@@ -17,7 +17,16 @@ class CreateReview extends React.Component {
         // conditionally fetch using params either series or movies
         // tried passing to Redux store but broke down
         // on page refresh
-        if (this.props.match.params.medium === 'movies') {
+        console.log(this.props)
+        if (this.props.match.path === "/reviews/:id/edit") {
+            fetch(`http://localhost:3000/reviews/${this.props.match.params.id}`)
+            .then(resp => resp.json())
+            .then(data => this.setState({
+                userReview: data.review.content,
+                radioValue: data.review.stamp,
+                show: data.show
+            }))
+        } else if (this.props.match.params.medium === 'movies') {
             fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US`)
             .then(resp => resp.json())
             .then(movie => this.setState({ show: movie }))
@@ -36,12 +45,28 @@ class CreateReview extends React.Component {
        )
    }
 
+   renderEditPoster = () => {
+       return (
+           <Grid.Column>
+                <Image centered size='large' src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster}/>
+            </Grid.Column>
+       )
+   }
+
    renderTitle = () => {
        // conditionally render 'title' or 'name'
        // based on tv or movie
        return (
             <Grid.Row style={{marginTop: '2em'}}>
                 <h1 style={{fontSize: '50px', textAlign: 'center', textDecorationLine: 'underline'}}>{this.props.match.params.medium === 'movies' ? this.state.show.title : this.state.show.name}</h1>
+            </Grid.Row>
+       )
+   }
+
+   renderEditTitle = () => {
+       return (
+           <Grid.Row style={{marginTop: '2em'}}>
+                <h1 style={{fontSize: '50px', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.show.title}</h1>
             </Grid.Row>
        )
    }
@@ -76,7 +101,6 @@ class CreateReview extends React.Component {
     }
 
    handleReviewChange = (event) => {
-       console.log(event.target.value)
        this.setState({ userReview: event.target.value })
    }
    
@@ -152,10 +176,10 @@ class CreateReview extends React.Component {
         return (
             // duct tape fix for centering this stupid header
             <Grid columns={2} centered>
-                {this.renderPoster()}
+                {this.props.match.path === "/reviews/:id/edit" ? this.renderEditPoster() : this.renderPoster()}
                 <Grid.Column>
                     <Header as="h1" style={{textAlign: 'center'}}>Create Review for: </Header>
-                    {this.renderTitle()}
+                    {this.props.match.path === "/reviews/:id/edit" ? this.renderEditTitle() : this.renderTitle()}
                     {this.renderForm()}
                 </Grid.Column>
                 {/* <Grid.Column>
