@@ -53,6 +53,7 @@ const NavDefault = (props) => {
             </Menu.Item>
 
             <Menu.Item
+            onClick={() => routeToPage(`/profile/${props.user.id}`)}
             name='myProfile'
             style={{ fontSize: '20px', color: 'white'}}
             >
@@ -89,4 +90,10 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(NavDefault))
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavDefault))
