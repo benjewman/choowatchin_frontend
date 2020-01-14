@@ -22,6 +22,19 @@ class ReviewFeedCard extends React.Component {
         })
     }
 
+    renderReviewUserCard = () => {
+        return (
+            <Card style={{maxWidth: '8em', marginLeft: '8em'}}>
+                {/* Placeholder image for the user's prof pic */}
+                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                <Card.Content>
+                    {/* Make username clickable */}
+                    <Card.Header>@{this.state.reviewUser.username}</Card.Header>
+                </Card.Content>
+            </Card>
+        )
+    }
+
     renderCard = () => {
         return (
             <Grid columns={2} style={{borderBottom: 'dotted red'}}>
@@ -52,14 +65,7 @@ class ReviewFeedCard extends React.Component {
                             </Grid.Column>
                             <Grid.Column floated="right">
                                 {/* Reformat to float right */}
-                                <Card style={{maxWidth: '8em', marginLeft: '8em'}}>
-                                    {/* Placeholder image for the user's prof pic */}
-                                    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-                                    <Card.Content>
-                                        {/* Make username clickable */}
-                                        <Card.Header>@{this.state.reviewUser.username}</Card.Header>
-                                    </Card.Content>
-                                </Card>
+                                {this.props.noProfPic ? null : this.renderReviewUserCard()}
                             </Grid.Column>
                         </Grid>
                     </Grid.Row>
