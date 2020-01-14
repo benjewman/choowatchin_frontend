@@ -17,7 +17,6 @@ class CreateReview extends React.Component {
         // conditionally fetch using params either series or movies
         // tried passing to Redux store but broke down
         // on page refresh
-        console.log(this.props)
         if (this.props.match.path === "/reviews/:id/edit") {
             fetch(`http://localhost:3000/reviews/${this.props.match.params.id}`)
             .then(resp => resp.json())
@@ -71,12 +70,7 @@ class CreateReview extends React.Component {
        )
    }
 
-   handleSubmit = (event) => {
-       event.preventDefault()
-        //    fetch post to backend reviews 
-        // to create new review for specific user
-        // send form information along with movie and user info
-
+   handlePost = () => {
         const bodyObj = {
             show: this.state.show,
             user_id: this.props.user.id,
@@ -98,6 +92,38 @@ class CreateReview extends React.Component {
         .then(data => console.log(data))
 
         this.props.history.push('/home')
+   }
+
+   handleEdit = () => {
+        const bodyObj = {
+            content: this.state.userReview,
+            stamp: this.state.radioValue
+        }
+
+        const fetchObj = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyObj)
+        }
+
+        fetch(`http://localhost:3000/reviews/${this.props.match.params.id}`, fetchObj)
+        .then(resp => resp.json())
+        .then(message => console.log(message))
+
+        this.props.history.push(`/profile/${this.props.user.id}`)
+   }
+   
+   handleSubmit = (event) => {
+       event.preventDefault()
+        //    fetch post to backend reviews 
+        // to create new review for specific user
+        // send form information along with movie and user info
+        
+        this.props.match.path === "/reviews/:id/edit" ? this.handleEdit() : this.handlePost()
+        
+       
     }
 
    handleReviewChange = (event) => {
@@ -167,12 +193,10 @@ class CreateReview extends React.Component {
 
    handleChange = (radioValue) => {
     //    handle radio button choice
-    console.log(radioValue)
     this.setState({ radioValue: radioValue })
    }
 
     render() {
-        console.log(this.state)
         return (
             // duct tape fix for centering this stupid header
             <Grid columns={2} centered>
