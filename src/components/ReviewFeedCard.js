@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Image, Grid, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class ReviewFeedCard extends React.Component {
     constructor() {
@@ -76,9 +77,11 @@ class ReviewFeedCard extends React.Component {
     }
 
     renderEditButton = () => {
-        return (
-            <Button onClick={this.routeToEdit} content='Edit Review' />
-        )
+        if (this.props.user.id === this.state.reviewUser.id) {
+            return (
+                <Button onClick={this.routeToEdit} content='Edit Review' />
+            )
+        }
     }
     
     render() {
@@ -89,4 +92,10 @@ class ReviewFeedCard extends React.Component {
     }
 }
 
-export default withRouter(ReviewFeedCard)
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(withRouter(ReviewFeedCard))

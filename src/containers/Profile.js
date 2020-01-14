@@ -1,7 +1,9 @@
 import React from 'react'
-import { Grid, Card, Image } from 'semantic-ui-react'
+import { Grid, Card, Image, Button } from 'semantic-ui-react'
 // import ReviewCard from '../components/ReviewCard'
 import ReviewFeedCard from '../components/ReviewFeedCard'
+import WithAuth from '../components/WithAuth'
+import { connect } from 'react-redux'
 
 class Profile extends React.Component {
     constructor() {
@@ -24,6 +26,10 @@ class Profile extends React.Component {
         })
     }
 
+    handleEditProfile = () => {
+        
+    }
+
     renderProfileCard = () => {
         return (
             <Grid.Column width={6} style={{marginLeft: '5em', marginTop: '2em'}}>
@@ -36,6 +42,7 @@ class Profile extends React.Component {
                         </Card.Meta>
                     </Card.Content>
                 </Card>
+                { this.props.user && this.props.user.id === this.state.user.id ? <Button onClick={this.handleEditProfile} content='Edit Profile' /> : null }
             </Grid.Column>
         )
     }
@@ -59,4 +66,10 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(WithAuth(Profile))
