@@ -23,7 +23,8 @@ class CreateReview extends React.Component {
             .then(data => this.setState({
                 userReview: data.review.content,
                 radioValue: data.review.stamp,
-                show: data.show
+                show: data.show,
+                review: data.review
             }))
         } else if (this.props.match.params.medium === 'movies') {
             fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US`)
@@ -184,11 +185,19 @@ class CreateReview extends React.Component {
                     </Form.Group>
                     {/* Find way to center button */}
                     <Form.Group style={{marginTop: '3em'}}>
-                        <Form.Field control={Button} >Post Review</Form.Field>
+                        <Form.Field control={Button} >{this.props.match.path === "/reviews/:id/edit" ? 'Update' : 'Post'} Review</Form.Field>
                     </Form.Group>
                 </Form>
+                {this.state.review ? <Button onClick={this.deleteReview} content='Delete Review'/> : null }
            </Grid.Row>
        )
+   }
+
+   deleteReview = () => {
+       fetch(`http://localhost:3000/reviews/${this.state.review.id}`, {method: 'DELETE'})
+       .then(resp => resp.json())
+       .then(message => console.log(message))
+       this.props.history.push(`/profile/${this.props.user.id}`)
    }
 
    handleChange = (radioValue) => {
