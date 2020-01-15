@@ -40,3 +40,10 @@ export const removeLeader = leader_id => {
         leader_id: leader_id
     }
 }
+
+export const setSearch = search => {
+    return {
+        type: 'SET_SEARCH',
+        search: search
+    }
+}

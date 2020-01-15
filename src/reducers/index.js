@@ -31,6 +31,12 @@ export default function mainReducer(state = {}, action) {
                 ...state,
                 leaders: updatedLeaders
             }
+
+        case 'SET_SEARCH':
+            return {
+                ...state,
+                search: action.search
+            }
         
         default: 
             return state

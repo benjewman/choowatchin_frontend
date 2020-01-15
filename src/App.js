@@ -14,6 +14,7 @@ import CreateReview from './containers/CreateReview'
 import Friends from './containers/Friends'
 import Profile from './containers/Profile'
 import EditProfile from './containers/EditProfile'
+import SearchPage from './containers/SearchPage'
 
 function App() {
   
@@ -38,6 +39,7 @@ function App() {
             <Route exact path='/profile/:id' component={Profile} />
             <Route path='/reviews/:id/edit' component={CreateReview} />
             <Route path='/profile/:id/edit' component={EditProfile} />
+            <Route path='/search' component={SearchPage} />
           </Switch>
         </Grid.Row>
       </Grid>
