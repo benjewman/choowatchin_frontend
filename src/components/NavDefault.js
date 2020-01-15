@@ -28,6 +28,7 @@ class NavDefault extends React.Component {
     handleSearchSubmit = (event) => {
         event.preventDefault()
         this.props.setSearch(this.state.search)
+        this.setState({search: ''})
         this.props.history.push(`/search`)
     }
 

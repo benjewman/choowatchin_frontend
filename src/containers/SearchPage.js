@@ -30,14 +30,15 @@ class SearchPage extends React.Component {
             const searchString = this.props.search.replace(' ', '%20')
             fetch(`https://api.themoviedb.org/3/search/multi?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&query=${searchString}`)
             .then(resp => resp.json())
-            .then(data => this.setState({shows: data.results}))
+            // known_for_department filters out people returned in the results
+            .then(data => this.setState({shows: data.results.filter(result => !result.known_for_department)}))
         } else {
             console.log('no search in props')
         }
     }
     
     renderShows = () => {
-        // return this.state.shows.map(show => <ShowCard show={show} />)
+        return this.state.shows.map(show => <ShowCard show={show} key={show.id}/>)
     }
 
     
@@ -46,7 +47,7 @@ class SearchPage extends React.Component {
         return (
             <Grid columns={1}>
                 <Grid.Column style={{textAlign: 'center'}}>
-                    <h1>Search Page</h1>
+                    <h1>Search Results for: {this.props.search}</h1>
                     <Grid columns={6} style={{marginLeft: '0.25em', marginRight: '0.5em'}}>
                         {this.renderShows()}
                     </Grid>

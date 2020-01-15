@@ -20,6 +20,10 @@ class Dashboard extends React.Component {
         .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
     }
 
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.followedReviews !== this.props.followedReviews)
+    // }
+
     filterShows = () => {
         switch (this.state.filter) {
             case 'just movies':
