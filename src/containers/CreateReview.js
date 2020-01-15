@@ -111,9 +111,11 @@ class CreateReview extends React.Component {
 
         fetch(`http://localhost:3000/reviews/${this.props.match.params.id}`, fetchObj)
         .then(resp => resp.json())
-        .then(message => console.log(message))
+        .then(review => console.log(review))
 
-        this.props.history.push(`/profile/${this.props.user.id}`)
+        // this.props.history.push(`/profile/${this.props.user.id}`)
+        this.props.history.push(`/home`)
+
    }
    
    handleSubmit = (event) => {
