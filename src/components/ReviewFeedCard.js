@@ -28,7 +28,7 @@ class ReviewFeedCard extends React.Component {
         return (
             <Card style={{maxWidth: '8em', marginLeft: '8em'}}>
                 {/* Placeholder image for the user's prof pic */}
-                <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                <Image src={this.state.reviewUser.pic} wrapped ui={false} />
                 <Card.Content>
                     {/* Make username clickable */}
                     <Card.Header>@{this.state.reviewUser.username}</Card.Header>

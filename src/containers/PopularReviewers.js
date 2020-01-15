@@ -20,7 +20,7 @@ class PopularReviewers extends React.Component {
                     <h5>@{user.username}</h5>
                 </Grid.Column>
                 <Grid.Column>
-                    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped  size="tiny"/>
+                    <Image src={user.pic} wrapped  size="tiny"/>
                     <div><Icon name='user' />{this.props.followerCountArray[index]} Followers</div>
                 </Grid.Column>
             </Grid>

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Grid, Header, Image, Form, TextArea, Radio, Button } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
+import { setFollowedReviews } from '../actions/index'
 
 class CreateReview extends React.Component {
     constructor() {
@@ -88,9 +89,14 @@ class CreateReview extends React.Component {
             body: JSON.stringify(bodyObj)
         }
 
+        const followedReviews = this.props.followedReviews
+
         fetch('http://localhost:3000/reviews', fetchObj)
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(review => {
+            followedReviews.unshift(review)
+            this.props.setFollowedReviews(followedReviews)
+        })
 
         this.props.history.push('/home')
    }
@@ -226,8 +232,15 @@ class CreateReview extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        followedReviews: state.followedReviews
     }
 }
 
-export default connect(mapStateToProps, null)(WithAuth(CreateReview))
+const mapDispatchToProps = dispatch => {
+    return {
+        setFollowedReviews: reviews => dispatch(setFollowedReviews(reviews))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WithAuth(CreateReview))

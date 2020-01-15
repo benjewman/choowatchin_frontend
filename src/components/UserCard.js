@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { addLeader, removeLeader } from '../actions/index'
 
 function UserCard(props) {
+    console.log(props)
 
     const followFetch = (postOrDelete) => {
         const fetchObj = {
@@ -56,7 +57,7 @@ function UserCard(props) {
                 <h5>@{props.friend.username}</h5>
             </Grid.Column>
             <Grid.Column>
-                <Image src={props.friend.pic} wrapped  size="tiny"/>
+                <Image src={props.friend.pic} wrapped size="tiny"/>
                  {/* conditionally render button depending on if user follows this user  */}
                  {props.leaders.find(leader => leader.id === props.friend.id) ? renderFollowingButton() : renderFollowButton()}
             </Grid.Column>

@@ -8,7 +8,6 @@ class FeedContainer extends React.Component {
     }
     
     render() {
-        console.log(this.props)
         return (
             // renderReviewCards breaks without the
             // ternary because followedReviews is undefined
