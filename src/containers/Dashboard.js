@@ -7,35 +7,60 @@ import PopularReviewers from './PopularReviewers'
 import { setTopFive } from '../actions/index'
 
 class Dashboard extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            filter: 'all'
+        }
+    }
     
     componentDidMount() {
         fetch('http://localhost:3000/topfive')
         .then(resp => resp.json())
         .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
     }
+
+    filterShows = () => {
+        switch (this.state.filter) {
+            case 'just movies':
+                return this.props.followedReviews.filter(review => review.medium === 'movies')
+            case 'just series':
+                return this.props.followedReviews.filter(review => review.medium === 'series')
+            default:
+                return this.props.followedReviews
+        }
+    }
+
+    changeFilter = filter => {
+        this.setState({filter: filter})
+    }
     
     render() {
+        console.log(this.props.followedReviews)
         return (
             <Grid columns={3} >
                 <Grid.Column width={3}>
                     <Menu pointing vertical>
                         <Menu.Item
+                        onClick={() => this.changeFilter('all')}
                         name='all'
-                        active={true}
+                        active={this.state.filter === 'all'}
                         />
                         <Menu.Item
+                        onClick={() => this.changeFilter('just movies')}
                         name='just movies'
-                        active={false}
+                        active={this.state.filter === 'just movies'}
                         />
                         <Menu.Item
+                        onClick={() => this.changeFilter('just series')}
                         name='just series'
-                        active={false}
+                        active={this.state.filter === 'just series'}
                         /> 
                     </Menu>
                 </Grid.Column>
 
                 <Grid.Column width={9}>
-                    <FeedContainer followedReviews={this.props.followedReviews}/>
+                    <FeedContainer followedReviews={this.filterShows()}/>
                 </Grid.Column>
 
                 <Grid.Column floated="right" width={3} >
