@@ -1,7 +1,7 @@
 import React from 'react'
 import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
-import { Grid, Form, Image } from 'semantic-ui-react'
+import { Grid, Form, Image, Button } from 'semantic-ui-react'
 import { setUser } from '../actions/index'
 
 class EditProfile extends React.Component {
@@ -59,8 +59,14 @@ class EditProfile extends React.Component {
         this.props.history.push(`/profile/${this.props.user.id}`)
     }
     
-    // cant control the form 
-    // not sure where to change the state with user props
+    handleDelete = () => {
+        fetch(`http://localhost:3000/users/${this.props.user.id}`, {method: 'DELETE'})
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+        
+        localStorage.removeItem('token')
+        this.props.history.push('/login')
+    }
     
     render() {
         return (
@@ -78,6 +84,7 @@ class EditProfile extends React.Component {
                         </Form.Field>
                         <Form.Button>Update Profile</Form.Button>
                     </Form>
+                    <Button style={{marginTop: '1em'}} onClick={this.handleDelete} content='Delete User' />
                 </Grid.Column>
             </Grid>
         )
