@@ -24,9 +24,17 @@ class ReviewFeedCard extends React.Component {
         })
     }
 
+    routeToPage = () => {
+        this.props.history.push(`/${this.state.reviewShow.medium}/${this.state.reviewShow.showId}`)
+    }
+    
+    routeToUserPage = () => {
+        this.props.history.push(`/profile/${this.state.reviewUser.id}`)
+    }
+    
     renderReviewUserCard = () => {
         return (
-            <Card style={{maxWidth: '8em', marginLeft: '8em'}}>
+            <Card onClick={this.routeToUserPage} style={{maxWidth: '8em', marginLeft: '8em'}}>
                 {/* Placeholder image for the user's prof pic */}
                 <Image src={this.state.reviewUser.pic} wrapped ui={false} />
                 <Card.Content>
@@ -41,7 +49,7 @@ class ReviewFeedCard extends React.Component {
         return (
             <Grid columns={2} style={{borderBottom: 'dotted red'}}>
                 <Grid.Column width={5}>
-                    <Card>
+                    <Card onClick={this.routeToPage}>
                         <Card.Content>
                             <Image src={'http://image.tmdb.org/t/p/w780' + this.state.reviewShow.poster}/>
                         </Card.Content>

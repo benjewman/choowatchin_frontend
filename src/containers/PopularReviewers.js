@@ -17,7 +17,7 @@ class PopularReviewers extends React.Component {
                 <Grid.Column>
                     <h4>{user.full_name}</h4>
                     {/* make username clickable */}
-                    <h5>@{user.username}</h5>
+                    <a href={'/profile/' + user.id}>@{user.username}</a>
                 </Grid.Column>
                 <Grid.Column>
                     <Image src={user.pic} wrapped  size="tiny"/>

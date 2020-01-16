@@ -46,7 +46,11 @@ function UserCard(props) {
     }
 
     const renderFollowButton = () => {
-        return <Button onClick={() => followFetch('POST')} content='Follow' />
+        return (
+            <Button onClick={() => followFetch('POST')}>
+                <Button.Content>Follow</Button.Content>
+            </Button>
+        )
     }
     
     return (
@@ -54,7 +58,7 @@ function UserCard(props) {
             <Grid.Column>
                 <h4>{props.friend.full_name}</h4>
                 {/* make username clickable */}
-                <h5>@{props.friend.username}</h5>
+                <a href={'/profile/' + props.friend.id}>@{props.friend.username}</a>
             </Grid.Column>
             <Grid.Column>
                 <Image src={props.friend.pic} wrapped size="tiny"/>
