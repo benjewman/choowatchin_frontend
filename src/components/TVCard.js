@@ -2,9 +2,7 @@ import React from 'react'
 import { Grid, Image, Card } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
-const TVCard = (props) => {
-    console.log(props)
-    
+const TVCard = (props) => {    
     const routeToTVPage = () => {
         props.history.push(`/series/${props.tvShow.id}`)
     }
