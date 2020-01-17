@@ -8,10 +8,10 @@ class SignupForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            full_name: '',
-            email: '',
-            username: '',
-            password: ''
+            full_name: 'Bob Pitt',
+            email: 'bobpitt@gmail.com',
+            username: 'bpitt',
+            password: 'robertpitt'
         }
     }
     
@@ -21,7 +21,7 @@ class SignupForm extends React.Component {
 
     handleFetch = data => {
         if (data.error) {
-            alert('Unable to create user. Please try again.')
+            alert(Object.values(data.error)[0][0])
         } else {
             localStorage.setItem('token', data.token)
             this.props.setUser(data.user)

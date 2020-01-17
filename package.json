@@ -13,6 +13,7 @@
     "body-scroll-lock": "^2.6.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-images-upload": "^1.2.7",
     "react-infinite-loader": "^1.0.4",
     "react-infinite-scroller": "^1.2.4",
     "react-redux": "^7.1.3",
