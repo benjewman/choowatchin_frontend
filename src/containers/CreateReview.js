@@ -73,6 +73,9 @@ class CreateReview extends React.Component {
    }
 
    handlePost = () => {
+    if (this.state.userReview.length > 100) {
+        alert('review must be 100 characters or less')
+    } else {
         const bodyObj = {
             show: this.state.show,
             user_id: this.props.user.id,
@@ -80,7 +83,7 @@ class CreateReview extends React.Component {
             stamp: this.state.radioValue,
             medium: this.props.match.params.medium
         }
-        
+            
         const fetchObj = {
             method: 'POST',
             headers: {
@@ -97,8 +100,9 @@ class CreateReview extends React.Component {
             followedReviews.unshift(review)
             this.props.setFollowedReviews(followedReviews)
         })
-
+        
         this.props.history.push('/home')
+    }
    }
 
    handleEdit = () => {
@@ -146,8 +150,8 @@ class CreateReview extends React.Component {
                     <Form.Group>
                         <Form.Field
                             control={TextArea}
-                            label='This show in 60 characters or less'
-                            placeholer='This show in 60 characters or less'
+                            label='This show in 100 characters or less'
+                            placeholer='This show in 100 characters or less'
                             value={this.state.userReview}
                             onChange={this.handleReviewChange}
                             width={14}
