@@ -55,7 +55,7 @@ class InTheaters extends React.Component {
     render() {
         return (
             <div>
-                <h1 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>Check Out These Movies In Theaters</h1>
+                <h1 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>Check Out These New Movies</h1>
                 <Grid columns={6} style={{marginLeft: '0.25em', marginRight: '0.5em'}}>
                     {this.renderMovies()}
                     <InfiniteLoader onVisited={ () => this.handleVisit() } />

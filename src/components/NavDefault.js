@@ -52,7 +52,7 @@ class NavDefault extends React.Component {
                 name='movies'
                 style={{ fontSize: '20px', color: 'white'}}
                 >
-                In Theaters
+                Movies Now Playing
                 </Menu.Item>
     
                 <Menu.Item
@@ -79,12 +79,12 @@ class NavDefault extends React.Component {
                 My Profile
                 </Menu.Item>
     
-                <Menu.Item
+                {/* <Menu.Item
                 name='createReview'
                 style={{ fontSize: '20px', color: 'white'}}
                 >
                 Create Review
-                </Menu.Item>
+                </Menu.Item> */}
     
                 <Menu.Menu position='right'>
                     <Menu.Item

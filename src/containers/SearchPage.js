@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Menu } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import ShowCard from '../components/ShowCard'
@@ -11,7 +11,8 @@ class SearchPage extends React.Component {
         this.state = {
             shows: [],
             fetchPage: 2,
-            totalPages: 0
+            totalPages: 0,
+            filter: 'all'
         }
     }
     
@@ -41,7 +42,19 @@ class SearchPage extends React.Component {
     }
     
     renderShows = () => {
-        return this.state.shows.map(show => <ShowCard show={show} key={show.id}/>)
+        console.log('render shows')
+        let filterShows
+        switch (this.state.filter) {
+            case 'just series':
+                filterShows = this.state.shows.filter(show => show.media_type === 'tv')
+                break;
+            case 'just movies':
+                filterShows = this.state.shows.filter(show => show.media_type === 'movie')
+                break;
+            default:
+                filterShows = this.state.shows
+        }
+        return filterShows.map(show => <ShowCard show={show} key={show.id}/>)
     }
 
     handleVisit = () => {
@@ -61,6 +74,32 @@ class SearchPage extends React.Component {
             this.setState({fetchPage: this.state.fetchPage + 1})
         }
     }
+
+    changeFilter = (filter) => {
+        this.setState({filter: filter})
+    }
+
+    renderFilterMenu = () => {
+        return (
+            <Menu>
+                <Menu.Item
+                onClick={() => this.changeFilter('all')}
+                name='all'
+                active={this.state.filter === 'all'}
+                />
+                <Menu.Item
+                onClick={() => this.changeFilter('just movies')}
+                name='just movies'
+                active={this.state.filter === 'just movies'}
+                />
+                <Menu.Item
+                onClick={() => this.changeFilter('just series')}
+                name='just series'
+                active={this.state.filter === 'just series'}
+                /> 
+            </Menu>
+        )
+    }
     
     render() {
         console.log(this.state)
@@ -68,6 +107,7 @@ class SearchPage extends React.Component {
             <Grid columns={1}>
                 <Grid.Column style={{textAlign: 'center'}}>
                     <h1>Search Results for: {this.props.search}</h1>
+                    {this.renderFilterMenu()}
                     <Grid columns={6} style={{marginLeft: '0.25em', marginRight: '0.5em'}}>
                         {this.renderShows()}
                         <InfiniteLoader onVisited={ () => this.handleVisit() } />
