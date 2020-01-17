@@ -23,7 +23,8 @@ class EditProfile extends React.Component {
         if (nextProps.user !== this.props.user) {
             this.setState({
                 fullName: nextProps.user.full_name,
-                email: nextProps.user.email
+                email: nextProps.user.email,
+                pic: nextProps.user.pic
             })
         }
     }
@@ -71,20 +72,22 @@ class EditProfile extends React.Component {
     render() {
         return (
             <Grid columns={3}>
-                <Grid.Column></Grid.Column>
-                <Grid.Column style={{textAlign: 'center'}}>
-                    <h1>Edit Profile</h1>
-                    <Image src={this.props.user ? this.props.user.pic : null} />
+                <Grid.Column style={{textAlign: 'center', marginLeft: '5em', marginTop: '5em'}}>                   
+                    <Image src={this.state.pic} style={{marginBottom: '2em'}}/>
+                    <Button content='Change Profile Picture' />
+                </Grid.Column>
+                <Grid.Column style={{marginLeft: '4em'}}>
+                    <h1 style={{textAlign: 'center', marginBottom: '5em'}}>Edit Profile</h1>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Field>
                             <label>Full Name</label>
                             <input onChange={this.changeName} value={this.state.fullName} placeholder={this.props.user ? this.props.user.full_name : null} />
-                            <label>Email</label>
+                            <label style={{marginTop: '1em'}}>Email</label>
                             <input onChange={this.changeEmail} value={this.state.email} placeholder={this.props.user ? this.props.user.email : null} />
                         </Form.Field>
                         <Form.Button>Update Profile</Form.Button>
                     </Form>
-                    <Button style={{marginTop: '1em'}} onClick={this.handleDelete} content='Delete User' />
+                    <Button style={{marginTop: '1em', color: 'red'}} onClick={this.handleDelete} content='Delete User' />
                 </Grid.Column>
             </Grid>
         )
