@@ -31,26 +31,23 @@ class SignupForm extends React.Component {
     }
 
     createUserFetch = () => {
-        const reqObj = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
+        if (this.state.full_name === '' || this.state.username === '' || this.state.email === '') {
+            alert('must fill out all fields')
+        } else if (this.state.password.length < 8) {
+            alert('password must be at least 8 characters')
+        } else {
+            const reqObj = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.state)
+            }
+
+            fetch('http://localhost:3000/users', reqObj)
+            .then(resp => resp.json())
+            .then(data => this.handleFetch(data))
         }
-
-        fetch('http://localhost:3000/users', reqObj)
-        .then(resp => resp.json())
-        .then(data => this.handleFetch(data))
-
-        // redirect to homepage 
-
-        // this.setState({
-        //     fullName: '',
-        //     email: '',
-        //     username: '',
-        //     password: ''
-        // })
     }
 
     handleIputChange = (event) => {
