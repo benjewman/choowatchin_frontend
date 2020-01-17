@@ -4,6 +4,7 @@ import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import ShowCard from '../components/ShowCard'
 import InfiniteLoader from 'react-infinite-loader'
+import uuid from 'react-uuid'
 
 class SearchPage extends React.Component {
     constructor() {
@@ -22,7 +23,7 @@ class SearchPage extends React.Component {
             const searchString = this.props.search.replace(' ', '%20')
             fetch(`https://api.themoviedb.org/3/search/multi?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&query=${searchString}&include_adult=false`)
             .then(resp => resp.json())
-            .then(data => this.setState({shows: data.results, totalPages: data.total_pages}))
+            .then(data => this.setState({shows: data.results.filter(result => !result.known_for_department), totalPages: data.total_pages}))
         } else {
             console.log('no search in props')
         }
@@ -42,7 +43,6 @@ class SearchPage extends React.Component {
     }
     
     renderShows = () => {
-        console.log('render shows')
         let filterShows
         switch (this.state.filter) {
             case 'just series':
@@ -54,7 +54,8 @@ class SearchPage extends React.Component {
             default:
                 filterShows = this.state.shows
         }
-        return filterShows.map(show => <ShowCard show={show} key={show.id}/>)
+        console.log('filter shows', filterShows)
+        return filterShows.map(show => <ShowCard show={show} key={uuid()}/>)
     }
 
     handleVisit = () => {
@@ -64,12 +65,10 @@ class SearchPage extends React.Component {
         // on the condition that the page to be fetched
         // is not greater than the total pages
         if (this.state.fetchPage > this.state.totalPages) {
-            console.log('end of results')
         } else {
-            console.log('searching')
             fetch(`https://api.themoviedb.org/3/search/multi?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&query=${searchString}&page=${this.state.fetchPage}&include_adult=false`)
             .then(resp => resp.json())
-            .then(data => this.setState({ shows: this.state.shows.concat(data.results)}))
+            .then(data => this.setState({ shows: this.state.shows.concat(data.results.filter(result => !result.known_for_department))}))
             // increment fetch page for next visit
             this.setState({fetchPage: this.state.fetchPage + 1})
         }
@@ -102,7 +101,6 @@ class SearchPage extends React.Component {
     }
     
     render() {
-        console.log(this.state)
         return (
             <Grid columns={1}>
                 <Grid.Column style={{textAlign: 'center'}}>
