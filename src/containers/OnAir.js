@@ -3,7 +3,6 @@ import { Grid } from 'semantic-ui-react'
 import TVCard from '../components/TVCard'
 import WithAuth from '../components/WithAuth'
 import InfiniteLoader from 'react-infinite-loader'
-import InfiniteScroll from 'react-infinite-scroller'
 
 class OnAir extends React.Component {
     constructor() {
