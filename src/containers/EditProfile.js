@@ -91,10 +91,10 @@ class EditProfile extends React.Component {
     }
 
     handleUpload = (event) => {
+        console.log(event.target.files[0])
         // this.setState({avatar: event.target.files[0]})
         const formData = new FormData()
-        formData.append('avatar', event.target.files[0])
-        // data.append('data', 'data')
+        formData.append("user[avatar]", event.target.files[0])
         const reqObj = {
             method: 'PUT',
             body: formData
@@ -102,7 +102,7 @@ class EditProfile extends React.Component {
         
         fetch(`http://localhost:3000/users/${this.props.user.id}`, reqObj)
         .then(resp => resp.json())
-        .then(avatar => console.log(avatar))
+        .then(user => console.log(user))
     }
 
     handleImageUpload = () => {

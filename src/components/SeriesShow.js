@@ -1,14 +1,19 @@
 import React from 'react'
 import WithAuth from './WithAuth'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 class SeriesShow extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-            tvShow: {}
+            tvShow: {},
+            friendReviews: [],
+            allReviews: []
         }
     }
+
+    // how to render the reviews we have in state
     
     componentDidMount() {
         // use the id in params
@@ -19,32 +24,23 @@ class SeriesShow extends React.Component {
             this.setState({tvShow: tvShow })
             // don't believe OMDB has tv shows
             // might have enough info from first fetch
-            
-            // fetch(`http://www.omdbapi.com/?apikey=49f89f6c&i=${tvShow.imdb_id}`)
-            // .then(resp => resp.json())
-            // .then(movie => this.setState({movieDetails: movie}))
+            fetch(`http://localhost:3000/shows/${tvShow.id}`)
+            .then(resp => resp.json())
+            .then(show => {
+                if (show.error) {
+                    return null
+                } else {
+                    this.setState({allReviews: show.reviews, friendReviews: this.props.followedReviews.filter(review => review.show_id === show.id)})
+                }
+            })
         })
     }
 
-    renderCreators = () => {
-        // map through created by attribute to combine
-        // the creators into a single string
-        const creatorString = this.state.tvShow.created_by.map(creator => creator.name).join(', ')
-        return creatorString
-    }
-
-    renderNetworks = () => {
-        // map through networks and combine
+    renderCategoryString = (category) => {
+        // map through categories (genres, networks, and creators) and combine
         // them into a string
-        const networkString = this.state.tvShow.networks.map(network => network.name).join(', ')
-        return networkString
-    }
-
-    renderGenres = () => {
-        // map through genres and combine
-        // them into a string
-        const genreString = this.state.tvShow.genres.map(genre => genre.name).join(', ')
-        return genreString
+        const string = this.state.tvShow[category].map(thing => thing.name).join(', ')
+        return string
     }
 
     renderLastEpisode = () => {
@@ -75,6 +71,15 @@ class SeriesShow extends React.Component {
             </Grid.Row>
         )
     }
+
+    renderReviewButtons = () => {
+        return (
+            <Grid.Row style={{marginTop: '1em', textAlign: 'center'}}>
+                {this.state.reviewToggle === 'friends' ? this.renderDetailsButton() : <Button onClick={() => this.setState({reviewToggle: 'friends'})}>Friends' Reviews ({this.state.friendReviews.length})</Button>}
+                {this.state.reviewToggle === 'all' ? this.renderDetailsButton() : <Button onClick={() => this.setState({reviewToggle: 'all'})}>All Reviews ({this.state.allReviews.length})</Button>}
+            </Grid.Row>
+        )
+    }
     
     renderTitleAndPlot = () => {
         return (
@@ -86,6 +91,7 @@ class SeriesShow extends React.Component {
                     <p style={{fontSize: '20px'}}><strong>Plot: </strong>{this.state.tvShow.overview}</p>
                 </Grid.Row>
                 {this.renderCreateButton()}
+                {this.renderReviewButtons()}
             </Grid.Column>
         )
     }
@@ -95,15 +101,15 @@ class SeriesShow extends React.Component {
             <Grid.Column style={{marginTop: '3em'}} width={3}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left'}}>Creators:</h3>
-                    <p style={{textAlign: 'right'}}>{this.state.tvShow.created_by ? this.renderCreators() : null}</p>
+                    <p style={{textAlign: 'right'}}>{this.state.tvShow.created_by ? this.renderCategoryString('created_by') : null}</p>
                 </Grid.Row>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left', marginTop: '2em'}}>Network:</h3>
-                    <p style={{textAlign: 'right'}}>{this.state.tvShow.networks ? this.renderNetworks() : null}</p>
+                    <p style={{textAlign: 'right'}}>{this.state.tvShow.networks ? this.renderCategoryString('networks') : null}</p>
                 </Grid.Row>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left', marginTop: '2em'}}>Genres:</h3>
-                    <p style={{textAlign: 'right'}}>{this.state.tvShow.genres ? this.renderGenres() : null}</p>
+                    <p style={{textAlign: 'right'}}>{this.state.tvShow.genres ? this.renderCategoryString('genres') : null}</p>
                 </Grid.Row>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left', marginTop: '2em'}}>Seasons:</h3>
@@ -139,4 +145,10 @@ class SeriesShow extends React.Component {
     }
 } 
 
-export default WithAuth(SeriesShow)
+const mapStateToProps = state => {
+    return {
+        followedReviews: state.followedReviews
+    }
+}
+
+export default connect(mapStateToProps)(WithAuth(SeriesShow))

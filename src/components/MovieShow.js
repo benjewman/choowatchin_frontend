@@ -1,15 +1,21 @@
 import React from 'react'
 import WithAuth from './WithAuth'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 class MovieShow extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
             movie: {},
-            movieDetails: {}
+            movieDetails: {},
+            reviewToggle: undefined,
+            friendReviews: [],
+            allReviews: []
         }
     }
+
+    // how to render the reviews we have in state
     
     componentDidMount() {
         // use the id in params
@@ -21,12 +27,22 @@ class MovieShow extends React.Component {
             fetch(`http://www.omdbapi.com/?apikey=49f89f6c&i=${movie.imdb_id}`)
             .then(resp => resp.json())
             .then(movie => this.setState({movieDetails: movie}))
+
+            fetch(`http://localhost:3000/shows/${movie.id}`)
+            .then(resp => resp.json())
+            .then(show => {
+                if (show.error) {
+                    return null
+                } else {
+                    this.setState({allReviews: show.reviews, friendReviews: this.props.followedReviews.filter(review => review.show_id === show.id)})
+                }
+            })
         })
     }
 
     renderMoviePoster = () => {
         return (
-            <Grid.Column>
+            <Grid.Column className="fixColumn">
                 <Image src={'http://image.tmdb.org/t/p/w780' + this.state.movie.poster_path}/>
             </Grid.Column>
         )
@@ -38,7 +54,7 @@ class MovieShow extends React.Component {
     
     renderCreateButton = () => {
         return (
-            <Grid.Row style={{marginTop: '8em', textAlign: 'center'}}>
+            <Grid.Row style={{marginTop: '4em', textAlign: 'center'}}>
                 <Button onClick={this.routeToCreate}>Create Review <Icon name="comment alternate outline"/></Button>
             </Grid.Row>
         )
@@ -46,7 +62,7 @@ class MovieShow extends React.Component {
 
     renderTitleAndPlot = () => {
         return (
-            <Grid.Column width={7}>
+            <Grid.Column className="fixColumn" width={6}>
                 <Grid.Row style={{marginTop: '2em'}}>
                     <h1 style={{fontSize: '50px', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.movie.title}</h1>
                 </Grid.Row>
@@ -57,7 +73,23 @@ class MovieShow extends React.Component {
                     <p style={{fontSize: '20px'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
                 </Grid.Row>
                 {this.renderCreateButton()}
+                {this.renderReviewButtons()}
             </Grid.Column>
+        )
+    }
+
+    renderReviewButtons = () => {
+        return (
+            <Grid.Row style={{marginTop: '1em', textAlign: 'center'}}>
+                {this.state.reviewToggle === 'friends' ? this.renderDetailsButton() : <Button onClick={() => this.setState({reviewToggle: 'friends'})}>Friends' Reviews ({this.state.friendReviews.length})</Button>}
+                {this.state.reviewToggle === 'all' ? this.renderDetailsButton() : <Button onClick={() => this.setState({reviewToggle: 'all'})}>All Reviews ({this.state.allReviews.length})</Button>}
+            </Grid.Row>
+        )
+    }
+
+    renderDetailsButton = () => {
+        return (
+            <Button onClick={() => this.setState({reviewToggle: undefined})}>Back to Details</Button>
         )
     }
 
@@ -75,26 +107,60 @@ class MovieShow extends React.Component {
 
     renderMovieDetails = () => {
         return (
-            <Grid.Column style={{marginTop: '3em'}} width={3}>
+            <Grid.Column className='detailScroll' style={{marginTop: '3em'}} width={4}>
                 {/* <p style={{fontSize: '20px', textAlign: 'right', marginRight: '1em'}}><strong>Release Date: </strong>{this.state.movieDetails.Released}</p> */}
                 {this.movieCategories.map(category => this.renderDetail(category))}
             </Grid.Column>
         )
     }
 
+    renderFriendsReviews = () => {
+        return (
+            <Grid.Column className='detailScroll' style={{marginTop: '3em'}} width={4}>
+                <Grid.Row>
+                    <h3>Friends' Reviews</h3>
+                </Grid.Row>
+            </Grid.Column>
+        )
+    }
+
+    renderAllReviews = () => {
+        return (
+             <Grid.Column className='detailScroll' style={{marginTop: '3em'}} width={4}>
+                <Grid.Row>
+                    <h3>All Reviews</h3>
+                </Grid.Row>
+            </Grid.Column>
+        )
+    }
+
+    renderReviews = () => {
+        if (this.state.reviewToggle === 'friends') {
+            return this.renderFriendsReviews()
+        } else {
+            return this.renderAllReviews()
+        }
+    }
+
     // might wanna refactor code below
     render() {
         console.log(this.state)
         return (
-            <Grid style={{marginLeft: '0.5em'}} columns={3}>
+            <Grid className="showContainer" style={{marginLeft: '0.5em'}} columns={3}>
                 {this.renderMoviePoster()}
                 {this.renderTitleAndPlot()}
                 {/* Add dividers to the column below */}
-                {this.renderMovieDetails()}
+                {this.state.reviewToggle ? this.renderReviews() : this.renderMovieDetails()}
             </Grid>
         )
     }
 } 
 
-export default WithAuth(MovieShow)
+const mapStateToProps = (state) => {
+    return {
+        followedReviews: state.followedReviews
+    }
+}
+
+export default connect(mapStateToProps)(WithAuth(MovieShow))
 

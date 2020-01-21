@@ -65,6 +65,8 @@ class Friends extends React.Component {
     }
     
     renderPeople = (type) => {
+        console.log(type)
+        console.log(this.state[type])
         // filter out current user from all users list
         // filter based on search bar
         const filteredUsers = this.state[type].filter(user => user.id !== this.props.user.id &&  user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
@@ -76,7 +78,6 @@ class Friends extends React.Component {
     }
     
     render() {
-        console.log(this.state)
         return (
             <Grid.Column style={{textAlign: 'center', marginTop: '2em'}}>
                 {this.renderSearchBar()}

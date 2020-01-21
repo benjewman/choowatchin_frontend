@@ -38,5 +38,22 @@
   }
 }
 
+.detailScroll {
+  overflow-y: scroll;
+  display: flex;
+  height: 80vh;
+}
 
+.showContainer {
+  display: flex;
+  flex-direction: row;
+  height: 85vh;
+}
+
+.fixColumn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
