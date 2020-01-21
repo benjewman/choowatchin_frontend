@@ -25,7 +25,6 @@ class Dashboard extends React.Component {
     }
     
     render() {
-        console.log(this.props.followedReviews)
         return (
             <Grid className="showContainer" columns={3} >
                 <Grid.Column width={3}>
@@ -69,7 +68,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // setTopFive: topFive => dispatch(setTopFive(topFive.top_five, topFive.follower_count_array))
         setTopFive: topFive => dispatch(setTopFive(topFive))
     }
 }

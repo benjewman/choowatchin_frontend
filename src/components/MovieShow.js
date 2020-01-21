@@ -148,7 +148,7 @@ class MovieShow extends React.Component {
                     {/* <a href={'/profile/' + user.id}>@{user.username}</a> */}
                 </Grid.Column>
                 <Grid.Column>
-                    <Image src={review.user.pic} wrapped  size="tiny"/>
+                    <Image src={review.user.avatar} wrapped  size="tiny"/>
                     <div><a href={'/profile/' + review.user.id}>@{review.user.username}</a></div>
                 </Grid.Column>
             </Grid>
