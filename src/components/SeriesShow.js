@@ -9,7 +9,8 @@ class SeriesShow extends React.Component {
         this.state = {
             tvShow: {},
             friendReviews: [],
-            allReviews: []
+            allReviews: [],
+            reviewToggle: undefined
         }
     }
 
@@ -22,8 +23,7 @@ class SeriesShow extends React.Component {
         .then(resp => resp.json())
         .then(tvShow => {
             this.setState({tvShow: tvShow })
-            // don't believe OMDB has tv shows
-            // might have enough info from first fetch
+            // fetch to backend to find reviews for show
             fetch(`http://localhost:3000/shows/${tvShow.id}`)
             .then(resp => resp.json())
             .then(show => {
@@ -78,6 +78,12 @@ class SeriesShow extends React.Component {
                 {this.state.reviewToggle === 'friends' ? this.renderDetailsButton() : <Button onClick={() => this.setState({reviewToggle: 'friends'})}>Friends' Reviews ({this.state.friendReviews.length})</Button>}
                 {this.state.reviewToggle === 'all' ? this.renderDetailsButton() : <Button onClick={() => this.setState({reviewToggle: 'all'})}>All Reviews ({this.state.allReviews.length})</Button>}
             </Grid.Row>
+        )
+    }
+
+    renderDetailsButton = () => {
+        return (
+            <Button onClick={() => this.setState({reviewToggle: undefined})}>Back to Details</Button>
         )
     }
     

@@ -3,6 +3,11 @@ import { Card, Image, Grid, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import AwfulStamp from '../awful_stamp2.png'
+import BadStamp from '../bad_stamp.jpg'
+import MehStamp from '../meh_stamp.jpeg'
+import GoodStamp from '../good_stamp.jpeg'
+import MustWatchStamp from '../must_watch_stamp.jpeg'
 
 class ReviewFeedCard extends React.Component {
     constructor() {
@@ -45,6 +50,21 @@ class ReviewFeedCard extends React.Component {
         )
     }
 
+    renderStamp = () => {
+        switch (this.props.review.stamp) {
+            case 'Awful':
+                return <Image src={AwfulStamp} />
+            case 'Bad':
+                return <Image src={BadStamp} />
+            case 'Good':
+                return <Image src={GoodStamp} />
+            case 'Must Watch':
+                return <Image src={MustWatchStamp} />
+            default:
+                return <Image src={MehStamp} />
+        }
+    }
+
     renderCard = () => {
         return (
             <Grid columns={2} style={{borderBottom: 'dotted red'}}>
@@ -68,7 +88,8 @@ class ReviewFeedCard extends React.Component {
                     <Grid.Row style={{marginTop: '8em'}}>
                         <Grid columns={2}>
                             <Grid.Column>
-                                <h3>Stamp: {this.props.review.stamp}</h3>
+                                {/* <h3>Stamp: {this.props.review.stamp}</h3> */}
+                                {this.renderStamp()}
                             </Grid.Column>
                             <Grid.Column floated="right">
                                 {this.props.noProfPic ? this.renderEditButton() : this.renderReviewUserCard()}

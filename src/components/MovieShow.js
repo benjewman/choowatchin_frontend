@@ -3,6 +3,11 @@ import WithAuth from './WithAuth'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
+const cardStyle = {
+    border: 'thin dotted black',
+    marginLeft: '0.5em'
+}
+
 class MovieShow extends React.Component {
     constructor(props) {
         super(props) 
@@ -34,7 +39,7 @@ class MovieShow extends React.Component {
                 if (show.error) {
                     return null
                 } else {
-                    this.setState({allReviews: show.reviews, friendReviews: this.props.followedReviews.filter(review => review.show_id === show.id)})
+                    this.setState({allReviews: show.reviews, friendReviews: show.reviews.filter(review => this.props.followedReviews.map(review => review.id).includes(review.id))})
                 }
             })
         })
@@ -114,11 +119,28 @@ class MovieShow extends React.Component {
         )
     }
 
+    renderReviewCard = (review) => {
+        return (
+            <Grid style={cardStyle} columns={2}>
+                <Grid.Column>
+                    <h4>{}review stamp</h4>
+                    {/* make username clickable */}
+                    {/* <a href={'/profile/' + user.id}>@{user.username}</a> */}
+                </Grid.Column>
+                <Grid.Column>
+                    <Image src={review.user.pic} wrapped  size="tiny"/>
+                    <div><a href={'/profile/' + review.user.id}>@{review.user.username}</a></div>
+                </Grid.Column>
+            </Grid>
+        )
+    }
+
     renderFriendsReviews = () => {
         return (
             <Grid.Column className='detailScroll' style={{marginTop: '3em'}} width={4}>
                 <Grid.Row>
-                    <h3>Friends' Reviews</h3>
+                    <h3 style={{textAlign: 'center',  marginBottom: '2em'}}>Friends' Reviews</h3>
+                    {this.state.friendReviews.map(review => this.renderReviewCard(review))}
                 </Grid.Row>
             </Grid.Column>
         )
@@ -128,7 +150,8 @@ class MovieShow extends React.Component {
         return (
              <Grid.Column className='detailScroll' style={{marginTop: '3em'}} width={4}>
                 <Grid.Row>
-                    <h3>All Reviews</h3>
+                    <h3 style={{textAlign: 'center', marginBottom: '2em'}}>All Reviews</h3>
+                    {this.state.allReviews.map(review => this.renderReviewCard(review))}
                 </Grid.Row>
             </Grid.Column>
         )
@@ -158,7 +181,8 @@ class MovieShow extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        followedReviews: state.followedReviews
+        followedReviews: state.followedReviews,
+        user: state.user
     }
 }
 

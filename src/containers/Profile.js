@@ -97,7 +97,7 @@ class Profile extends React.Component {
     renderReviews = () => {
         return (
             <Grid.Column style={{marginTop: '2em'}}>
-                <h2 style={{textAlign: 'center', marginBottom: '2em'}}>My Reviews</h2>
+                <h2 style={{textAlign: 'center', marginBottom: '2em'}}>Reviews</h2>
                 {this.state.reviews.map(review => <ReviewFeedCard noProfPic={true} review={review} key={review.id} />)}
             </Grid.Column>
         )
