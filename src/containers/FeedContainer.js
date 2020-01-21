@@ -29,9 +29,20 @@ class FeedContainer extends React.Component {
         } 
     }
 
+    filterReviews = () => {
+        switch (this.props.filter) {
+            case 'just movies':
+                return this.state.reviews.filter(review => review.show.medium === 'movies')
+            case 'just series':
+                return this.state.reviews.filter(review => review.show.medium === 'series')
+            default:
+                return this.state.reviews
+        }
+    }
+    
     renderReviewCards = () => {
         // return this.props.followedReviews.map(review => <ReviewFeedCard review={review} key={review.id}/>)
-        return this.state.reviews.map(review => <ReviewFeedCard review={review} key={review.id}/>)
+        return this.filterReviews().map(review => <ReviewFeedCard review={review} key={review.id}/>)
 
     }
     

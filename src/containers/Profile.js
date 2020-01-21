@@ -22,7 +22,7 @@ class Profile extends React.Component {
             console.log(data)
             this.setState({
                 user: data,
-                reviews: data.reviews
+                reviews: data.reviews.reverse()
             })
         })
     }

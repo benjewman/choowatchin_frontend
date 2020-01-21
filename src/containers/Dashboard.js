@@ -20,21 +20,6 @@ class Dashboard extends React.Component {
         .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.followedReviews !== this.props.followedReviews)
-    // }
-
-    filterShows = () => {
-        switch (this.state.filter) {
-            case 'just movies':
-                return this.props.followedReviews.filter(review => review.medium === 'movies')
-            case 'just series':
-                return this.props.followedReviews.filter(review => review.medium === 'series')
-            default:
-                return this.props.followedReviews
-        }
-    }
-
     changeFilter = filter => {
         this.setState({filter: filter})
     }
@@ -64,7 +49,7 @@ class Dashboard extends React.Component {
                 </Grid.Column>
 
                 <Grid.Column className='detailScroll'  width={9}>
-                    <FeedContainer user={this.props.user} followedReviews={this.filterShows()}/>
+                    <FeedContainer filter={this.state.filter} user={this.props.user} />
                 </Grid.Column>
 
                 <Grid.Column style={{marginLeft: '3.25em'}} floated="right" width={3} >
