@@ -157,7 +157,7 @@ class MovieShow extends React.Component {
 
     renderFriendsReviews = () => {
         return (
-            <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '4em'}} width={4}>
+            <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '3.5em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'center',  marginBottom: '2em'}}>Friends' Reviews</h3>
                     {this.state.friendReviews.map(review => this.renderReviewCard(review))}
@@ -168,7 +168,7 @@ class MovieShow extends React.Component {
 
     renderAllReviews = () => {
         return (
-             <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '4em'}} width={4}>
+             <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '3.5em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'center', marginBottom: '2em'}}>All Reviews</h3>
                     {this.state.allReviews.map(review => this.renderReviewCard(review))}

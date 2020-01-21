@@ -67,7 +67,7 @@ class Dashboard extends React.Component {
                     <FeedContainer followedReviews={this.filterShows()}/>
                 </Grid.Column>
 
-                <Grid.Column floated="right" width={3} >
+                <Grid.Column style={{marginLeft: '3.25em'}} floated="right" width={3} >
                     <PopularReviewers />
                 </Grid.Column>
             </Grid>
