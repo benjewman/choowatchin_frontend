@@ -9,8 +9,8 @@ export default function mainReducer(state = {}, action) {
         case 'SET_TOP_FIVE':
             return {
                 ...state, 
-                topFive: action.topFive, 
-                followerCountArray: action.followerCountArray
+                topFive: action.topFive
+                // followerCountArray: action.followerCountArray
             }
 
         case 'SET_LEADERS':

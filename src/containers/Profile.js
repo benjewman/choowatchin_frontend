@@ -21,8 +21,8 @@ class Profile extends React.Component {
         .then(data => {
             console.log(data)
             this.setState({
-                user: data.user,
-                reviews: data.user_reviews
+                user: data,
+                reviews: data.reviews
             })
         })
     }
@@ -81,7 +81,7 @@ class Profile extends React.Component {
         return (
             <Grid.Column width={6} style={{marginLeft: '5em', marginTop: '2em'}}>
                 <Card>
-                    <Image src={this.state.user.pic} wrapped ui={false} />
+                    <Image src={this.state.user.avatar} wrapped ui={false} />
                     <Card.Content>
                         <Card.Header>{this.state.user.full_name}</Card.Header>
                         <Card.Meta>

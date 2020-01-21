@@ -12,11 +12,11 @@ export const setFollowedReviews = followedReviews => {
     }
 }
 
-export const setTopFive = (topFive, followerCountArray) => {
+export const setTopFive = (topFive) => {
     return {
         type: 'SET_TOP_FIVE',
-        topFive: topFive,
-        followerCountArray: followerCountArray
+        topFive: topFive
+        // followerCountArray: followerCountArray
     }
 }
 

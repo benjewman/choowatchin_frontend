@@ -41,7 +41,7 @@ class ReviewFeedCard extends React.Component {
         return (
             <Card onClick={this.routeToUserPage} style={{maxWidth: '8em', marginLeft: '8em'}}>
                 {/* Placeholder image for the user's prof pic */}
-                <Image src={this.state.reviewUser.pic} wrapped ui={false} />
+                <Image src={this.props.review.user.avatar} wrapped ui={false} />
                 <Card.Content>
                     {/* Make username clickable */}
                     <Card.Header>@{this.state.reviewUser.username}</Card.Header>
@@ -106,7 +106,7 @@ class ReviewFeedCard extends React.Component {
     }
 
     renderEditButton = () => {
-        if (this.props.user.id === this.state.reviewUser.id) {
+        if (this.props.user.id === this.props.review.user_id) {
             return (
                 <Button onClick={this.routeToEdit} content='Edit Review' />
             )

@@ -20,8 +20,8 @@ class PopularReviewers extends React.Component {
                     <a href={'/profile/' + user.id}>@{user.username}</a>
                 </Grid.Column>
                 <Grid.Column>
-                    <Image src={user.pic} wrapped  size="tiny"/>
-                    <div><Icon name='user' />{this.props.followerCountArray[index]} Followers</div>
+                    <Image src={user.avatar} wrapped  size="mini"/>
+                    <div><Icon name='user' />{user.followers.length} Followers</div>
                 </Grid.Column>
             </Grid>
         )

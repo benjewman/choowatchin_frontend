@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
                 </Grid.Column>
 
                 <Grid.Column className='detailScroll'  width={9}>
-                    <FeedContainer followedReviews={this.filterShows()}/>
+                    <FeedContainer user={this.props.user} followedReviews={this.filterShows()}/>
                 </Grid.Column>
 
                 <Grid.Column style={{marginLeft: '3.25em'}} floated="right" width={3} >
@@ -77,13 +77,15 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        followedReviews: state.followedReviews
+        followedReviews: state.followedReviews,
+        user: state.user
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        setTopFive: topFive => dispatch(setTopFive(topFive.top_five, topFive.follower_count_array))
+        // setTopFive: topFive => dispatch(setTopFive(topFive.top_five, topFive.follower_count_array))
+        setTopFive: topFive => dispatch(setTopFive(topFive))
     }
 }
 

@@ -50,7 +50,9 @@ class Friends extends React.Component {
             <div>
                 <Input value={this.state.filter} onChange={this.handleInputChange} type='text' placeholder='Search...' action />
                 <Select compact onChange={this.handleSelectChange} options={options} defaultValue='your friends' />
-                {/* <Button onClick={this.handleSearchSubmit} type='submit'>Search</Button> */}
+                {/* pluralize friends/users below to fix grammar */}
+                {/* subtract one from users below to not count the current user */}
+                {this.state.filterJustFriends ? <p>{this.state.friends.length} Friends</p> : <p>{this.state.users.length - 1} Total</p>}
             </div>
         )
     }
