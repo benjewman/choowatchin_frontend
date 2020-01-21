@@ -42,7 +42,7 @@ class Dashboard extends React.Component {
     render() {
         console.log(this.props.followedReviews)
         return (
-            <Grid columns={3} >
+            <Grid className="showContainer" columns={3} >
                 <Grid.Column width={3}>
                     <Menu pointing vertical>
                         <Menu.Item
@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
                     </Menu>
                 </Grid.Column>
 
-                <Grid.Column width={9}>
+                <Grid.Column className='detailScroll'  width={9}>
                     <FeedContainer followedReviews={this.filterShows()}/>
                 </Grid.Column>
 

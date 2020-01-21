@@ -2,6 +2,16 @@ import React from 'react'
 import WithAuth from './WithAuth'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import AwfulStamp from '../awful_stamp2.png'
+import BadStamp from '../bad_stamp.jpg'
+import MehStamp from '../meh_stamp.jpeg'
+import GoodStamp from '../good_stamp.jpeg'
+import MustWatchStamp from '../must_watch_stamp.jpeg'
+
+const cardStyle = {
+    border: 'thin dotted black',
+    marginLeft: '0.5em'
+}
 
 class SeriesShow extends React.Component {
     constructor(props) {
@@ -30,7 +40,7 @@ class SeriesShow extends React.Component {
                 if (show.error) {
                     return null
                 } else {
-                    this.setState({allReviews: show.reviews, friendReviews: this.props.followedReviews.filter(review => review.show_id === show.id)})
+                    this.setState({allReviews: show.reviews, friendReviews: show.reviews.filter(review => this.props.followedReviews.map(review => review.id).includes(review.id))})
                 }
             })
         })
@@ -89,7 +99,7 @@ class SeriesShow extends React.Component {
     
     renderTitleAndPlot = () => {
         return (
-            <Grid.Column width={7}>
+            <Grid.Column width={6}>
                 <Grid.Row style={{marginTop: '2em'}}>
                     <h1 style={{fontSize: '50px', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.tvShow.name}</h1>
                 </Grid.Row>
@@ -104,7 +114,7 @@ class SeriesShow extends React.Component {
 
     renderDetails = () => {
         return (
-            <Grid.Column style={{marginTop: '3em'}} width={3}>
+            <Grid.Column style={{marginTop: '3em', marginLeft: '4em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'left'}}>Creators:</h3>
                     <p style={{textAlign: 'right'}}>{this.state.tvShow.created_by ? this.renderCategoryString('created_by') : null}</p>
@@ -135,8 +145,67 @@ class SeriesShow extends React.Component {
         )
     }
 
+    renderReviewCard = (review) => {
+        return (
+            <Grid style={cardStyle} columns={2}>
+                <Grid.Column>
+                    <h4>{this.renderStamp(review.stamp)}</h4>
+                    {/* make username clickable */}
+                    {/* <a href={'/profile/' + user.id}>@{user.username}</a> */}
+                </Grid.Column>
+                <Grid.Column>
+                    <Image src={review.user.pic} wrapped  size="tiny"/>
+                    <div><a href={'/profile/' + review.user.id}>@{review.user.username}</a></div>
+                </Grid.Column>
+            </Grid>
+        )
+    }
 
-    // might wanna refactor code below
+    renderStamp = (stamp) => {
+        switch(stamp) {
+            case 'Awful':
+                return <Image src={AwfulStamp} />
+            case 'Bad':
+                return <Image src={BadStamp} />
+            case 'Good':
+                return <Image src={GoodStamp} />
+            case 'Must Watch':
+                return <Image src={MustWatchStamp} />
+            default:
+                return <Image src={MehStamp} />
+        }
+    }
+
+    renderAllReviews = () => {
+        return (
+             <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '4em'}} width={4}>
+                <Grid.Row>
+                    <h3 style={{textAlign: 'center', marginBottom: '2em'}}>All Reviews</h3>
+                    {this.state.allReviews.map(review => this.renderReviewCard(review))}
+                </Grid.Row>
+            </Grid.Column>
+        )
+    }
+
+    renderFriendsReviews = () => {
+        return (
+            <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '4em'}} width={4}>
+                <Grid.Row>
+                    <h3 style={{textAlign: 'center',  marginBottom: '2em'}}>Friends' Reviews</h3>
+                    {this.state.friendReviews.map(review => this.renderReviewCard(review))}
+                </Grid.Row>
+            </Grid.Column>
+        )
+    }
+
+    renderReviews = () => {
+        if (this.state.reviewToggle === 'friends') {
+            return this.renderFriendsReviews()
+        } else {
+            return this.renderAllReviews()
+        }
+    }
+
     render() {
         console.log(this.state)
         return (
@@ -145,7 +214,7 @@ class SeriesShow extends React.Component {
                 {this.renderPoster()}
                 {this.renderTitleAndPlot()}
                 {/* Add dividers to the column below */}
-                {this.renderDetails()}
+                {this.state.reviewToggle ? this.renderReviews() : this.renderDetails()}
             </Grid>
         )
     }

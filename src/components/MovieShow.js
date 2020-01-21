@@ -2,6 +2,11 @@ import React from 'react'
 import WithAuth from './WithAuth'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import AwfulStamp from '../awful_stamp2.png'
+import BadStamp from '../bad_stamp.jpg'
+import MehStamp from '../meh_stamp.jpeg'
+import GoodStamp from '../good_stamp.jpeg'
+import MustWatchStamp from '../must_watch_stamp.jpeg'
 
 const cardStyle = {
     border: 'thin dotted black',
@@ -112,18 +117,33 @@ class MovieShow extends React.Component {
 
     renderMovieDetails = () => {
         return (
-            <Grid.Column className='detailScroll' style={{marginTop: '3em'}} width={4}>
+            <Grid.Column style={{marginTop: '3em', marginLeft: '4em'}} width={4}>
                 {/* <p style={{fontSize: '20px', textAlign: 'right', marginRight: '1em'}}><strong>Release Date: </strong>{this.state.movieDetails.Released}</p> */}
                 {this.movieCategories.map(category => this.renderDetail(category))}
             </Grid.Column>
         )
     }
 
+    renderStamp = (stamp) => {
+        switch(stamp) {
+            case 'Awful':
+                return <Image src={AwfulStamp} />
+            case 'Bad':
+                return <Image src={BadStamp} />
+            case 'Good':
+                return <Image src={GoodStamp} />
+            case 'Must Watch':
+                return <Image src={MustWatchStamp} />
+            default:
+                return <Image src={MehStamp} />
+        }
+    }
+
     renderReviewCard = (review) => {
         return (
             <Grid style={cardStyle} columns={2}>
                 <Grid.Column>
-                    <h4>{}review stamp</h4>
+                    <h4>{this.renderStamp(review.stamp)}</h4>
                     {/* make username clickable */}
                     {/* <a href={'/profile/' + user.id}>@{user.username}</a> */}
                 </Grid.Column>
@@ -137,7 +157,7 @@ class MovieShow extends React.Component {
 
     renderFriendsReviews = () => {
         return (
-            <Grid.Column className='detailScroll' style={{marginTop: '3em'}} width={4}>
+            <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '4em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'center',  marginBottom: '2em'}}>Friends' Reviews</h3>
                     {this.state.friendReviews.map(review => this.renderReviewCard(review))}
@@ -148,7 +168,7 @@ class MovieShow extends React.Component {
 
     renderAllReviews = () => {
         return (
-             <Grid.Column className='detailScroll' style={{marginTop: '3em'}} width={4}>
+             <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '4em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'center', marginBottom: '2em'}}>All Reviews</h3>
                     {this.state.allReviews.map(review => this.renderReviewCard(review))}
