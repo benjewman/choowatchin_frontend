@@ -27,6 +27,12 @@ class Profile extends React.Component {
         })
     }
 
+    // componentWillUpdate(nextProps) {
+    //     if (nextProps.user !== this.props.user) {
+
+    //     }
+    // }
+
     handleEditProfile = () => {
         this.props.history.push(`/profile/${this.state.user.id}/edit`)
     }

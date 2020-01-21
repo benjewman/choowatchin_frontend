@@ -26,7 +26,7 @@ class EditProfile extends React.Component {
             this.setState({
                 fullName: nextProps.user.full_name,
                 email: nextProps.user.email,
-                pic: nextProps.user.pic
+                pic: nextProps.user.avatar
             })
         }
     }
@@ -72,24 +72,6 @@ class EditProfile extends React.Component {
         this.props.history.push('/login')
     }
 
-    onDrop = (picture) => {
-        const reqBody = {
-            avatar: picture
-        }
-
-        const reqObj = {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(reqBody)
-        }
-        
-        fetch(`http://localhost:3000/users/${this.props.user.id}`, reqObj)
-        .then(resp => resp.json())
-        .then(avatar => console.log(avatar))
-    }
-
     handleUpload = (event) => {
         console.log(event.target.files[0])
         // this.setState({avatar: event.target.files[0]})
@@ -102,7 +84,11 @@ class EditProfile extends React.Component {
         
         fetch(`http://localhost:3000/users/${this.props.user.id}`, reqObj)
         .then(resp => resp.json())
-        .then(user => console.log(user))
+        .then(user => {
+            this.props.setUser(user)
+            this.setState({uploadToggle: false})
+        })
+
     }
 
     handleImageUpload = () => {
@@ -128,13 +114,21 @@ class EditProfile extends React.Component {
             </Grid.Column>
         )
     }
+
+    cancelButton = () => {
+        return <Button onClick={() => this.setState({uploadToggle: false})} content='Cancel' />
+    }
+
+    changePicButton = () => {
+        return <Button onClick={() => this.setState({uploadToggle: true})} content='Change Profile Picture' />
+    }
     
     render() {
         return (
             <Grid columns={3}>
                 <Grid.Column style={{textAlign: 'center', marginLeft: '5em', marginTop: '5em'}}>                   
                     <Image src={this.state.pic} style={{marginBottom: '2em'}}/>
-                    <Button onClick={() => this.setState({uploadToggle: true})} content='Change Profile Picture' />
+                    {this.state.uploadToggle ? this.cancelButton() : this.changePicButton()}
                     {this.state.uploadToggle ? this.handleImageUpload() : null}
                 </Grid.Column>
                 {this.renderEditColumn()}
