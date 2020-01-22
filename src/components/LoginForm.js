@@ -3,6 +3,7 @@ import { Button, Divider, Form, Grid, Segment, Container } from 'semantic-ui-rea
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setUser } from '../actions/index'
+import { url } from '../urls.js'
 
 class LoginForm extends React.Component {
     constructor() {
@@ -41,7 +42,7 @@ class LoginForm extends React.Component {
         const reqObj = this.createLoginObj()
         
 
-        fetch('http://localhost:3000/auth', reqObj)
+        fetch(`${url}/auth`, reqObj)
         .then(resp => resp.json())
         .then(data => data.error ? alert('invalid credentials') : this.setUserAndRedirect(data))
 

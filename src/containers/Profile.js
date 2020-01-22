@@ -5,6 +5,7 @@ import ReviewFeedCard from '../components/ReviewFeedCard'
 import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import { addLeader, removeLeader } from '../actions/index'
+import { url } from '../urls.js'
 
 class Profile extends React.Component {
     constructor() {
@@ -16,7 +17,7 @@ class Profile extends React.Component {
     }
     componentDidMount() {
         console.log(this.props)
-        fetch(`http://localhost:3000/users/${this.props.match.params.id}`)
+        fetch(`${url}/users/${this.props.match.params.id}`)
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
@@ -45,14 +46,14 @@ class Profile extends React.Component {
         }
         
         if (postOrDelete === 'POST') {
-            fetch('http://localhost:3000/follows', fetchObj)
+            fetch(`${url}/follows`, fetchObj)
             .then(resp => resp.json())
             .then(leader => {
                 this.props.addLeader(leader)
             })
         } else {
             // fetch to 1 arbitrarily because delete has to go to an id
-            fetch(`http://localhost:3000/follows/1`, fetchObj)
+            fetch(`${url}/follows/1`, fetchObj)
             .then(resp => resp.json())
             .then(data => {
                 this.props.removeLeader(data.leader_id)

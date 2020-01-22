@@ -7,6 +7,7 @@ import BadStamp from '../bad_stamp.jpg'
 import MehStamp from '../meh_stamp.jpeg'
 import GoodStamp from '../good_stamp.jpeg'
 import MustWatchStamp from '../must_watch_stamp.jpeg'
+import { url } from '../urls.js'
 
 const cardStyle = {
     border: 'thin dotted black',
@@ -38,7 +39,7 @@ class MovieShow extends React.Component {
             .then(resp => resp.json())
             .then(movie => this.setState({movieDetails: movie}))
 
-            fetch(`http://localhost:3000/shows/${movie.id}`)
+            fetch(`${url}/shows/${movie.id}`)
             .then(resp => resp.json())
             .then(show => {
                 if (show.error) {

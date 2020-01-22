@@ -3,6 +3,7 @@ import { Grid, Input, Select, Button } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import UserCard from '../components/UserCard'
+import { url } from '../urls.js'
 
 class Friends extends React.Component {
     constructor() {
@@ -20,14 +21,14 @@ class Friends extends React.Component {
         // refactor because this isn't the best
         // way to access this data
         // especially if there were a lot of users
-        fetch('http://localhost:3000/users')
+        fetch(`${url}/users`)
         .then(resp => resp.json())
         .then(users => this.setState({users: users}))
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.user !== this.props.user) {
-            fetch('http://localhost:3000/users/' + this.props.user.id)
+            fetch(`${url}/users/` + this.props.user.id)
             .then(resp => resp.json())
             .then(user => this.setState({friends: user.leaders}))
         }

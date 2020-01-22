@@ -5,6 +5,7 @@ import WithAuth from '../components/WithAuth'
 import FeedContainer from './FeedContainer'
 import PopularReviewers from './PopularReviewers'
 import { setTopFive } from '../actions/index'
+import { url } from '../urls.js'
 
 class Dashboard extends React.Component {
     constructor() {
@@ -15,7 +16,7 @@ class Dashboard extends React.Component {
     }
     
     componentDidMount() {
-        fetch('http://localhost:3000/topfive')
+        fetch(`${url}/topfive`)
         .then(resp => resp.json())
         .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
     }

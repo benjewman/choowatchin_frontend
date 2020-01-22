@@ -7,6 +7,7 @@ import BadStamp from '../bad_stamp.jpg'
 import MehStamp from '../meh_stamp.jpeg'
 import GoodStamp from '../good_stamp.jpeg'
 import MustWatchStamp from '../must_watch_stamp.jpeg'
+import { url } from '../urls.js'
 
 const cardStyle = {
     border: 'thin dotted black',
@@ -34,7 +35,7 @@ class SeriesShow extends React.Component {
         .then(tvShow => {
             this.setState({tvShow: tvShow })
             // fetch to backend to find reviews for show
-            fetch(`http://localhost:3000/shows/${tvShow.id}`)
+            fetch(`${url}/shows/${tvShow.id}`)
             .then(resp => resp.json())
             .then(show => {
                 if (show.error) {

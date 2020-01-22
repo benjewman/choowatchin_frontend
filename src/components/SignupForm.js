@@ -3,6 +3,7 @@ import { Button, Divider, Form, Grid, Segment, Container, Header } from 'semanti
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setUser } from '../actions/index'
+import { url } from '../urls.js'
 
 class SignupForm extends React.Component {
     constructor() {
@@ -44,7 +45,7 @@ class SignupForm extends React.Component {
                 body: JSON.stringify(this.state)
             }
 
-            fetch('http://localhost:3000/users', reqObj)
+            fetch(`${url}/users`, reqObj)
             .then(resp => resp.json())
             .then(data => this.handleFetch(data))
         }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Grid, Header, Image, Form, TextArea, Radio, Button } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 import { setFollowedReviews } from '../actions/index'
+import { url } from '../urls.js'
 
 class CreateReview extends React.Component {
     constructor() {
@@ -19,7 +20,7 @@ class CreateReview extends React.Component {
         // tried passing to Redux store but broke down
         // on page refresh
         if (this.props.match.path === "/reviews/:id/edit") {
-            fetch(`http://localhost:3000/reviews/${this.props.match.params.id}`)
+            fetch(`${url}/reviews/${this.props.match.params.id}`)
             .then(resp => resp.json())
             .then(data => {
                 console.log(data)
@@ -97,7 +98,7 @@ class CreateReview extends React.Component {
 
         const followedReviews = this.props.followedReviews
 
-        fetch('http://localhost:3000/reviews', fetchObj)
+        fetch(`${url}/reviews`, fetchObj)
         .then(resp => resp.json())
         .then(review => {
             if (review.error) {
@@ -125,7 +126,7 @@ class CreateReview extends React.Component {
             body: JSON.stringify(bodyObj)
         }
 
-        fetch(`http://localhost:3000/reviews/${this.props.match.params.id}`, fetchObj)
+        fetch(`${url}/reviews/${this.props.match.params.id}`, fetchObj)
         .then(resp => resp.json())
         .then(review => console.log(review))
 
@@ -212,7 +213,7 @@ class CreateReview extends React.Component {
    }
 
    deleteReview = () => {
-       fetch(`http://localhost:3000/reviews/${this.state.review.id}`, {method: 'DELETE'})
+       fetch(`${url}/reviews/${this.state.review.id}`, {method: 'DELETE'})
        .then(resp => resp.json())
        .then(message => console.log(message))
        this.props.history.push(`/profile/${this.props.user.id}`)

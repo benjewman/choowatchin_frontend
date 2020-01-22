@@ -1,7 +1,6 @@
 import React from 'react'
 import ReviewFeedCard from '../components/ReviewFeedCard'
-import { connect } from 'react-redux'
-import WithAuth from '../components/WithAuth'
+import { url } from '../urls.js'
 
 class FeedContainer extends React.Component {
     constructor() {
@@ -20,7 +19,7 @@ class FeedContainer extends React.Component {
                     'UserId': `Bearer ${nextProps.user.id}`
                 }
             }
-            fetch(`http://localhost:3000/reviews`, reqObj)
+            fetch(`${url}/reviews`, reqObj)
             .then(resp => resp.json())
             .then(data => {
                 console.log('mounting feed', data)
@@ -41,7 +40,6 @@ class FeedContainer extends React.Component {
     }
     
     renderReviewCards = () => {
-        // return this.props.followedReviews.map(review => <ReviewFeedCard review={review} key={review.id}/>)
         return this.filterReviews().map(review => <ReviewFeedCard review={review} key={review.id}/>)
 
     }
@@ -49,20 +47,9 @@ class FeedContainer extends React.Component {
     render() {
         console.log('passing props', this.props)
         return (
-            // renderReviewCards breaks without the
-            // ternary because followedReviews is undefined
-            // until the fetch from auth comes back
-
-            // this.props.followedReviews ? this.renderReviewCards() : null
             this.renderReviewCards()
         )
     }
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         user: state.user
-//     }
-// }
 
 export default FeedContainer

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setUser, setFollowedReviews, setLeaders } from '../actions/index'
 import { withRouter } from 'react-router-dom'
+import { url } from '../urls.js'
 
 export default function WithAuth(WrappedComponent) {
      class Auth extends React.Component {
@@ -36,7 +37,7 @@ export default function WithAuth(WrappedComponent) {
                     }
                 }
     
-                fetch('http://localhost:3000/current_user', reqObj)
+                fetch(`${url}/current_user`, reqObj)
                 .then(resp => resp.json())
                 .then(userInfo => this.handleFetch(userInfo))
             }

@@ -3,7 +3,7 @@ import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import { Grid, Form, Image, Button, Input } from 'semantic-ui-react'
 import { setUser } from '../actions/index'
-import ImageUploader from 'react-images-upload';
+import { url } from '../urls.js'
 
 class EditProfile extends React.Component {
     constructor(props) {
@@ -56,7 +56,7 @@ class EditProfile extends React.Component {
             body: JSON.stringify(reqBody)
         }
 
-        fetch(`http://localhost:3000/users/${this.props.user.id}`, reqObj)
+        fetch(`${url}/users/${this.props.user.id}`, reqObj)
         .then(resp => resp.json())
         .then(user => this.props.setUser(user))
 
@@ -64,7 +64,7 @@ class EditProfile extends React.Component {
     }
     
     handleDelete = () => {
-        fetch(`http://localhost:3000/users/${this.props.user.id}`, {method: 'DELETE'})
+        fetch(`${url}/users/${this.props.user.id}`, {method: 'DELETE'})
         .then(resp => resp.json())
         .then(data => console.log(data))
         
@@ -82,7 +82,7 @@ class EditProfile extends React.Component {
             body: formData
         }
         
-        fetch(`http://localhost:3000/users/${this.props.user.id}`, reqObj)
+        fetch(`${url}/users/${this.props.user.id}`, reqObj)
         .then(resp => resp.json())
         .then(user => {
             this.props.setUser(user)

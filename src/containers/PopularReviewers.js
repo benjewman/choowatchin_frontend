@@ -11,7 +11,7 @@ class PopularReviewers extends React.Component {
     componentDidMount() {
     }
 
-    renderUserCard = (user, index) => {
+    renderUserCard = (user) => {
         return (
             <Grid style={cardStyle} columns={2}>
                 <Grid.Column>
@@ -28,7 +28,7 @@ class PopularReviewers extends React.Component {
     }
 
     renderTopFiveCards = () => {
-        return this.props.topFive.map((user, index)  => this.renderUserCard(user, index))
+        return this.props.topFive.map((user)  => this.renderUserCard(user))
     }
 
     render() {

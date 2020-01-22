@@ -8,6 +8,7 @@ import BadStamp from '../bad_stamp.jpg'
 import MehStamp from '../meh_stamp.jpeg'
 import GoodStamp from '../good_stamp.jpeg'
 import MustWatchStamp from '../must_watch_stamp.jpeg'
+import { url } from '../urls.js'
 
 class ReviewFeedCard extends React.Component {
     constructor() {
@@ -15,17 +16,13 @@ class ReviewFeedCard extends React.Component {
         this.state = {}
     }
     componentDidMount() {
-        fetch(`http://localhost:3000/reviews/${this.props.review.id}`)
+        fetch(`${url}/reviews/${this.props.review.id}`)
         .then(resp => resp.json())
         .then(reviewInfo => {
             this.setState({
                 reviewUser: reviewInfo.user,
                 reviewShow: reviewInfo.show
             })
-            // console.log('ReviewCard', reviewInfo)
-            // fetch(`http://www.omdbapi.com/?apikey=49f89f6c&i=${reviewInfo.show.imdbID}`)
-            // .then(resp => resp.json())
-            // .then(show => this.setState({reviewShow: show}))
         })
     }
 

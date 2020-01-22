@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { addLeader, removeLeader } from '../actions/index'
+import { url } from '../urls.js'
 
 function UserCard(props) {
     console.log(props)
@@ -16,7 +17,7 @@ function UserCard(props) {
         }
         
         if (postOrDelete === 'POST') {
-            fetch('http://localhost:3000/follows', fetchObj)
+            fetch(`${url}/follows`, fetchObj)
             .then(resp => resp.json())
             .then(leader => {
                 props.addLeader(leader)
@@ -27,7 +28,7 @@ function UserCard(props) {
         } else {
             // fetch delete needs to go to a follow id
             // or maybe create a custom route to delete based off leader and follower ids
-            fetch(`http://localhost:3000/follows/1`, fetchObj)
+            fetch(`${url}/follows/1`, fetchObj)
             .then(resp => resp.json())
             .then(data => {
                 props.removeLeader(data.leader_id)
