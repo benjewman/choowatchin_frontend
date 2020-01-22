@@ -21,12 +21,15 @@ class CreateReview extends React.Component {
         if (this.props.match.path === "/reviews/:id/edit") {
             fetch(`http://localhost:3000/reviews/${this.props.match.params.id}`)
             .then(resp => resp.json())
-            .then(data => this.setState({
-                userReview: data.review.content,
-                radioValue: data.review.stamp,
+            .then(data => {
+                console.log(data)
+                this.setState({
+                userReview: data.content,
+                radioValue: data.stamp,
                 show: data.show,
-                review: data.review
-            }))
+                review: data
+            })
+        })
         } else if (this.props.match.params.medium === 'movies') {
             fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US`)
             .then(resp => resp.json())
