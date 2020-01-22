@@ -35,7 +35,7 @@ class MovieShow extends React.Component {
         .then(resp => resp.json())
         .then(movie => {
             this.setState({movie: movie })
-            fetch(`http://www.omdbapi.com/?apikey=49f89f6c&i=${movie.imdb_id}`)
+            fetch(`https://www.omdbapi.com/?apikey=49f89f6c&i=${movie.imdb_id}`)
             .then(resp => resp.json())
             .then(movie => this.setState({movieDetails: movie}))
 
