@@ -8,10 +8,10 @@ class SignupForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            full_name: 'Bob Pitt',
-            email: 'bobpitt@gmail.com',
-            username: 'bpitt',
-            password: 'robertpitt'
+            full_name: '',
+            email: '',
+            username: '',
+            password: ''
         }
     }
     
