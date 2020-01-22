@@ -76,8 +76,8 @@ class CreateReview extends React.Component {
    }
 
    handlePost = () => {
-    if (this.state.userReview.length > 100) {
-        alert('review must be 100 characters or less')
+    if (this.state.userReview.length > 60) {
+        alert('review must be 60 characters or less')
     } else {
         const bodyObj = {
             show: this.state.show,
@@ -100,10 +100,13 @@ class CreateReview extends React.Component {
         fetch('http://localhost:3000/reviews', fetchObj)
         .then(resp => resp.json())
         .then(review => {
-            followedReviews.unshift(review)
-            this.props.setFollowedReviews(followedReviews)
+            if (review.error) {
+                alert(review.error)
+            } else {
+                followedReviews.unshift(review)
+                this.props.setFollowedReviews(followedReviews)
+            }
         })
-        
         this.props.history.push('/home')
     }
    }

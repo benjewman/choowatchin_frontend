@@ -160,7 +160,7 @@ class MovieShow extends React.Component {
             <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '3.5em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'center',  marginBottom: '2em'}}>Friends' Reviews</h3>
-                    {this.state.friendReviews.map(review => this.renderReviewCard(review))}
+                    {this.state.friendReviews.reverse().map(review => this.renderReviewCard(review))}
                 </Grid.Row>
             </Grid.Column>
         )
@@ -171,7 +171,7 @@ class MovieShow extends React.Component {
              <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '3.5em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'center', marginBottom: '2em'}}>All Reviews</h3>
-                    {this.state.allReviews.map(review => this.renderReviewCard(review))}
+                    {this.state.allReviews.reverse().map(review => this.renderReviewCard(review))}
                 </Grid.Row>
             </Grid.Column>
         )

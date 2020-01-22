@@ -152,7 +152,7 @@ class SeriesShow extends React.Component {
                     <h4>{this.renderStamp(review.stamp)}</h4>
                 </Grid.Column>
                 <Grid.Column>
-                    <Image src={review.user.pic} wrapped  size="tiny"/>
+                    <Image src={review.user.avatar} wrapped  size="tiny"/>
                     <div><a href={'/profile/' + review.user.id}>@{review.user.username}</a></div>
                 </Grid.Column>
             </Grid>
@@ -179,7 +179,7 @@ class SeriesShow extends React.Component {
              <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '3.5em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'center', marginBottom: '2em'}}>All Reviews</h3>
-                    {this.state.allReviews.map(review => this.renderReviewCard(review))}
+                    {this.state.allReviews.reverse().map(review => this.renderReviewCard(review))}
                 </Grid.Row>
             </Grid.Column>
         )
@@ -190,7 +190,7 @@ class SeriesShow extends React.Component {
             <Grid.Column className='detailScroll' style={{marginTop: '0.5em', marginLeft: '3.5em'}} width={4}>
                 <Grid.Row>
                     <h3 style={{textAlign: 'center',  marginBottom: '2em'}}>Friends' Reviews</h3>
-                    {this.state.friendReviews.map(review => this.renderReviewCard(review))}
+                    {this.state.friendReviews.reverse().map(review => this.renderReviewCard(review))}
                 </Grid.Row>
             </Grid.Column>
         )
