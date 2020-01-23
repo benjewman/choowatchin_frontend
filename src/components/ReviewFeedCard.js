@@ -41,7 +41,7 @@ class ReviewFeedCard extends React.Component {
                 <Image src={this.props.review.user.avatar} wrapped ui={false} />
                 <Card.Content>
                     {/* Make username clickable */}
-                    <Card.Header style={{fontSize: '8px'}}>@{this.state.reviewUser.username}</Card.Header>
+                    <Card.Header style={{fontSize: '15px'}}>@{this.state.reviewUser.username}</Card.Header>
                 </Card.Content>
             </Card>
         )
