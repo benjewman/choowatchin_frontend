@@ -36,7 +36,7 @@ class ReviewFeedCard extends React.Component {
     
     renderReviewUserCard = () => {
         return (
-            <Card onClick={this.routeToUserPage} style={{maxWidth: '10em', marginLeft: '8em'}}>
+            <Card onClick={this.routeToUserPage} style={{maxWidth: '12em', marginLeft: '6em'}}>
                 {/* Placeholder image for the user's prof pic */}
                 <Image src={this.props.review.user.avatar} wrapped ui={false} />
                 <Card.Content>
