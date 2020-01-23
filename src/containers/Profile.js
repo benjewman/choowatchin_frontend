@@ -28,7 +28,7 @@ class Profile extends React.Component {
         })
     }
 
-    componentWillUpdate(prevProps) {
+    componentDidUpdate(prevProps) {
         // when on someone's profile and then go to my profile
         // componentdidmount will not run again so we need to make a new fetch
         if (this.props.match.params.id !== prevProps.match.params.id) {
