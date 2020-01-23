@@ -49,7 +49,7 @@ class Dashboard extends React.Component {
                 </Grid.Column>
 
                 <Grid.Column className='detailScroll'  width={9}>
-                    <h3>Reviews in Your Network</h3>
+                    <h3 style={{textAlign: 'center'}}>Reviews in Your Network</h3>
                     <FeedContainer filter={this.state.filter} user={this.props.user} />
                 </Grid.Column>
 
