@@ -28,6 +28,22 @@ class Profile extends React.Component {
         })
     }
 
+    componentWillUpdate(prevProps) {
+        // when on someone's profile and then go to my profile
+        // componentdidmount will not run again so we need to make a new fetch
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            fetch(`${url}/users/${this.props.match.params.id}`)
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+            this.setState({
+                user: data,
+                reviews: data.reviews.reverse()
+            })
+        })
+        }
+    }
+
     handleEditProfile = () => {
         this.props.history.push(`/profile/${this.state.user.id}/edit`)
     }
