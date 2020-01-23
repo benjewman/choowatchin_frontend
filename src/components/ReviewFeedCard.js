@@ -103,7 +103,7 @@ class ReviewFeedCard extends React.Component {
     }
 
     renderEditButton = () => {
-        if (this.props.user.id === this.props.review.user.id) {
+        if (this.props.user && this.props.user.id === this.props.review.user.id) {
             return (
                 <Button onClick={this.routeToEdit} content='Edit Review' />
             )
