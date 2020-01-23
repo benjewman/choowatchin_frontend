@@ -22,7 +22,6 @@ class FeedContainer extends React.Component {
             fetch(`${url}/reviews`, reqObj)
             .then(resp => resp.json())
             .then(data => {
-                console.log('mounting feed', data)
                 this.setState({reviews: data})
             })
         } 

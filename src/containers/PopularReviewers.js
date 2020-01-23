@@ -1,6 +1,7 @@
 import React from 'react'
 import { Image, Icon, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { setTopFive } from '../actions/index'
 
 const cardStyle = {
     border: 'thin dotted black',
@@ -9,8 +10,11 @@ const cardStyle = {
 
 class PopularReviewers extends React.Component {
     componentDidMount() {
+        fetch(`${url}/topfive`)
+        .then(resp => resp.json())
+        .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
     }
-
+    
     renderUserCard = (user) => {
         return (
             <Grid style={cardStyle} columns={2}>
@@ -49,7 +53,13 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(PopularReviewers)
+const mapDispatchToProps = dispatch => {
+    return {
+        setTopFive: topFive => dispatch(setTopFive(topFive))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PopularReviewers)
 
 
 

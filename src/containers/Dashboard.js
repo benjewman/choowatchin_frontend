@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import WithAuth from '../components/WithAuth'
 import FeedContainer from './FeedContainer'
 import PopularReviewers from './PopularReviewers'
-import { setTopFive } from '../actions/index'
+// import { setTopFive } from '../actions/index'
 import { url } from '../urls.js'
 
 class Dashboard extends React.Component {
@@ -15,11 +15,11 @@ class Dashboard extends React.Component {
         }
     }
     
-    componentDidMount() {
-        fetch(`${url}/topfive`)
-        .then(resp => resp.json())
-        .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
-    }
+    // componentDidMount() {
+    //     fetch(`${url}/topfive`)
+    //     .then(resp => resp.json())
+    //     .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
+    // }
 
     changeFilter = filter => {
         this.setState({filter: filter})
@@ -67,10 +67,10 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        setTopFive: topFive => dispatch(setTopFive(topFive))
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         setTopFive: topFive => dispatch(setTopFive(topFive))
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WithAuth(Dashboard))
+export default connect(mapStateToProps, null)(WithAuth(Dashboard))
