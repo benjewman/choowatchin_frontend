@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, Icon, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { setTopFive } from '../actions/index'
+import { url } from '../urls.js'
 
 const cardStyle = {
     border: 'thin dotted black',
@@ -14,7 +15,7 @@ class PopularReviewers extends React.Component {
         .then(resp => resp.json())
         .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
     }
-    
+
     renderUserCard = (user) => {
         return (
             <Grid style={cardStyle} columns={2}>

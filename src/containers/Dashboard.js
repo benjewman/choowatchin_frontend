@@ -5,7 +5,7 @@ import WithAuth from '../components/WithAuth'
 import FeedContainer from './FeedContainer'
 import PopularReviewers from './PopularReviewers'
 // import { setTopFive } from '../actions/index'
-import { url } from '../urls.js'
+// import { url } from '../urls.js'
 
 class Dashboard extends React.Component {
     constructor() {
