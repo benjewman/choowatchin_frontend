@@ -128,10 +128,12 @@ class CreateReview extends React.Component {
 
         fetch(`${url}/reviews/${this.props.match.params.id}`, fetchObj)
         .then(resp => resp.json())
-        .then(review => console.log(review))
+        .then(review => {
+            console.log(review)
+            this.props.history.push(`/profile/${this.props.user.id}`)
+        })
 
-        // this.props.history.push(`/profile/${this.props.user.id}`)
-        this.props.history.push(`/home`)
+        // this.props.history.push(`/home`)
 
    }
    
@@ -215,8 +217,10 @@ class CreateReview extends React.Component {
    deleteReview = () => {
        fetch(`${url}/reviews/${this.state.review.id}`, {method: 'DELETE'})
        .then(resp => resp.json())
-       .then(message => console.log(message))
-       this.props.history.push(`/profile/${this.props.user.id}`)
+       .then(message => {
+            console.log(message)
+            this.props.history.push(`/profile/${this.props.user.id}`)
+       })
    }
 
    handleChange = (radioValue) => {
