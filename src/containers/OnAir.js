@@ -24,40 +24,16 @@ class OnAir extends React.Component {
         fetch('https://api.themoviedb.org/3/tv/on_the_air?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US')
         .then(resp => resp.json())
         .then(series => this.setState({ series: series.results, totalPages: series.total_pages }))
-
-        // add listener to implement infinite scrolling
-        document.addEventListener('scroll', this.trackScrolling)
     }
 
-    // this is backup for the Infinite Loader component
-    componentWillUnmount() {
-        document.removeEventListener('scroll', this.trackScrolling)
-    }
-
-    // backup scenario in case Infinite Loader breaks again
-    trackScrolling = () => {
-        const wrappedElement = document.getElementById('onAirGrid')
-        if (this.isBottom(wrappedElement)) {
-            console.log('bottom reached')
-        }
-    }
-
-    // part of the back up plan
-    // none of these are implemented currently
-    isBottom(el) {
-        return (el.getBoundingClientRect().bottom <= window.innerHeight)
-    }
 
     handleVisit = () => {
-        console.log('scrolling')
         // fetch next page and concat onto state
         // on the condition that the page to be fetched
         // is not greater than the total pages
         if (this.state.fetchPage > this.state.totalPages) {
             // return <h4>End of Results</h4>
-            console.log('end of results')
         } else {
-            console.log('searching')
             fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&page=${this.state.fetchPage}`)
             .then(resp => resp.json())
             .then(series => this.setState({ series: this.state.series.concat(series.results)}))
