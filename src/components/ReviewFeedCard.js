@@ -82,7 +82,7 @@ class ReviewFeedCard extends React.Component {
                             <h5 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>-{this.state.reviewUser.full_name}</h5>
                         </div>
                     </Grid.Row>
-                    <Grid.Row style={{marginTop: '8em'}}>
+                    <Grid.Row style={{marginTop: '5em'}}>
                         <Grid columns={2}>
                             <Grid.Column>
                                 {/* <h3>Stamp: {this.props.review.stamp}</h3> */}
