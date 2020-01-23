@@ -36,12 +36,12 @@ class ReviewFeedCard extends React.Component {
     
     renderReviewUserCard = () => {
         return (
-            <Card onClick={this.routeToUserPage} style={{maxWidth: '12em', marginLeft: '6em'}}>
+            <Card onClick={this.routeToUserPage} style={{maxWidth: '10em', marginLeft: '7em'}}>
                 {/* Placeholder image for the user's prof pic */}
                 <Image src={this.props.review.user.avatar} wrapped ui={false} />
                 <Card.Content>
                     {/* Make username clickable */}
-                    <Card.Header style={{fontSize: '15px'}}>@{this.state.reviewUser.username}</Card.Header>
+                    <Card.Header style={{fontSize: '12px'}}>@{this.state.reviewUser.username}</Card.Header>
                 </Card.Content>
             </Card>
         )
