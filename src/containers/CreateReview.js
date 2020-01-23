@@ -157,8 +157,8 @@ class CreateReview extends React.Component {
                     <Form.Group>
                         <Form.Field
                             control={TextArea}
-                            label='This show in 100 characters or less'
-                            placeholer='This show in 100 characters or less'
+                            label='This show in 60 characters or less'
+                            placeholer='This show in 60 characters or less'
                             value={this.state.userReview}
                             onChange={this.handleReviewChange}
                             width={14}
