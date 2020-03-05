@@ -17,6 +17,7 @@
     "react-infinite-loader": "^1.0.4",
     "react-infinite-scroller": "^1.2.4",
     "react-redux": "^7.1.3",
+    "react-responsive": "^8.0.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-scrolllock": "^5.0.0",
