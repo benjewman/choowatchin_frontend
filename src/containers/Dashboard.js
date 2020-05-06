@@ -14,17 +14,11 @@ class Dashboard extends React.Component {
             filter: 'all'
         }
     }
-    
-    // componentDidMount() {
-    //     fetch(`${url}/topfive`)
-    //     .then(resp => resp.json())
-    //     .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
-    // }
 
     changeFilter = filter => {
         this.setState({filter: filter})
     }
-    
+
     render() {
         return (
             <Grid className="showContainer" columns={3} >
