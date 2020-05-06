@@ -8,9 +8,12 @@ export default function WithAuth(WrappedComponent) {
      class Auth extends React.Component {
         
         handleFetch = userInfo => {
-            if (userInfo.error && this.props.history.location.pathname !== '/login') {
-                this.props.history.push('/login')
-            } else if (!userInfo.error) {
+            
+            // if (userInfo.error && this.props.history.location.pathname !== '/login') {
+            //     this.props.history.push('/login')
+            // } 
+            
+            if (!userInfo.error) {
                 console.log(userInfo)
                 this.props.setUser(userInfo)
                 this.props.setLeaders(userInfo.leaders)
