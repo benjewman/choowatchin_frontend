@@ -11,6 +11,13 @@ class FeedContainer extends React.Component {
     }
     
     componentWillUpdate(nextProps) {
+        if (!nextProps.user) {
+            fetch(`${url}/reviews`)
+            .then(resp => resp.json())
+            .then(data => {
+                this.setState({reviews: data})
+            })
+        }
         if (nextProps.user !== this.props.user) {
             const reqObj = {
                 method: 'GET',

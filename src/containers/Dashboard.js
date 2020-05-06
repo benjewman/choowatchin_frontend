@@ -19,6 +19,22 @@ class Dashboard extends React.Component {
         this.setState({filter: filter})
     }
 
+    recentOrNetworkReviews = () => {
+        if (this.props.user) {
+            return (
+                <Grid.Column className='detailScroll'  width={9}>
+                    <h3 style={{textAlign: 'center'}}>Reviews in Your Network</h3>
+                    <FeedContainer filter={this.state.filter} user={this.props.user} />
+                </Grid.Column>
+            )
+        } else {
+            <Grid.Column className='detailScroll'  width={9}>
+                <h3 style={{textAlign: 'center'}}>Recent Reviews</h3>
+                <FeedContainer filter={this.state.filter} />
+            </Grid.Column>
+        }
+    }
+
     render() {
         return (
             <Grid className="showContainer" columns={3} >
