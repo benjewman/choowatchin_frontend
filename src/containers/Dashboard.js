@@ -28,10 +28,12 @@ class Dashboard extends React.Component {
                 </Grid.Column>
             )
         } else {
+            return (
             <Grid.Column className='detailScroll'  width={9}>
                 <h3 style={{textAlign: 'center'}}>Recent Reviews</h3>
                 <FeedContainer filter={this.state.filter} />
             </Grid.Column>
+            )
         }
     }
 

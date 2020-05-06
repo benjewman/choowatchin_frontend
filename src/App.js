@@ -29,7 +29,7 @@ function App() {
           </Grid.Row>
           <Grid.Row >
             <Switch>
-              <Route exact path='/' component={Login} />
+              <Route exact path='/' component={Dashboard} />
               <Route path='/login' component={Login} />>
               <Route path='/signup' component={Signup} />
               <Route path='/home' component={Dashboard} />
