@@ -25,17 +25,19 @@ export default function WithAuth(WrappedComponent) {
         componentDidMount() {
             const token = localStorage.getItem('token')
     
-            if (!token && this.props.history.location.pathname !== '/login') {
-                // console.log(this.props.history.location.pathname)
-                this.props.history.push('/login')
-            } else if (token) {
+            // if (!token && this.props.history.location.pathname !== '/login') {
+            //     // console.log(this.props.history.location.pathname)
+            //     this.props.history.push('/login')
+            // } 
+            
+            if (token) {
                 const reqObj = {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
-                    }
                 }
+            }
     
                 fetch(`${url}/current_user`, reqObj)
                 .then(resp => resp.json())
