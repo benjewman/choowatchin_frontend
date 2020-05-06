@@ -14,11 +14,11 @@ const sectionStyle = {
 
 class Login extends React.Component {
         
-     componentDidMount() {
-        if (this.props.history.location.pathname === '/') {
-            this.props.history.push('/login')
-        }
-    }
+    //  componentDidMount() {
+    //     if (this.props.history.location.pathname === '/') {
+    //         this.props.history.push('/login')
+    //     }
+    // }
 
     render() {
         return (
