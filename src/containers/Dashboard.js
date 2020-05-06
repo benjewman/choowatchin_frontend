@@ -60,10 +60,7 @@ class Dashboard extends React.Component {
                     </Menu>
                 </Grid.Column>
 
-                <Grid.Column className='detailScroll'  width={9}>
-                    <h3 style={{textAlign: 'center'}}>Reviews in Your Network</h3>
-                    <FeedContainer filter={this.state.filter} user={this.props.user} />
-                </Grid.Column>
+                {this.recentOrNetworkReviews()}
 
                 <Grid.Column style={{marginLeft: '3.25em'}} floated="right" width={3} >
                     <PopularReviewers />

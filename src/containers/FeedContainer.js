@@ -9,21 +9,23 @@ class FeedContainer extends React.Component {
             reviews: []
         }
     }
-    
-    componentWillUpdate(nextProps) {
-        if (!nextProps.user) {
+
+    componentDidMount() {
+        if (!this.props.user) {
+            console.log("No user");
             fetch(`${url}/reviews`)
             .then(resp => resp.json())
             .then(data => {
                 this.setState({reviews: data})
             })
-        }
-        if (nextProps.user !== this.props.user) {
+
+        } else {
+            console.log("User");
             const reqObj = {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'UserId': `Bearer ${nextProps.user.id}`
+                    'UserId': `Bearer ${this.props.user.id}`
                 }
             }
             fetch(`${url}/reviews`, reqObj)
@@ -31,8 +33,35 @@ class FeedContainer extends React.Component {
             .then(data => {
                 this.setState({reviews: data})
             })
-        } 
+        }
     }
+    
+    // componentWillUpdate(nextProps) {
+    //     if (!this.props.user) {
+    //         console.log("Woohoo no user no rules!");
+    //         fetch(`${url}/reviews`)
+    //         .then(resp => resp.json())
+    //         .then(data => {
+    //             this.setState({reviews: data})
+    //         })
+    //     } else if (nextProps.user !== this.props.user) {
+    //         console.log("still user but different");
+    //         const reqObj = {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'UserId': `Bearer ${nextProps.user.id}`
+    //             }
+    //         }
+    //         fetch(`${url}/reviews`, reqObj)
+    //         .then(resp => resp.json())
+    //         .then(data => {
+    //             this.setState({reviews: data})
+    //         })
+    //     } else {
+    //         console.log("same user");
+    //     }
+    // }
 
     filterReviews = () => {
         switch (this.props.filter) {
