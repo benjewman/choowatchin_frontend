@@ -5,7 +5,8 @@ import { addLeader, removeLeader } from '../actions/index'
 import { url } from '../urls.js'
 
 function UserCard(props) {
-    console.log(props)
+    console.log(props);
+    console.log("IN THE USER CARD");
 
     const followFetch = (postOrDelete) => {
         const fetchObj = {
@@ -53,6 +54,10 @@ function UserCard(props) {
             </Button>
         )
     }
+
+    const renderButton = () => {
+        props.leaders.find(leader => leader.id === props.friend.id) ? renderFollowingButton() : renderFollowButton();
+    }
     
     return (
          <Grid columns={2}>
@@ -64,7 +69,8 @@ function UserCard(props) {
             <Grid.Column>
                 <Image src={props.friend.avatar} wrapped size="tiny"/>
                  {/* conditionally render button depending on if user follows this user  */}
-                 {props.leaders.find(leader => leader.id === props.friend.id) ? renderFollowingButton() : renderFollowButton()}
+                 {props.user ? renderButton() : null}
+                 {/* {props.leaders.find(leader => leader.id === props.friend.id) ? renderFollowingButton() : renderFollowButton()} */}
             </Grid.Column>
         </Grid>
     )

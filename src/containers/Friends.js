@@ -46,13 +46,19 @@ class Friends extends React.Component {
         const options = [
             { key: 'your friends', text: 'Your Friends', value: 'your friends' },
             { key: 'everyone', text: 'Everyone', value: 'everyone' },
-          ]
+        ]
+        const renderSelect = () => {
+            return (
+                <Select compact onChange={this.handleSelectChange} options={options} defaultValue='your friends' />
+
+            )
+        }
         return (
             <div>
                 <Input value={this.state.filter} onChange={this.handleInputChange} type='text' placeholder='Search...' action />
-                <Select compact onChange={this.handleSelectChange} options={options} defaultValue='your friends' />
+                {this.props.user ? renderSelect() : null}
+                {/* <Select compact onChange={this.handleSelectChange} options={options} defaultValue='your friends' /> */}
                 {/* pluralize friends/users below to fix grammar */}
-                {/* subtract one from users below to not count the current user */}
                 {this.state.filterJustFriends ? <p>{this.state.friends.length} Friends</p> : <p>{this.state.users.length - 1} Total</p>}
             </div>
         )
@@ -68,11 +74,27 @@ class Friends extends React.Component {
     }
     
     renderPeople = (type) => {
-        console.log(type)
-        console.log(this.state[type])
-        // filter out current user from all users list
-        // filter based on search bar
+        // console.log(this.state[type])
+
         const filteredUsers = this.state[type].filter(user => user.id !== this.props.user.id &&  user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
+        console.log('FILTERED USERS', filteredUsers);
+        return (
+            <Grid celled='internally' style={{marginTop: '2em'}} columns={4}>
+                {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
+            </Grid>
+        )
+    }
+
+    renderUserOptions = () => {
+        if (this.state.filterJustFriends) {
+            return this.renderPeople('friends');
+        }  else {
+            return this.renderPeople('users');
+        }
+    }
+
+    renderAll = () => {
+        const filteredUsers = this.state['users'].filter(user => user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
         return (
             <Grid celled='internally' style={{marginTop: '2em'}} columns={4}>
                 {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
@@ -84,7 +106,8 @@ class Friends extends React.Component {
         return (
             <Grid.Column style={{textAlign: 'center', marginTop: '2em'}}>
                 {this.renderSearchBar()}
-                {this.state.filterJustFriends ? this.renderPeople('friends') : this.renderPeople('users')}
+                {this.props.user ? this.renderUserOptions() : this.renderAll()}
+                {/* {this.state.filterJustFriends ? this.renderPeople('friends') : this.renderPeople('users')} */}
             </Grid.Column> 
         )
     }
