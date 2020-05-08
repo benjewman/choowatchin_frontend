@@ -4,6 +4,7 @@ import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import UserCard from '../components/UserCard'
 import { url } from '../urls.js'
+import { renderIntoDocument } from 'react-dom/test-utils'
 
 class Friends extends React.Component {
     constructor() {
@@ -53,13 +54,31 @@ class Friends extends React.Component {
 
             )
         }
+        const renderCount = () => {
+            if (this.props.user) {
+                if (this.state.filterJustFriends) {
+                    return (
+                        <p>{this.state.friends.length} Friends</p>
+                    )
+                } else {
+                    return (
+                        <p>{this.state.users.length - 1} Total Users</p>
+                    )
+                }
+            } else {
+                return (
+                    <p>{this.state.users.length} Total Users</p>
+                )
+            }
+        }
+        
         return (
             <div>
                 <Input value={this.state.filter} onChange={this.handleInputChange} type='text' placeholder='Search...' action />
                 {this.props.user ? renderSelect() : null}
-                {/* <Select compact onChange={this.handleSelectChange} options={options} defaultValue='your friends' /> */}
                 {/* pluralize friends/users below to fix grammar */}
-                {this.state.filterJustFriends ? <p>{this.state.friends.length} Friends</p> : <p>{this.state.users.length - 1} Total</p>}
+                {renderCount()}
+                {/* {this.state.filterJustFriends ? <p>{this.state.friends.length} Friends</p> : <p>{this.state.users.length - 1} Total Users</p>} */}
             </div>
         )
     }
