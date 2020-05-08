@@ -36,32 +36,30 @@ class FeedContainer extends React.Component {
         }
     }
     
-    // componentWillUpdate(nextProps) {
-    //     if (!this.props.user) {
-    //         console.log("Woohoo no user no rules!");
-    //         fetch(`${url}/reviews`)
-    //         .then(resp => resp.json())
-    //         .then(data => {
-    //             this.setState({reviews: data})
-    //         })
-    //     } else if (nextProps.user !== this.props.user) {
-    //         console.log("still user but different");
-    //         const reqObj = {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'UserId': `Bearer ${nextProps.user.id}`
-    //             }
-    //         }
-    //         fetch(`${url}/reviews`, reqObj)
-    //         .then(resp => resp.json())
-    //         .then(data => {
-    //             this.setState({reviews: data})
-    //         })
-    //     } else {
-    //         console.log("same user");
-    //     }
-    // }
+    componentWillUpdate(nextProps) {
+        if (this.props.user != nextProps.user) {
+            if (nextProps.user) {
+                const reqObj = {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'UserId': `Bearer ${nextProps.user.id}`
+                    }
+                }
+                fetch(`${url}/reviews`, reqObj)
+                .then(resp => resp.json())
+                .then(data => {
+                    this.setState({reviews: data})
+                })
+            } else {
+                fetch(`${url}/reviews`)
+                .then(resp => resp.json())
+                .then(data => {
+                    this.setState({reviews: data})
+                })
+            }
+        } 
+    }
 
     filterReviews = () => {
         switch (this.props.filter) {
