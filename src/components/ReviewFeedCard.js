@@ -111,7 +111,6 @@ class ReviewFeedCard extends React.Component {
     }
     
     render() {
-        console.log(this.props)
         return (
             this.state.reviewShow ? this.renderCard() : null
         )

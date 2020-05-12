@@ -35,15 +35,15 @@ class FeedContainer extends React.Component {
             })
         }
     }
-    
-    componentWillUpdate(nextProps) {
-        if (this.props.user !== nextProps.user) {
-            if (nextProps.user) {
+
+    componentDidUpdate(prevProps) {
+        if (this.props.user !== prevProps.user) {
+            if (this.props.user) {
                 const reqObj = {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'UserId': `Bearer ${nextProps.user.id}`
+                        'UserId': `Bearer ${this.props.user.id}`
                     }
                 }
                 fetch(`${url}/reviews`, reqObj)
@@ -78,7 +78,7 @@ class FeedContainer extends React.Component {
     }
     
     render() {
-        console.log('passing props', this.props)
+        console.log('whats the state', this.state);
         return (
             this.renderReviewCards()
         )
