@@ -44,8 +44,10 @@ class MovieShow extends React.Component {
             .then(show => {
                 if (show.error) {
                     return null
-                } else {
+                } else if (this.props.followedReviews) {
                     this.setState({allReviews: show.reviews, friendReviews: show.reviews.filter(review => this.props.followedReviews.map(review => review.id).includes(review.id))})
+                } else {
+                    this.setState({allReviews: show.reviews})
                 }
             })
         })
