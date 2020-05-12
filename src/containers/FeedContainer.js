@@ -37,7 +37,7 @@ class FeedContainer extends React.Component {
     }
     
     componentWillUpdate(nextProps) {
-        if (this.props.user != nextProps.user) {
+        if (this.props.user !== nextProps.user) {
             if (nextProps.user) {
                 const reqObj = {
                     method: 'GET',
