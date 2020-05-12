@@ -1,8 +1,9 @@
-import React from 'react'
-import { Image, Icon, Grid } from 'semantic-ui-react'
-import { connect } from 'react-redux'
-import { setTopFive } from '../actions/index'
-import { url } from '../urls.js'
+import React from 'react';
+import { Image, Icon, Grid } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { setTopFive } from '../actions/index';
+import { url } from '../urls.js';
+import PopularUserCard from '../components/PopularUserCard';
 
 const cardStyle = {
     border: 'thin dotted black',
@@ -16,24 +17,8 @@ class PopularReviewers extends React.Component {
         .then(topFiveInfo => this.props.setTopFive(topFiveInfo))
     }
 
-    renderUserCard = (user) => {
-        return (
-            <Grid style={cardStyle} columns={2}>
-                <Grid.Column>
-                    <h4>{user.full_name}</h4>
-                    {/* make username clickable */}
-                    <a href={'/profile/' + user.id}>@{user.username}</a>
-                </Grid.Column>
-                <Grid.Column>
-                    <Image src={user.avatar} wrapped  size="mini"/>
-                    <div><Icon name='user' />{user.followers.length} Followers</div>
-                </Grid.Column>
-            </Grid>
-        )
-    }
-
     renderTopFiveCards = () => {
-        return this.props.topFive.map((user)  => this.renderUserCard(user))
+        return this.props.topFive.map((user)  => <PopularUserCard user={user} key={user.id} />)
     }
 
     render() {
