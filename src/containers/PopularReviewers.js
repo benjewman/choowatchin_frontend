@@ -1,14 +1,8 @@
 import React from 'react';
-import { Image, Icon, Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { setTopFive } from '../actions/index';
 import { url } from '../urls.js';
 import PopularUserCard from '../components/PopularUserCard';
-
-const cardStyle = {
-    border: 'thin dotted black',
-    marginLeft: '0.5em'
-}
 
 class PopularReviewers extends React.Component {
     componentDidMount() {

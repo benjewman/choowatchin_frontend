@@ -1,10 +1,9 @@
 import React from 'react'
-import { Grid, Input, Select, Button } from 'semantic-ui-react'
+import { Grid, Input, Select } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import UserCard from '../components/UserCard'
 import { url } from '../urls.js'
-import { renderIntoDocument } from 'react-dom/test-utils'
 
 class Friends extends React.Component {
     constructor() {
