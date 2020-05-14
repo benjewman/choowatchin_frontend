@@ -95,9 +95,9 @@ class Profile extends React.Component {
     userCondition = () => {
         if (this.props.user) {
             if (this.props.user.id === this.state.user.id) {
-                this.renderEditButton();
+                return this.renderEditButton();
             } else {
-                this.renderFollowButton();
+                return this.renderFollowButton();
             }
         } 
     }
