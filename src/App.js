@@ -16,6 +16,7 @@ import Profile from './containers/Profile'
 import EditProfile from './containers/EditProfile'
 import SearchPage from './containers/SearchPage'
 import MediaQuery from 'react-responsive'
+import NavDefault from './components/NavDefault';
 
 function App() {
   
@@ -25,7 +26,7 @@ function App() {
       <BrowserRouter>
         <Grid>
           <Grid.Row style={{ marginBottom: '4em'}}>
-            <Navbar />
+            <NavDefault />
           </Grid.Row>
           <Grid.Row >
             <Switch>
@@ -49,7 +50,7 @@ function App() {
       </BrowserRouter>
       </MediaQuery>
       <MediaQuery maxDeviceWidth={1224}>
-        <h1>Mobile friendly version on the way. Please us out on a computer in the meantime.</h1>
+        <h1>Mobile friendly version on the way. Please use on a computer in the meantime.</h1>
       </MediaQuery>
     </React.Fragment>
   );

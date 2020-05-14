@@ -35,6 +35,62 @@ class NavDefault extends React.Component {
     handleSearchChange = event => {
         this.setState({search: event.target.value})
     }
+
+    userRender = () => {
+        return (
+            <React.Fragment>
+                <Menu.Item
+                onClick={() => this.routeToPage(`/profile/${this.props.user.id}`)}
+                name='myProfile'
+                style={{ fontSize: '20px', color: 'white'}}
+                >
+                My Profile
+                </Menu.Item>
+
+                <Menu.Menu position='right'>
+                    <Menu.Item
+                    onClick={this.handleLogout}
+                    name='logout'
+                    style={{ fontSize: '20px', color: 'white'}}
+                    >
+                    Logout
+                    </Menu.Item>
+
+                    <Menu.Item>
+                        <Form onSubmit={this.handleSearchSubmit}>
+                            <Form.Input onChange={this.handleSearchChange} value={this.state.search} size="big" icon='search' placeholder='Search...' />
+                        </Form>
+                    </Menu.Item>
+                </Menu.Menu>
+            </React.Fragment>
+        )
+    }
+
+    nonUserRender = () => {
+        return (
+            <Menu.Menu position='right'>
+                <Menu.Item
+                onClick={() => this.props.history.push('/login')}
+                name='login'
+                style={{ fontSize: '20px', color: 'white'}}
+                >
+                Login
+                </Menu.Item>
+                <Menu.Item
+                onClick={() => this.props.history.push('/signup')}
+                name='signup'
+                style={{ fontSize: '20px', color: 'white'}}
+                >
+                Signup
+                </Menu.Item>
+                <Menu.Item>
+                    <Form onSubmit={this.handleSearchSubmit}>
+                        <Form.Input onChange={this.handleSearchChange} value={this.state.search} size="big" icon='search' placeholder='Search...' />
+                    </Form>
+                </Menu.Item>
+            </Menu.Menu>
+        )
+    }
     
     render() {
         return (
@@ -71,7 +127,10 @@ class NavDefault extends React.Component {
                 Friends
                 </Menu.Item>
     
-                <Menu.Item
+                {this.props.user ? this.userRender() : this.nonUserRender()}
+
+
+                {/* <Menu.Item
                 onClick={() => this.routeToPage(`/profile/${this.props.user.id}`)}
                 name='myProfile'
                 style={{ fontSize: '20px', color: 'white'}}
@@ -93,7 +152,8 @@ class NavDefault extends React.Component {
                             <Form.Input onChange={this.handleSearchChange} value={this.state.search} size="big" icon='search' placeholder='Search...' />
                         </Form>
                     </Menu.Item>
-                </Menu.Menu>
+                </Menu.Menu> */}
+
             </Menu>
         )
     }

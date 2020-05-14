@@ -27,6 +27,7 @@ const Navbar = (props) => {
             return <NavDefault />
         } else {
             // return the navbar with the appropriate options
+            
         }
     }
 

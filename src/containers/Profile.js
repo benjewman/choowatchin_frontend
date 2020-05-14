@@ -20,7 +20,6 @@ class Profile extends React.Component {
         fetch(`${url}/users/${this.props.match.params.id}`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
             this.setState({
                 user: data,
                 reviews: data.reviews.reverse()
@@ -35,7 +34,6 @@ class Profile extends React.Component {
             fetch(`${url}/users/${this.props.match.params.id}`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
             this.setState({
                 user: data,
                 reviews: data.reviews.reverse()
@@ -94,6 +92,16 @@ class Profile extends React.Component {
         }
     }
 
+    userCondition = () => {
+        if (this.props.user) {
+            if (this.props.user.id === this.state.user.id) {
+                this.renderEditButton();
+            } else {
+                this.renderFollowButton();
+            }
+        } 
+    }
+
     renderProfileCard = () => {
         return (
             <Grid.Column width={6} style={{marginLeft: '5em', marginTop: '2em'}}>
@@ -106,7 +114,8 @@ class Profile extends React.Component {
                         </Card.Meta>
                     </Card.Content>
                 </Card>
-                { this.props.user && this.props.user.id === this.state.user.id ? this.renderEditButton() : this.renderFollowButton() }
+                {/* { this.props.user && this.props.user.id === this.state.user.id ? this.renderEditButton() : this.renderFollowButton() } */}
+                {this.userCondition()}
             </Grid.Column>
         )
     }
@@ -121,6 +130,7 @@ class Profile extends React.Component {
     }
     
     render() {
+        console.log('PROPS', this.props);
         return (
             <Grid columns={2}>
                 {this.renderProfileCard()}
