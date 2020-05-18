@@ -78,11 +78,13 @@ class SeriesShow extends React.Component {
     }
     
     renderCreateButton = () => {
-        return (
-            <Grid.Row style={{marginTop: '8em', textAlign: 'center'}}>
-                <Button onClick={this.routeToCreate}>Create Review <Icon name="comment alternate outline"/></Button>
-            </Grid.Row>
-        )
+        if (this.props.user) {
+            return (
+                <Grid.Row style={{marginTop: '8em', textAlign: 'center'}}>
+                    <Button onClick={this.routeToCreate}>Create Review <Icon name="comment alternate outline"/></Button>
+                </Grid.Row>
+            )
+        }
     }
 
     renderReviewButtons = () => {
@@ -223,7 +225,8 @@ class SeriesShow extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        followedReviews: state.followedReviews
+        followedReviews: state.followedReviews,
+        user: state.user
     }
 }
 

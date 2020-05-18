@@ -66,11 +66,13 @@ class MovieShow extends React.Component {
     }
     
     renderCreateButton = () => {
-        return (
-            <Grid.Row style={{marginTop: '4em', textAlign: 'center'}}>
-                <Button onClick={this.routeToCreate}>Create Review <Icon name="comment alternate outline"/></Button>
-            </Grid.Row>
-        )
+        if (this.props.user) {
+            return (
+                <Grid.Row style={{marginTop: '4em', textAlign: 'center'}}>
+                    <Button onClick={this.routeToCreate}>Create Review <Icon name="comment alternate outline"/></Button>
+                </Grid.Row>
+            )
+        }
     }
 
     renderTitleAndPlot = () => {
