@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './containers/Login'
-import Navbar from './components/Navbar'
 import Signup from './containers/Signup'
 import Dashboard from './containers/Dashboard'
 import { Grid } from 'semantic-ui-react'
@@ -15,14 +14,14 @@ import Friends from './containers/Friends'
 import Profile from './containers/Profile'
 import EditProfile from './containers/EditProfile'
 import SearchPage from './containers/SearchPage'
-import MediaQuery from 'react-responsive'
+import MediaQuery from 'react-responsive';
 import NavDefault from './components/NavDefault';
 
 function App() {
   
   return (
     <React.Fragment>
-    <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
+    <MediaQuery minDeviceWidth={1224}>
       <BrowserRouter>
         <Grid>
           <Grid.Row style={{ marginBottom: '4em'}}>

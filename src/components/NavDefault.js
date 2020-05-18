@@ -42,7 +42,7 @@ class NavDefault extends React.Component {
                 <Menu.Item
                 onClick={() => this.routeToPage(`/profile/${this.props.user.id}`)}
                 name='myProfile'
-                style={{ fontSize: '20px', color: 'white'}}
+                className="navHeaders semanticOverride"
                 >
                 My Profile
                 </Menu.Item>
@@ -51,7 +51,7 @@ class NavDefault extends React.Component {
                     <Menu.Item
                     onClick={this.handleLogout}
                     name='logout'
-                    style={{ fontSize: '20px', color: 'white'}}
+                    className="navHeaders semanticOverride"
                     >
                     Logout
                     </Menu.Item>
@@ -72,14 +72,14 @@ class NavDefault extends React.Component {
                 <Menu.Item
                 onClick={() => this.props.history.push('/login')}
                 name='login'
-                style={{ fontSize: '20px', color: 'white'}}
+                className="navHeaders semanticOverride"
                 >
                 Login
                 </Menu.Item>
                 <Menu.Item
                 onClick={() => this.props.history.push('/signup')}
                 name='signup'
-                style={{ fontSize: '20px', color: 'white'}}
+                className="navHeaders semanticOverride"
                 >
                 Signup
                 </Menu.Item>
@@ -98,7 +98,7 @@ class NavDefault extends React.Component {
                 <Menu.Item
                 onClick={() => this.routeToPage('/home')}
                 name='home'
-                style={{ fontSize: '30px', color: 'white'}}
+                style={{ fontSize: '4vh', color: 'white'}}
                 >
                 ChooWatchin
                 </Menu.Item>
@@ -106,7 +106,7 @@ class NavDefault extends React.Component {
                 <Menu.Item
                 onClick={() => this.routeToPage('/movies')}
                 name='movies'
-                style={{ fontSize: '20px', color: 'white'}}
+                className="navHeaders semanticOverride"
                 >
                 Movies Now Playing
                 </Menu.Item>
@@ -114,7 +114,7 @@ class NavDefault extends React.Component {
                 <Menu.Item
                 onClick={() => this.routeToPage('/series')}
                 name='shows'
-                style={{ fontSize: '20px', color: 'white'}}
+                className="navHeaders semanticOverride"
                 >
                 TV On Air
                 </Menu.Item>
@@ -122,37 +122,12 @@ class NavDefault extends React.Component {
                 <Menu.Item
                 onClick={() => this.routeToPage('/friends')}
                 name='friends'
-                style={{ fontSize: '20px', color: 'white'}}
+                className="navHeaders semanticOverride"
                 >
                 Friends
                 </Menu.Item>
     
                 {this.props.user ? this.userRender() : this.nonUserRender()}
-
-
-                {/* <Menu.Item
-                onClick={() => this.routeToPage(`/profile/${this.props.user.id}`)}
-                name='myProfile'
-                style={{ fontSize: '20px', color: 'white'}}
-                >
-                My Profile
-                </Menu.Item>
-    
-                <Menu.Menu position='right'>
-                    <Menu.Item
-                    onClick={this.handleLogout}
-                    name='logout'
-                    style={{ fontSize: '20px', color: 'white'}}
-                    >
-                    Logout
-                    </Menu.Item>
-    
-                    <Menu.Item>
-                        <Form onSubmit={this.handleSearchSubmit}>
-                            <Form.Input onChange={this.handleSearchChange} value={this.state.search} size="big" icon='search' placeholder='Search...' />
-                        </Form>
-                    </Menu.Item>
-                </Menu.Menu> */}
 
             </Menu>
         )
