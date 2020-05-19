@@ -17,6 +17,7 @@ import SearchPage from './containers/SearchPage';
 import MediaQuery from 'react-responsive';
 import NavDefault from './components/NavDefault';
 import DashResponsive from './containers/DashResponsive';
+import NavResponsive from './components/NavResponsive';
 
 function App() {
   
@@ -24,7 +25,7 @@ function App() {
       <BrowserRouter>
         <Grid>
           <Grid.Row style={{ marginBottom: '4em'}}>
-            <NavDefault />
+            <NavResponsive />
           </Grid.Row>
           <Grid.Row >
             <Switch>
