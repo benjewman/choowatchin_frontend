@@ -1,11 +1,10 @@
-import React from 'react'
-import { Grid, Menu } from 'semantic-ui-react'
-import { connect } from 'react-redux'
-import WithAuth from '../components/WithAuth'
-import FeedContainer from './FeedContainer'
-import PopularReviewers from './PopularReviewers'
-// import { setTopFive } from '../actions/index'
-// import { url } from '../urls.js'
+import React from 'react';
+import { Grid, Menu } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import WithAuth from '../components/WithAuth';
+import FeedContainer from './FeedContainer';
+import PopularReviewers from './PopularReviewers';
+
 
 class Dashboard extends React.Component {
     constructor() {
@@ -72,15 +71,8 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        followedReviews: state.followedReviews,
         user: state.user
     }
 }
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         setTopFive: topFive => dispatch(setTopFive(topFive))
-//     }
-// }
 
 export default connect(mapStateToProps, null)(WithAuth(Dashboard))
