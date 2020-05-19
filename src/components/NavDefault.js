@@ -98,7 +98,7 @@ class NavDefault extends React.Component {
                 <Menu.Item
                 onClick={() => this.routeToPage('/home')}
                 name='home'
-                style={{ fontSize: '4vh', color: 'white'}}
+                style={{ fontSize: '2vw', color: 'white'}}
                 >
                 ChooWatchin
                 </Menu.Item>
