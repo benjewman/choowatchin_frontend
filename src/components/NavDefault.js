@@ -85,7 +85,7 @@ class NavDefault extends React.Component {
                 </Menu.Item>
                 <Menu.Item>
                     <Form onSubmit={this.handleSearchSubmit}>
-                        <Form.Input onChange={this.handleSearchChange} value={this.state.search} size="big" icon='search' placeholder='Search...' />
+                        <Form.Input onChange={this.handleSearchChange} value={this.state.search}  icon='search' placeholder='Search...' />
                     </Form>
                 </Menu.Item>
             </Menu.Menu>
@@ -94,7 +94,7 @@ class NavDefault extends React.Component {
     
     render() {
         return (
-            <Menu style={{backgroundColor: 'red'}} fixed="top">
+            <Menu style={{backgroundColor: 'red', height: '10vh'}} fixed="top">
                 <Menu.Item
                 onClick={() => this.routeToPage('/home')}
                 name='home'
