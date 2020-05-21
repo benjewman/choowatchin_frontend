@@ -62,3 +62,8 @@ a.item.navHeaders.semanticOverride {
   color: white;
 }
 
+.navForm.semanticOverride {
+  width: 15vw;
+}
+
+
