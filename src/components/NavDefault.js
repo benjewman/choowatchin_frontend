@@ -94,7 +94,7 @@ class NavDefault extends React.Component {
     
     render() {
         return (
-            <Menu style={{backgroundColor: 'red', height: '10vh'}} fixed="top">
+            <Menu style={{backgroundColor: 'red', height: '70px'}} fixed="top">
                 <Menu.Item
                 onClick={() => this.routeToPage('/home')}
                 name='home'

@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <Grid className="showContainer" columns={3} >
+            <Grid className="showContainer" columns={3}>
                 <Grid.Column width={3}>
                     <Menu pointing vertical>
                         <Menu.Item

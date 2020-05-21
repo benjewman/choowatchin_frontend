@@ -13,8 +13,6 @@ function NavResponsive() {
                 <NavMobile />
             </MediaQuery>
         </React.Fragment>
-
-
     )
 }
 
