@@ -1,9 +1,10 @@
-import React from 'react'
-import { Menu, Form, Icon, Popup } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
-import { withRouter } from 'react-router-dom'
-import { setUser, setSearch } from '../actions/index'
-import { connect } from 'react-redux'
+import React from 'react';
+import { Menu, Form, Icon, Popup } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import { withRouter } from 'react-router-dom';
+import { setUser, setSearch } from '../actions/index';
+import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
 
 class NavMobile extends React.Component {
     constructor() {
@@ -43,12 +44,18 @@ class NavMobile extends React.Component {
                 onClick={() => this.props.history.push('/login')}
                 name='login'
                 >
-                <Icon name='sign in' inverted color='grey'/>
+                <MediaQuery minDeviceWidth={768}><Icon name='sign in' size="huge" inverted color='grey'/></MediaQuery>
+                <MediaQuery maxDeviceWidth={767}><Icon name='sign in' inverted color='grey'/></MediaQuery>
                 </Menu.Item>
                 
                 <Menu.Item className='navHeaders semanticOverride'>
                     <Popup
-                    trigger={<Icon name='search' inverted color='grey'/>}
+                    trigger={
+                        <React.Fragment>
+                        <MediaQuery minDeviceWidth={768}><Icon name='search' size="huge" inverted color='grey'/></MediaQuery>
+                        <MediaQuery maxDeviceWidth={767}><Icon name='search' inverted color='grey'/></MediaQuery>
+                        </React.Fragment>
+                    }
                     on='click'
                     >
                         <Form onSubmit={this.handleSearchSubmit}>
@@ -64,31 +71,38 @@ class NavMobile extends React.Component {
         return (
             <React.Fragment>
                 <Menu.Item
+                className="navMobileIcon semanticOverride"
                 onClick={() => this.routeToPage(`/profile/${this.props.user.id}`)}
                 name='myProfile'
-                
                 >
-                <Icon name="user circle" inverted color='grey'/>
+                <MediaQuery minDeviceWidth={768}><Icon name='user circle' size="huge" inverted color='grey'/></MediaQuery>
+                <MediaQuery maxDeviceWidth={767}><Icon name='user circle' inverted color='grey'/></MediaQuery>
                 </Menu.Item>
 
+                
                 <Menu.Item
+                className="navMobileIcon semanticOverride"
                 onClick={this.handleLogout}
                 name='logout'
-                
                 >
-                <Icon name="sign-out" inverted color='grey'/>
+                <MediaQuery minDeviceWidth={768}><Icon name='sign-out' size="huge" inverted color='grey'/></MediaQuery>
+                <MediaQuery maxDeviceWidth={767}><Icon name='sign-out' inverted color='grey'/></MediaQuery>
                 </Menu.Item>
 
-                <Menu.Item>
+                <Menu.Item className="navMobileIcon semanticOverride">
                     <Popup
-                    trigger={<Icon name='search' inverted color='grey'/>}
+                    trigger={
+                        <React.Fragment>
+                        <MediaQuery minDeviceWidth={768}><Icon name='search' size="huge" inverted color='grey'/></MediaQuery>
+                        <MediaQuery maxDeviceWidth={767}><Icon name='search' inverted color='grey'/></MediaQuery>
+                        </React.Fragment>
+                        }
                     on='click'
                     >
                         <Form onSubmit={this.handleSearchSubmit}>
                             <Form.Input onChange={this.handleSearchChange} value={this.state.search} size="big" icon='search' placeholder='Search...' />
                         </Form>
                     </Popup>
-                    
                 </Menu.Item>
             </React.Fragment>
         )
@@ -100,30 +114,36 @@ class NavMobile extends React.Component {
                 <Menu.Item
                 onClick={() => this.routeToPage('/home')}
                 name='home'
-                style={{ fontSize: '3vw', color: 'white'}}
+                style={{fontSize: '2vw', color: 'white'}}
                 >
                 ChooWatchin
                 </Menu.Item>
         
                 <Menu.Item
+                className="navMobileIcon semanticOverride"
                 onClick={() => this.routeToPage('/movies')}
                 name='movies'
                 >
-                <Icon name='film' inverted color='grey'/>
+                <MediaQuery minDeviceWidth={768}><Icon name='film' size="huge" inverted color='grey'/></MediaQuery>
+                <MediaQuery maxDeviceWidth={767}><Icon name='film' inverted color='grey'/></MediaQuery>
                 </Menu.Item>
     
                 <Menu.Item
+                className="navMobileIcon semanticOverride"
                 onClick={() => this.routeToPage('/series')}
                 name='shows'
                 >
-                <Icon name='tv' inverted color='grey'/>
+                <MediaQuery minDeviceWidth={768}><Icon name='tv' size="huge" inverted color='grey'/></MediaQuery>
+                <MediaQuery maxDeviceWidth={767}><Icon name='tv' inverted color='grey'/></MediaQuery>
                 </Menu.Item>
     
                 <Menu.Item
+                className="navMobileIcon semanticOverride"
                 onClick={() => this.routeToPage('/friends')}
                 name='friends'
                 >
-                <Icon name='user' inverted color='grey'/>
+                <MediaQuery minDeviceWidth={768}><Icon name='user' size="huge" inverted color='grey'/></MediaQuery>
+                <MediaQuery maxDeviceWidth={767}><Icon name='user' inverted color='grey'/></MediaQuery>
                 </Menu.Item>
     
                 {this.props.user ? this.userRender() : this.nonUserRender()}

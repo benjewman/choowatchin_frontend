@@ -12,6 +12,7 @@ function NavResponsive() {
             <MediaQuery maxDeviceWidth={1224}>
                 <NavMobile />
             </MediaQuery>
+            {/* option for ipads to make icons bigger */}
         </React.Fragment>
     )
 }
