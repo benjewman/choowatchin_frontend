@@ -1,6 +1,9 @@
-import React from 'react'
-import ReviewFeedCard from '../components/ReviewFeedCard'
-import { url } from '../urls.js'
+import React from 'react';
+import ReviewFeedCard from '../components/ReviewFeedCard';
+import { url } from '../urls.js';
+import MediaQuery from 'react-responsive';
+import ReviewFeedMobile from '../components/ReviewFeedMobile';
+
 
 class FeedContainer extends React.Component {
     constructor() {
@@ -74,13 +77,23 @@ class FeedContainer extends React.Component {
     
     renderReviewCards = () => {
         return this.filterReviews().map(review => <ReviewFeedCard review={review} key={review.id}/>)
+    }
 
+    renderMobileReviewCards = () => {
+        return this.filterReviews().map(review => <ReviewFeedMobile review={review} key={review.id}/>)
     }
     
     render() {
-        console.log('whats the state', this.state);
         return (
-            this.renderReviewCards()
+            <React.Fragment>
+                <MediaQuery minDeviceWidth={1224}>
+                    {this.renderReviewCards()}
+                </MediaQuery>
+                <MediaQuery maxDeviceWidth={1224}>
+                    {this.renderMobileReviewCards()}
+                </MediaQuery>
+            </React.Fragment>
+
         )
     }
 }
