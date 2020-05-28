@@ -85,4 +85,4 @@ class FeedContainer extends React.Component {
     }
 }
 
-export default FeedContainer
+export default FeedContainer;

@@ -66,4 +66,9 @@ a.item.navHeaders.semanticOverride {
   width: 15vw;
 }
 
+.mobileFeed {
+  overflow-x: hidden;
+  overflow-y: auto;
+  word-wrap: break-word;
+}
 

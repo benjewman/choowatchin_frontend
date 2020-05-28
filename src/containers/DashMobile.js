@@ -26,7 +26,7 @@ class DashMobile extends React.Component {
             )
         } else {
             return (
-            <div className='detailScroll'>
+            <div className='detailScroll mobileFeed'>
                 <h3 style={{textAlign: 'center'}}>Recent Reviews</h3>
                 <FeedContainer filter={this.state.filter} />
             </div>
