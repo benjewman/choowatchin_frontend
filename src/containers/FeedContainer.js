@@ -80,7 +80,7 @@ class FeedContainer extends React.Component {
     }
 
     renderMobileReviewCards = () => {
-        return this.filterReviews().map(review => <ReviewFeedMobile review={review} key={review.id}/>)
+        return this.filterReviews().map(review => <ReviewFeedMobile style={{display: 'block'}} review={review} key={review.id}/>)
     }
     
     render() {

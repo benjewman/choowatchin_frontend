@@ -70,5 +70,8 @@ a.item.navHeaders.semanticOverride {
   overflow-x: hidden;
   overflow-y: auto;
   word-wrap: break-word;
+  display: block;
+  margin-left: 5vw;
+  margin-right: 1vw;
 }
 

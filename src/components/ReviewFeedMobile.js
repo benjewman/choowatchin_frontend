@@ -64,7 +64,7 @@ class ReviewFeedCard extends React.Component {
 
     renderCard = () => {
         return (
-            <Grid columns={2} style={{borderBottom: 'dotted red', maxWidth: '100vw'}}>
+            <Grid columns={2} style={{borderBottom: 'dotted red', width: '100vw'}}>
                 <Grid.Column width={5}>
                     <Card onClick={this.routeToPage}>
                         <Card.Content>
