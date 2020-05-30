@@ -74,5 +74,7 @@ a.item.navHeaders.semanticOverride {
   display: block;
   margin-left: 5vw;
   margin-right: 1vw;
+  top: 10vh;
+  position: fixed;
 }
 
