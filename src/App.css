@@ -41,7 +41,8 @@
 .detailScroll {
   overflow-y: scroll;
   display: flex;
-  height: 86vh;
+  height: 90vh;
+  
 }
 
 .showContainer {

@@ -19,7 +19,7 @@ class DashMobile extends React.Component {
     recentOrNetworkReviews = () => {
         if (this.props.user) {
             return (
-                <div className='detailScroll' >
+                <div className='detailScroll mobileFeed' >
                     <h3 style={{textAlign: 'center'}}>Reviews in Your Network</h3>
                     <FeedContainer filter={this.state.filter} user={this.props.user} />
                 </div>
