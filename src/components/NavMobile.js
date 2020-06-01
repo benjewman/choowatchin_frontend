@@ -108,6 +108,9 @@ class NavMobile extends React.Component {
         )
     }
 
+
+    // Fix sizing for regular iPad
+    
     render() {
         return (
             <Menu style={{backgroundColor: 'red', height: '10vh'}} fixed="top">

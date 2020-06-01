@@ -3,6 +3,8 @@ import { Grid } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 import MovieCard from '../components/MovieCard'
 import InfiniteLoader from 'react-infinite-loader'
+import MediaQuery from 'react-responsive';
+
 
 class InTheaters extends React.Component {
     constructor() {
@@ -53,10 +55,25 @@ class InTheaters extends React.Component {
         return (
             <div>
                 <h1 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>Check Out These New Movies</h1>
-                <Grid columns={6} style={{marginLeft: '0.25em', marginRight: '0.5em'}}>
-                    {this.renderMovies()}
-                    <InfiniteLoader onVisited={ () => this.handleVisit() } />
-                </Grid>
+                <MediaQuery minDeviceWidth={1224}>
+                    <Grid columns={6} style={{marginLeft: '0.25em', marginRight: '0.5em'}}> 
+                        {this.renderMovies()}
+                        <InfiniteLoader onVisited={ () => this.handleVisit() } />
+                    </Grid>
+                </MediaQuery>
+                <MediaQuery minDeviceWidth={750} maxDeviceWidth={1224}>
+                    <Grid columns={3} style={{marginLeft: '2vw', marginRight: '2vw'}}> 
+                        {this.renderMovies()}
+                        <InfiniteLoader onVisited={ () => this.handleVisit() } />
+                    </Grid>
+                </MediaQuery>
+                <MediaQuery maxDeviceWidth={749}>
+                    <Grid columns={2} style={{marginLeft: '2vw', marginRight: '2vw'}}> 
+                        {this.renderMovies()}
+                        <InfiniteLoader onVisited={ () => this.handleVisit() } />
+                    </Grid>
+                </MediaQuery>
+
                 {this.state.fetchPage > this.state.totalPages ? <h3 style={{textAlign: 'center'}}>End of Results</h3> : <h3 style={{textAlign: 'center'}}>Loading More...</h3>}
             </div>
         )
