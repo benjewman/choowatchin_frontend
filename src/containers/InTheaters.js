@@ -62,13 +62,13 @@ class InTheaters extends React.Component {
                     </Grid>
                 </MediaQuery>
                 <MediaQuery minDeviceWidth={750} maxDeviceWidth={1224}>
-                    <Grid columns={3} style={{marginLeft: '2vw', marginRight: '2vw'}}> 
+                    <Grid columns={3} style={{marginLeft: '1vw', marginRight: '1vw'}}> 
                         {this.renderMovies()}
                         <InfiniteLoader onVisited={ () => this.handleVisit() } />
                     </Grid>
                 </MediaQuery>
                 <MediaQuery maxDeviceWidth={749}>
-                    <Grid columns={2} style={{marginLeft: '2vw', marginRight: '2vw'}}> 
+                    <Grid columns={2} style={{marginLeft: '1vw', marginRight: '1vw'}}> 
                         {this.renderMovies()}
                         <InfiniteLoader onVisited={ () => this.handleVisit() } />
                     </Grid>
