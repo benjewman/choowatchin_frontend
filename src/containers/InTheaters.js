@@ -53,8 +53,8 @@ class InTheaters extends React.Component {
     
     render() {
         return (
-            <div>
-                <h1 style={{textAlign: 'center', marginTop: '1em', marginBottom: '1em'}}>Check Out These New Movies</h1>
+            <div className="listPage">
+                <h1 style={{textAlign: 'center', fontSize: '5vw'}}>Check Out These New Movies</h1>
                 <MediaQuery minDeviceWidth={1224}>
                     <Grid columns={6} style={{marginLeft: '0.25em', marginRight: '0.5em'}}> 
                         {this.renderMovies()}

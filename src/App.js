@@ -24,7 +24,7 @@ function App() {
   return (
       <BrowserRouter>
         <Grid>
-          <Grid.Row style={{ marginBottom: '4em'}}>
+          <Grid.Row style={{ marginBottom: '5vh'}}>
             <NavResponsive />
           </Grid.Row>
           <Grid.Row >
