@@ -29,9 +29,6 @@ class InTheaters extends React.Component {
     }
 
     handleVisit = () => {
-        // fetch next page and concat onto state
-        // on the condition that the page to be fetched
-        // is not greater than the total pages
         if (this.state.fetchPage > this.state.totalPages) {
         } else {
             fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&page=${this.state.fetchPage}`)
@@ -40,7 +37,6 @@ class InTheaters extends React.Component {
             // increment fetch page for next visit
             this.setState({fetchPage: this.state.fetchPage + 1})
         }
-        
     }
 
     routeToMoviePage = (movie) => {
