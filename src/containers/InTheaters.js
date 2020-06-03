@@ -5,6 +5,8 @@ import MovieCard from '../components/MovieCard'
 import InfiniteLoader from 'react-infinite-loader'
 import MediaQuery from 'react-responsive';
 
+const movieUrl = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US';
+
 
 class InTheaters extends React.Component {
     constructor() {
@@ -31,7 +33,7 @@ class InTheaters extends React.Component {
     handleVisit = () => {
         if (this.state.fetchPage > this.state.totalPages) {
         } else {
-            fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&page=${this.state.fetchPage}`)
+            fetch(`${movieUrl}&page=${this.state.fetchPage}`)
             .then(resp => resp.json())
             .then(movies => this.setState({ movies: this.state.movies.concat(movies.results)}))
             // increment fetch page for next visit
