@@ -8,6 +8,7 @@ import MehStamp from '../meh_stamp.jpeg'
 import GoodStamp from '../good_stamp.jpeg'
 import MustWatchStamp from '../must_watch_stamp.jpeg'
 import { url } from '../urls.js'
+import MediaQuery from 'react-responsive';
 
 const cardStyle = {
     border: 'thin dotted black',
@@ -198,7 +199,9 @@ class MovieShow extends React.Component {
                 {this.renderMoviePoster()}
                 {this.renderTitleAndPlot()}
                 {/* Add dividers to the column below */}
-                {this.state.reviewToggle ? this.renderReviews() : this.renderMovieDetails()}
+                <MediaQuery minDeviceWidth={1224}>
+                    {this.state.reviewToggle ? this.renderReviews() : this.renderMovieDetails()}
+                </MediaQuery>
             </Grid>
         )
     }
