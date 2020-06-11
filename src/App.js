@@ -18,6 +18,7 @@ import MediaQuery from 'react-responsive';
 import NavDefault from './components/NavDefault';
 import DashResponsive from './containers/DashResponsive';
 import NavResponsive from './components/NavResponsive';
+import MovieShowResponsive from './components/MovieShowResponsive';
 
 function App() {
   
@@ -34,7 +35,7 @@ function App() {
               <Route path='/signup' component={Signup} />
               <Route path='/home' component={DashResponsive} />
               <Route exact path='/movies' component={InTheaters} />
-              <Route path='/movies/:id' component={MovieShow} />
+              <Route path='/movies/:id' component={MovieShowResponsive} />
               <Route exact path='/series' component={OnAir} />
               <Route path='/series/:id' component={SeriesShow} />
               <Route path='/reviews/:medium/:id/new' component={CreateReview} />
