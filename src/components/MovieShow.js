@@ -89,7 +89,9 @@ class MovieShow extends React.Component {
                     <p style={{fontSize: '20px'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
                 </Grid.Row>
                 {this.renderCreateButton()}
-                {this.renderReviewButtons()}
+                <MediaQuery minDeviceWidth={1224}>
+                    {this.renderReviewButtons()}
+                </MediaQuery>
             </Grid.Column>
         )
     }
