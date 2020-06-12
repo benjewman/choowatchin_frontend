@@ -78,8 +78,8 @@ class MovieShowMobile extends React.Component {
 
     renderTitleAndPlot = () => {
         return (
-            <Grid.Column className="fixColumn" width={6}>
-                <Grid.Row style={{marginTop: '3em'}}>
+            <Grid.Column className="fixColumn" >
+                <Grid.Row >
                     <h2 style={{fontSize: '30px', textAlign: 'center', fontStyle: 'italic'}}>{this.state.movie.tagline}</h2>
                 </Grid.Row>
                 <Grid.Row style={{marginTop: '4em'}}>
@@ -95,10 +95,18 @@ class MovieShowMobile extends React.Component {
         console.log(this.state)
         return (
             <React.Fragment>
-            <h1 style={{fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.movie.title}</h1>
-                <Grid className="showContainer" style={{marginLeft: '0.5vw'}} columns={2}>
-                    {this.renderMoviePoster()}
-                    {this.renderTitleAndPlot()}
+                <Grid >
+                    <Grid.Row>
+                        <Grid.Column>
+                            <h1 style={{fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.movie.title}</h1>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid columns={2}>
+                            {this.renderMoviePoster()}
+                            {this.renderTitleAndPlot()}
+                        </Grid>
+                    </Grid.Row>
                 </Grid>
             </React.Fragment>
         )
