@@ -88,6 +88,8 @@ class MovieShowMobile extends React.Component {
     }
 
     // might wanna refactor code below
+
+    // adjust poster size so it fits properly on each device
     render() {
         console.log(this.state)
         return (
