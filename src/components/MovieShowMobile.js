@@ -197,13 +197,9 @@ class MovieShowMobile extends React.Component {
     render() {
         console.log(this.state)
         return (
-            <Grid className="showContainer" style={{marginLeft: '0.5em'}} columns={3}>
+            <Grid className="showContainer" style={{marginLeft: '0.5vw'}} columns={2}>
                 {this.renderMoviePoster()}
                 {this.renderTitleAndPlot()}
-                {/* Add dividers to the column below */}
-                <MediaQuery minDeviceWidth={1224}>
-                    {this.state.reviewToggle ? this.renderReviews() : this.renderMovieDetails()}
-                </MediaQuery>
             </Grid>
         )
     }
