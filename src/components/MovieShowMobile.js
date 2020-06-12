@@ -56,8 +56,8 @@ class MovieShowMobile extends React.Component {
 
     renderMoviePoster = () => {
         return (
-            <Grid.Column className="fixColumn">
-                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.movie.poster_path}/>
+            <Grid.Column>
+                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.movie.poster_path} style={{width: '80vw', marginLeft: 'auto', marginRight: 'auto'}}/>
             </Grid.Column>
         )
     }
@@ -79,8 +79,8 @@ class MovieShowMobile extends React.Component {
     renderTitleAndPlot = () => {
         return (
             <Grid.Column className="fixColumn" >
-                <Grid.Row style={{}}>
-                    <p style={{fontSize: '3vw'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
+                <Grid.Row >
+                    <p style={{fontSize: '3vw', marginLeft: 'auto', marginRight: 'auto', width: '100vw', textAlign: 'center'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
                 </Grid.Row>
                 {this.renderCreateButton()}
             </Grid.Column>
@@ -100,14 +100,14 @@ class MovieShowMobile extends React.Component {
                     </Grid.Row>
                     <Grid.Row >
                         <Grid.Column>
-                            <h2 style={{fontSize: '6vw', textAlign: 'center', fontStyle: 'italic', width: '100vw'}}>{this.state.movie.tagline}</h2>
+                            <h2 style={{fontSize: '6vw', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', fontStyle: 'italic', width: '100vw'}}>{this.state.movie.tagline}</h2>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
-                        <Grid columns={2}>
                             {this.renderMoviePoster()}
-                            {this.renderTitleAndPlot()}
-                        </Grid>
+                    </Grid.Row>
+                    <Grid.Row>
+                        {this.renderTitleAndPlot()}
                     </Grid.Row>
                 </Grid>
             </React.Fragment>
