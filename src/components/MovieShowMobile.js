@@ -69,7 +69,7 @@ class MovieShowMobile extends React.Component {
     renderCreateButton = () => {
         if (this.props.user) {
             return (
-                <Grid.Row style={{marginTop: '4em', textAlign: 'center'}}>
+                <Grid.Row style={{marginTop: '2vh', textAlign: 'center'}}>
                     <Button onClick={this.routeToCreate}>Create Review <Icon name="comment alternate outline"/></Button>
                 </Grid.Row>
             )
@@ -79,11 +79,8 @@ class MovieShowMobile extends React.Component {
     renderTitleAndPlot = () => {
         return (
             <Grid.Column className="fixColumn" >
-                <Grid.Row >
-                    <h2 style={{fontSize: '30px', textAlign: 'center', fontStyle: 'italic'}}>{this.state.movie.tagline}</h2>
-                </Grid.Row>
-                <Grid.Row style={{marginTop: '4em'}}>
-                    <p style={{fontSize: '20px'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
+                <Grid.Row style={{}}>
+                    <p style={{fontSize: '3vw'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
                 </Grid.Row>
                 {this.renderCreateButton()}
             </Grid.Column>
@@ -97,8 +94,13 @@ class MovieShowMobile extends React.Component {
             <React.Fragment>
                 <Grid >
                     <Grid.Row>
+                        <Grid.Column >
+                            <h1 style={{fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline', width: '100vw'}}>{this.state.movie.title}</h1>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row >
                         <Grid.Column>
-                            <h1 style={{fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.movie.title}</h1>
+                            <h2 style={{fontSize: '6vw', textAlign: 'center', fontStyle: 'italic', width: '100vw'}}>{this.state.movie.tagline}</h2>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
