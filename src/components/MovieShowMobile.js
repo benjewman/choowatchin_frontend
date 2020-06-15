@@ -57,7 +57,7 @@ class MovieShowMobile extends React.Component {
     renderMoviePoster = () => {
         return (
             <Grid.Column>
-                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.movie.poster_path} style={{width: '80vw', marginLeft: 'auto', marginRight: 'auto'}}/>
+                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.movie.poster_path} style={{height: '68vh', marginLeft: 'auto', marginRight: 'auto'}}/>
             </Grid.Column>
         )
     }
@@ -97,7 +97,7 @@ class MovieShowMobile extends React.Component {
                 <Grid >
                     <Grid.Row>
                         <Grid.Column >
-                            <h1 style={{fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline', width: '100vw'}}>{this.state.movie.title}</h1>
+                            <h1 style={{fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline', width: '100vw', marginTop: '1vh'}}>{this.state.movie.title}</h1>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row >
