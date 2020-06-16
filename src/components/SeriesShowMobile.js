@@ -4,20 +4,14 @@ import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { url } from '../urls.js'
 
-const cardStyle = {
-    border: 'thin dotted black',
-    marginLeft: '0.5em'
-}
-
-class MovieShowMobile extends React.Component {
+class SeriesShowMobile extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-            movie: {},
-            movieDetails: {},
-            reviewToggle: undefined,
+            tvShow: {},
             friendReviews: [],
-            allReviews: []
+            allReviews: [],
+            reviewToggle: undefined
         }
     }
 
@@ -26,20 +20,17 @@ class MovieShowMobile extends React.Component {
     componentDidMount() {
         // use the id in params
         // to fetch from TMDB
-        fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/tv/${this.props.match.params.id}?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US`)
         .then(resp => resp.json())
-        .then(movie => {
-            this.setState({movie: movie })
-            fetch(`https://www.omdbapi.com/?apikey=49f89f6c&i=${movie.imdb_id}`)
-            .then(resp => resp.json())
-            .then(movie => this.setState({movieDetails: movie}))
-
-            fetch(`${url}/shows/${movie.id}`)
+        .then(tvShow => {
+            this.setState({tvShow: tvShow })
+            // fetch to backend to find reviews for show
+            fetch(`${url}/shows/${tvShow.id}`)
             .then(resp => resp.json())
             .then(show => {
                 if (show.error) {
                     return null
-                } else if (this.props.followedReviews) {
+                } else if (this.props.followedReviews){
                     this.setState({allReviews: show.reviews, friendReviews: show.reviews.filter(review => this.props.followedReviews.map(review => review.id).includes(review.id))})
                 } else {
                     this.setState({allReviews: show.reviews})
@@ -48,16 +39,16 @@ class MovieShowMobile extends React.Component {
         })
     }
 
-    renderMoviePoster = () => {
+    renderPoster = () => {
         return (
             <Grid.Column>
-                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.movie.poster_path} style={{height: '68vh', marginLeft: 'auto', marginRight: 'auto'}}/>
+                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.tvShow.poster_path} style={{height: '68vh', marginLeft: 'auto', marginRight: 'auto'}}/>
             </Grid.Column>
         )
     }
 
     routeToCreate = () => {
-        this.props.history.push(`/reviews/movies/${this.state.movie.id}/new`)
+        this.props.history.push(`/reviews/series/${this.state.tvShow.id}/new`)
     }
     
     renderCreateButton = () => {
@@ -70,11 +61,11 @@ class MovieShowMobile extends React.Component {
         }
     }
 
-    renderTitleAndPlot = () => {
+    renderPlot = () => {
         return (
             <Grid.Column className="fixColumn" >
                 <Grid.Row >
-                    <p style={{fontSize: '3vw', marginLeft: 'auto', marginRight: 'auto', width: '100vw', textAlign: 'center'}}><strong>Plot: </strong>{this.state.movie.overview}</p>
+                    <p style={{fontSize: '3vw', marginLeft: 'auto', marginRight: 'auto', width: '100vw', textAlign: 'center'}}><strong>Plot: </strong>{this.state.tvShow.overview}</p>
                 </Grid.Row>
                 {this.renderCreateButton()}
             </Grid.Column>
@@ -85,25 +76,20 @@ class MovieShowMobile extends React.Component {
 
     // adjust poster size so it fits properly on each device
     render() {
-        console.log(this.state)
+        console.log("Mobile TV Show")
         return (
             <React.Fragment>
-                <Grid >
+                <Grid>
                     <Grid.Row>
-                        <Grid.Column >
-                            <h1 style={{marginLeft: 'auto', marginRight: 'auto', fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline', width: '98vw', marginTop: '1vh'}}>{this.state.movie.title}</h1>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row >
                         <Grid.Column>
-                            <h2 style={{fontSize: '6vw', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', fontStyle: 'italic', width: '100vw'}}>{this.state.movie.tagline}</h2>
+                            <h1 style={{marginLeft: 'auto', marginRight: 'auto', fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline', width: '98vw', marginTop: '1vh'}}>{this.state.tvShow.name}</h1>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
-                            {this.renderMoviePoster()}
+                            {this.renderPoster()}
                     </Grid.Row>
                     <Grid.Row>
-                        {this.renderTitleAndPlot()}
+                        {this.renderPlot()}
                     </Grid.Row>
                 </Grid>
             </React.Fragment>
@@ -118,4 +104,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(WithAuth(MovieShowMobile))
+export default connect(mapStateToProps)(WithAuth(SeriesShowMobile))

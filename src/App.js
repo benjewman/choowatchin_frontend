@@ -6,9 +6,7 @@ import Dashboard from './containers/Dashboard';
 import { Grid } from 'semantic-ui-react';
 import './App.css';
 import InTheaters from './containers/InTheaters';
-import MovieShow from './components/MovieShow';
 import OnAir from './containers/OnAir';
-import SeriesShow from './components/SeriesShow';
 import CreateReview from './containers/CreateReview';
 import Friends from './containers/Friends';
 import Profile from './containers/Profile';
@@ -19,6 +17,7 @@ import NavDefault from './components/NavDefault';
 import DashResponsive from './containers/DashResponsive';
 import NavResponsive from './components/NavResponsive';
 import MovieShowResponsive from './components/MovieShowResponsive';
+import SeriesShowResponsive from './components/SeriesShowResponsive';
 
 function App() {
   
@@ -37,7 +36,7 @@ function App() {
               <Route exact path='/movies' component={InTheaters} />
               <Route path='/movies/:id' component={MovieShowResponsive} />
               <Route exact path='/series' component={OnAir} />
-              <Route path='/series/:id' component={SeriesShow} />
+              <Route path='/series/:id' component={SeriesShowResponsive} />
               <Route path='/reviews/:medium/:id/new' component={CreateReview} />
               <Route exact path='/friends' component={Friends} />
               <Route exact path='/profile/:id' component={Profile} />
