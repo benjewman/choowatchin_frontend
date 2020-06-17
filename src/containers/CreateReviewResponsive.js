@@ -1,7 +1,7 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
 import CreateReview from './CreateReview';
-// import CreateReviewMobile from './CreateReviewMobile';
+import CreateReviewMobile from './CreateReviewMobile';
 
 const CreateReviewResponsive = () => {
     return (
@@ -10,7 +10,7 @@ const CreateReviewResponsive = () => {
                 <CreateReview />
             </MediaQuery>
             <MediaQuery maxDeviceWidth={1224}>
-                {/* <SeriesShowMobile/> */}
+                <CreateReviewMobile/>
             </MediaQuery>
         </React.Fragment>
     )

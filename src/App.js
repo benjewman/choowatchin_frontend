@@ -7,7 +7,7 @@ import { Grid } from 'semantic-ui-react';
 import './App.css';
 import InTheaters from './containers/InTheaters';
 import OnAir from './containers/OnAir';
-import CreateReview from './containers/CreateReview';
+import CreateReviewResponsive from './containers/CreateReviewResponsive';
 import Friends from './containers/Friends';
 import Profile from './containers/Profile';
 import EditProfile from './containers/EditProfile';
@@ -37,10 +37,10 @@ function App() {
               <Route path='/movies/:id' component={MovieShowResponsive} />
               <Route exact path='/series' component={OnAir} />
               <Route path='/series/:id' component={SeriesShowResponsive} />
-              <Route path='/reviews/:medium/:id/new' component={CreateReview} />
+              <Route path='/reviews/:medium/:id/new' component={CreateReviewResponsive} />
               <Route exact path='/friends' component={Friends} />
               <Route exact path='/profile/:id' component={Profile} />
-              <Route path='/reviews/:id/edit' component={CreateReview} />
+              <Route path='/reviews/:id/edit' component={CreateReviewResponsive} />
               <Route path='/profile/:id/edit' component={EditProfile} />
               <Route path='/search' component={SearchPage} />
             </Switch>

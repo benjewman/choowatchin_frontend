@@ -62,17 +62,17 @@ class CreateReviewMobile extends React.Component {
        // conditionally render 'title' or 'name'
        // based on tv or movie
        return (
-            <Grid.Row style={{marginTop: '2em'}}>
-                <h1 style={{fontSize: '50px', textAlign: 'center', textDecorationLine: 'underline'}}>{this.props.match.params.medium === 'movies' ? this.state.show.title : this.state.show.name}</h1>
-            </Grid.Row>
+            <Grid.Column>
+                <h1 style={{fontSize: '6vh', textAlign: 'center', textDecorationLine: 'underline'}}>{this.props.match.params.medium === 'movies' ? this.state.show.title : this.state.show.name}</h1>
+            </Grid.Column>
        )
    }
 
    renderEditTitle = () => {
        return (
-           <Grid.Row style={{marginTop: '2em'}}>
-                <h1 style={{fontSize: '50px', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.show.title}</h1>
-            </Grid.Row>
+           <Grid.Column>
+                <h1 style={{fontSize: '6vh', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.show.title}</h1>
+            </Grid.Column>
        )
    }
 
@@ -156,16 +156,6 @@ class CreateReviewMobile extends React.Component {
        return (
            <Grid.Row style={{marginTop: '8em'}}>
                 <Form onSubmit={this.handleSubmit}>
-                    <Form.Group>
-                        <Form.Field
-                            control={TextArea}
-                            label='This show in 60 characters or less'
-                            placeholer='This show in 60 characters or less'
-                            value={this.state.userReview}
-                            onChange={this.handleReviewChange}
-                            width={14}
-                        />
-                    </Form.Group>
                     <h2 style={{marginTop: '3em'}}>Stamp</h2>
                     <Form.Group style={{marginTop: '3em'}}>
                         <Form.Field
@@ -204,8 +194,18 @@ class CreateReviewMobile extends React.Component {
                             onChange={() => this.handleChange('Must Watch')}
                         />
                     </Form.Group>
+                    <Form.Group>
+                        <Form.Field
+                            control={TextArea}
+                            label='This show in 60 characters or less'
+                            placeholer='This show in 60 characters or less'
+                            value={this.state.userReview}
+                            onChange={this.handleReviewChange}
+                            width={14}
+                        />
+                    </Form.Group>
                     {/* Find way to center button */}
-                    <Form.Group style={{marginTop: '3em'}}>
+                    <Form.Group style={{marginTop: '1vh'}}>
                         <Form.Field control={Button} >{this.props.match.path === "/reviews/:id/edit" ? 'Update' : 'Post'} Review</Form.Field>
                     </Form.Group>
                 </Form>
@@ -231,15 +231,15 @@ class CreateReviewMobile extends React.Component {
     render() {
         return (
             // duct tape fix for centering this stupid header
-            <Grid columns={2} centered>
-                {this.props.match.path === "/reviews/:id/edit" ? this.renderEditPoster() : this.renderPoster()}
-                <Grid.Column>
-                    <Header as="h1" style={{textAlign: 'center'}}>Create Review for: </Header>
-                    {this.props.match.path === "/reviews/:id/edit" ? this.renderEditTitle() : this.renderTitle()}
-                    {this.renderForm()}
-                </Grid.Column>
-                {/* <Grid.Column>
-                </Grid.Column> */}
+            <Grid>
+                <Grid.Row>
+                    <Grid columns={2}>
+                        {this.props.match.path === "/reviews/:id/edit" ? this.renderEditPoster() : this.renderPoster()}
+                        {this.props.match.path === "/reviews/:id/edit" ? this.renderEditTitle() : this.renderTitle()}
+                    </Grid>
+                </Grid.Row>
+                {this.renderForm()}
+
             </Grid>
         )
     }
