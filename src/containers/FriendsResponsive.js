@@ -1,19 +1,18 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
-import Dashboard from './Dashboard';
-import DashMobile from './DashMobile';
+import Friends from './Friends';
 
-function DashResponsive() {
+function FriendsResponsive() {
     return (
         <React.Fragment>
             <MediaQuery minDeviceWidth={1224}>
-                <Dashboard />
+                <Friends />
             </MediaQuery>
             <MediaQuery maxDeviceWidth={1224}>
-                <DashMobile />
+                <h1>FriendsMobile</h1>
             </MediaQuery>
         </React.Fragment>
     )
 }
 
-export default DashResponsive;
+export default FriendsResponsive;

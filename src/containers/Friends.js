@@ -77,7 +77,6 @@ class Friends extends React.Component {
                 {this.props.user ? renderSelect() : null}
                 {/* pluralize friends/users below to fix grammar */}
                 {renderCount()}
-                {/* {this.state.filterJustFriends ? <p>{this.state.friends.length} Friends</p> : <p>{this.state.users.length - 1} Total Users</p>} */}
             </div>
         )
     }
