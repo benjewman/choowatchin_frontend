@@ -122,10 +122,9 @@ class Friends extends React.Component {
     
     render() {
         return (
-            <Grid.Column style={{textAlign: 'center', marginTop: '2em'}}>
+            <Grid.Column style={{textAlign: 'center', marginTop: '4vh'}}>
                 {this.renderSearchBar()}
                 {this.props.user ? this.renderUserOptions() : this.renderAll()}
-                {/* {this.state.filterJustFriends ? this.renderPeople('friends') : this.renderPeople('users')} */}
             </Grid.Column> 
         )
     }
