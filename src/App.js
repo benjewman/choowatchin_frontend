@@ -8,7 +8,7 @@ import './App.css';
 import InTheaters from './containers/InTheaters';
 import OnAir from './containers/OnAir';
 import CreateReviewResponsive from './containers/CreateReviewResponsive';
-import Friends from './containers/Friends';
+import FriendsResponsive from './containers/FriendsResponsive';
 import Profile from './containers/Profile';
 import EditProfile from './containers/EditProfile';
 import SearchPage from './containers/SearchPage';
@@ -38,7 +38,7 @@ function App() {
               <Route exact path='/series' component={OnAir} />
               <Route path='/series/:id' component={SeriesShowResponsive} />
               <Route path='/reviews/:medium/:id/new' component={CreateReviewResponsive} />
-              <Route exact path='/friends' component={Friends} />
+              <Route exact path='/friends' component={FriendsResponsive} />
               <Route exact path='/profile/:id' component={Profile} />
               <Route path='/reviews/:id/edit' component={CreateReviewResponsive} />
               <Route path='/profile/:id/edit' component={EditProfile} />
