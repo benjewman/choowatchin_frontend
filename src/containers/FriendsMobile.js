@@ -4,6 +4,7 @@ import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import UserCard from '../components/UserCard'
 import { url } from '../urls.js'
+import MediaQuery from 'react-responsive';
 
 class FriendsMobile extends React.Component {
     constructor() {
@@ -95,9 +96,18 @@ class FriendsMobile extends React.Component {
         const filteredUsers = this.state[type].filter(user => user.id !== this.props.user.id &&  user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
         console.log('FILTERED USERS', filteredUsers);
         return (
-            <Grid celled='internally' style={{marginTop: '3vh'}} columns={2}>
-                {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
-            </Grid>
+            <React.Fragment>
+                <MediaQuery minDeviceWidth={750} >
+                    <Grid style={{marginTop: '3vh'}} columns={3}>
+                        {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} key={friend.id} />)}
+                    </Grid>
+                </MediaQuery>
+                <MediaQuery maxDeviceWidth={749}>
+                    <Grid style={{marginTop: '3vh'}} columns={2}>
+                        {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} key={friend.id}/>)}
+                    </Grid>
+                </MediaQuery>
+            </React.Fragment>
         )
     }
 
@@ -112,9 +122,18 @@ class FriendsMobile extends React.Component {
     renderAll = () => {
         const filteredUsers = this.state['users'].filter(user => user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
         return (
-            <Grid celled='internally' style={{marginTop: '3vh'}} columns={2}>
-                {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
-            </Grid>
+            <React.Fragment>
+                <MediaQuery minDeviceWidth={750}>
+                    <Grid style={{marginTop: '3vh'}} columns={3}>
+                        {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} key={friend.id}/>)}
+                    </Grid>
+                </MediaQuery>
+                <MediaQuery maxDeviceWidth={749}>
+                    <Grid style={{marginTop: '3vh'}} columns={2}>
+                        {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} key={friend.id}/>)}
+                    </Grid>
+                </MediaQuery>
+            </React.Fragment>
         )
     }
     

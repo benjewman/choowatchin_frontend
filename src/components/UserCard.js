@@ -61,16 +61,14 @@ function UserCard(props) {
     
     return (
          <Grid columns={2}>
-            <Grid.Column>
+            <Grid.Column width={7}>
                 <h4>{props.friend.full_name}</h4>
-                {/* make username clickable */}
                 <a href={'/profile/' + props.friend.id}>@{props.friend.username}</a>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column width={6}>
                 <Image src={props.friend.avatar} wrapped size="tiny"/>
                  {/* conditionally render button depending on if user follows this user  */}
                  {props.user ? renderButton() : null}
-                 {/* {props.leaders.find(leader => leader.id === props.friend.id) ? renderFollowingButton() : renderFollowButton()} */}
             </Grid.Column>
         </Grid>
     )
