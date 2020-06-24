@@ -48,20 +48,28 @@ class NavMobile extends React.Component {
                 <MediaQuery maxDeviceWidth={767}><Icon name='sign in' inverted color='grey'/></MediaQuery>
                 </Menu.Item>
                 
-                <Menu.Item className='navHeaders semanticOverride'>
-                    <Popup
+                <Menu.Item
+                className="navMobileIcon semanticOverride"
+                onClick={() => this.routeToPage(`/search`)}
+                name='search'
+                >
+                    <MediaQuery minDeviceWidth={768}><Icon name='search' size="huge" inverted color='grey'/></MediaQuery>
+                    <MediaQuery maxDeviceWidth={767}><Icon name='search' inverted color='grey'/></MediaQuery>
+                    
+                    {/* <Popup
                     trigger={
                         <React.Fragment>
                         <MediaQuery minDeviceWidth={768}><Icon name='search' size="huge" inverted color='grey'/></MediaQuery>
                         <MediaQuery maxDeviceWidth={767}><Icon name='search' inverted color='grey'/></MediaQuery>
                         </React.Fragment>
                     }
-                    on='click'
+                    position='bottom left'
+                    content="wassup"
                     >
                         <Form onSubmit={this.handleSearchSubmit}>
                             <Form.Input onChange={this.handleSearchChange} value={this.state.search} size="big" icon='search' placeholder='Search...' />
                         </Form>
-                    </Popup>
+                    </Popup> */}
                 </Menu.Item>
             </React.Fragment>
         )
@@ -89,20 +97,30 @@ class NavMobile extends React.Component {
                 <MediaQuery maxDeviceWidth={767}><Icon name='sign-out' inverted color='grey'/></MediaQuery>
                 </Menu.Item>
 
-                <Menu.Item className="navMobileIcon semanticOverride">
-                    <Popup
+                <Menu.Item
+                className="navMobileIcon semanticOverride"
+                onClick={() => this.routeToPage(`/search`)}
+                name='search'
+                >
+                    <MediaQuery minDeviceWidth={768}><Icon name='search' size="huge" inverted color='grey'/></MediaQuery>
+                    <MediaQuery maxDeviceWidth={767}><Icon name='search' inverted color='grey'/></MediaQuery>
+                
+                    
+                    {/* <Popup
                     trigger={
                         <React.Fragment>
                         <MediaQuery minDeviceWidth={768}><Icon name='search' size="huge" inverted color='grey'/></MediaQuery>
                         <MediaQuery maxDeviceWidth={767}><Icon name='search' inverted color='grey'/></MediaQuery>
                         </React.Fragment>
                         }
+                    position="bottom left"
+                    content="wassup"
                     on='click'
                     >
                         <Form onSubmit={this.handleSearchSubmit}>
                             <Form.Input onChange={this.handleSearchChange} value={this.state.search} size="big" icon='search' placeholder='Search...' />
                         </Form>
-                    </Popup>
+                    </Popup> */}
                 </Menu.Item>
             </React.Fragment>
         )
