@@ -6,9 +6,9 @@ import ShowCard from '../components/ShowCard'
 import InfiniteLoader from 'react-infinite-loader'
 import uuid from 'react-uuid'
 
-// Need SearchPageMobile component with input bar since we don't have one on NavMobile
+// Need input bar since we don't have one on NavMobile
 
-class SearchPage extends React.Component {
+class SearchPageMobile extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -125,4 +125,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(SearchPage)
+export default connect(mapStateToProps)(SearchPageMobile)
