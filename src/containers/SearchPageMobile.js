@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Menu } from 'semantic-ui-react'
+import { Grid, Menu, Form } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import ShowCard from '../components/ShowCard'
@@ -15,12 +15,12 @@ class SearchPageMobile extends React.Component {
             shows: [],
             fetchPage: 2,
             totalPages: 0,
-            filter: 'all'
+            filter: 'all',
+            search: ''
         }
     }
     
     componentDidMount() {
-        // console.log('in component did mount', this.props)
         if (this.props.search) {
             const searchString = this.props.search.replace(' ', '%20')
             fetch(`https://api.themoviedb.org/3/search/multi?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&query=${searchString}&include_adult=false`)
@@ -42,6 +42,21 @@ class SearchPageMobile extends React.Component {
         } else {
             console.log('no search in props')
         }
+    }
+
+    handleSearchSubmit = (event) => {
+        event.preventDefault();
+        const searchString = this.state.search.replace(' ', '%20')
+        fetch(`https://api.themoviedb.org/3/search/multi?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&query=${searchString}&include_adult=false`)
+        .then(resp => resp.json())
+        .then(data => this.setState({shows: data.results.filter(result => !result.known_for_department), totalPages: data.total_pages}))
+        // this.props.setSearch(this.state.search);
+        // this.setState({search: ''});
+        // this.props.history.push(`/search`)
+    }
+
+    handleSearchChange = event => {
+        this.setState({search: event.target.value})
     }
     
     renderShows = () => {
@@ -105,10 +120,13 @@ class SearchPageMobile extends React.Component {
     render() {
         return (
             <Grid columns={1}>
-                <Grid.Column style={{textAlign: 'center'}}>
-                    <h1>Search Results for: {this.props.search}</h1>
+                <Grid.Column style={{textAlign: 'center', marginTop: '3vh'}}>
+                    {/* <h1>Search Results for: {this.props.search}</h1> */}
+                    <Form onSubmit={this.handleSearchSubmit}>
+                        <Form.Input  onChange={this.handleSearchChange} value={this.state.search}  icon='search' placeholder='Search...' />
+                    </Form>
                     {this.renderFilterMenu()}
-                    <Grid columns={6} style={{marginLeft: '0.25em', marginRight: '0.5em'}}>
+                    <Grid columns={6} style={{marginLeft: '1vw', marginRight: '1vw'}}>
                         {this.renderShows()}
                         <InfiniteLoader onVisited={ () => this.handleVisit() } />
                     </Grid>
@@ -121,7 +139,7 @@ class SearchPageMobile extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        search: state.search
+        theSearch: state.search
     }
 }
 
