@@ -6,6 +6,8 @@ import ShowCard from '../components/ShowCard'
 import InfiniteLoader from 'react-infinite-loader'
 import uuid from 'react-uuid'
 
+// Need SearchPageMobile component with input bar since we don't have one on NavMobile
+
 class SearchPage extends React.Component {
     constructor() {
         super()

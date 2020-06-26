@@ -11,7 +11,7 @@ import CreateReviewResponsive from './containers/CreateReviewResponsive';
 import FriendsResponsive from './containers/FriendsResponsive';
 import Profile from './containers/Profile';
 import EditProfile from './containers/EditProfile';
-import SearchPage from './containers/SearchPage';
+import SearchPageResponsive from './containers/SearchPageResponsive';
 import MediaQuery from 'react-responsive';
 import NavDefault from './components/NavDefault';
 import DashResponsive from './containers/DashResponsive';
@@ -42,7 +42,7 @@ function App() {
               <Route exact path='/profile/:id' component={Profile} />
               <Route path='/reviews/:id/edit' component={CreateReviewResponsive} />
               <Route path='/profile/:id/edit' component={EditProfile} />
-              <Route path='/search' component={SearchPage} />
+              <Route path='/search' component={SearchPageResponsive} />
             </Switch>
           </Grid.Row>
         </Grid>
