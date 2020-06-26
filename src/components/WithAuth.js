@@ -9,29 +9,17 @@ export default function WithAuth(WrappedComponent) {
         
         handleFetch = userInfo => {
             
-            // if (userInfo.error && this.props.history.location.pathname !== '/login') {
-            //     this.props.history.push('/login')
-            // } 
-            
             if (!userInfo.error) {
                 console.log(userInfo)
                 this.props.setUser(userInfo)
                 this.props.setLeaders(userInfo.leaders)
                 //  dispatch followed reviews to store
                 this.props.setFollowedReviews(userInfo.followed_reviews)
-                // if (this.props.history.location.pathname === '/login') {
-                //     this.props.history.push('/home')
-                // }
             }
         }
         
         componentDidMount() {
             const token = localStorage.getItem('token')
-    
-            // if (!token && this.props.history.location.pathname !== '/login') {
-            //     // console.log(this.props.history.location.pathname)
-            //     this.props.history.push('/login')
-            // } 
             
             if (token) {
                 const reqObj = {
