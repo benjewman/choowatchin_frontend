@@ -1,12 +1,11 @@
-import React from 'react'
-import { Grid, Menu, Form } from 'semantic-ui-react'
-import WithAuth from '../components/WithAuth'
-import { connect } from 'react-redux'
-import ShowCard from '../components/ShowCard'
-import InfiniteLoader from 'react-infinite-loader'
-import uuid from 'react-uuid'
-
-// Need input bar since we don't have one on NavMobile
+import React from 'react';
+import { Grid, Menu, Form } from 'semantic-ui-react';
+import WithAuth from '../components/WithAuth';
+import { connect } from 'react-redux';
+import ShowCard from '../components/ShowCard';
+import InfiniteLoader from 'react-infinite-loader';
+import uuid from 'react-uuid';
+import MediaQuery from 'react-responsive';
 
 class SearchPageMobile extends React.Component {
     constructor() {
@@ -77,7 +76,7 @@ class SearchPageMobile extends React.Component {
 
     handleVisit = () => {
         console.log('scrolling')
-        const searchString = this.props.search.replace(' ', '%20')
+        const searchString = this.state.search.replace(' ', '%20')
         // fetch next page and concat onto state
         // on the condition that the page to be fetched
         // is not greater than the total pages
@@ -126,10 +125,18 @@ class SearchPageMobile extends React.Component {
                         <Form.Input  onChange={this.handleSearchChange} value={this.state.search}  icon='search' placeholder='Search...' />
                     </Form>
                     {this.renderFilterMenu()}
-                    <Grid columns={6} style={{marginLeft: '1vw', marginRight: '1vw'}}>
-                        {this.renderShows()}
-                        <InfiniteLoader onVisited={ () => this.handleVisit() } />
-                    </Grid>
+                    <MediaQuery minDeviceWidth={768}>
+                        <Grid columns={6} style={{marginLeft: '1vw', marginRight: '1vw'}}>
+                            {this.renderShows()}
+                            <InfiniteLoader onVisited={ () => this.handleVisit() } />
+                        </Grid>
+                    </MediaQuery>
+                    <MediaQuery maxDeviceWidth={767}>
+                        <Grid columns={2} style={{marginLeft: '1vw', marginRight: '1vw'}}>
+                            {this.renderShows()}
+                            <InfiniteLoader onVisited={ () => this.handleVisit() } />
+                        </Grid>
+                    </MediaQuery>
                     {this.state.fetchPage > this.state.totalPages ? <h4>End of Results</h4>: <h4>Loading More...</h4>}
                 </Grid.Column>
             </Grid>
