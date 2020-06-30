@@ -29,7 +29,6 @@ export default function WithAuth(WrappedComponent) {
                         'Authorization': `Bearer ${token}`
                 }
             }
-    
                 fetch(`${url}/current_user`, reqObj)
                 .then(resp => resp.json())
                 .then(userInfo => this.handleFetch(userInfo))

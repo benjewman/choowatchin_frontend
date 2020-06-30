@@ -9,7 +9,7 @@ import InTheaters from './containers/InTheaters';
 import OnAir from './containers/OnAir';
 import CreateReviewResponsive from './containers/CreateReviewResponsive';
 import FriendsResponsive from './containers/FriendsResponsive';
-import Profile from './containers/Profile';
+import ProfileResponsive from './containers/ProfileResponsive';
 import EditProfile from './containers/EditProfile';
 import SearchPageResponsive from './containers/SearchPageResponsive';
 import MediaQuery from 'react-responsive';
@@ -39,7 +39,7 @@ function App() {
               <Route path='/series/:id' component={SeriesShowResponsive} />
               <Route path='/reviews/:medium/:id/new' component={CreateReviewResponsive} />
               <Route exact path='/friends' component={FriendsResponsive} />
-              <Route exact path='/profile/:id' component={Profile} />
+              <Route exact path='/profile/:id' component={ProfileResponsive} />
               <Route path='/reviews/:id/edit' component={CreateReviewResponsive} />
               <Route path='/profile/:id/edit' component={EditProfile} />
               <Route path='/search' component={SearchPageResponsive} />
