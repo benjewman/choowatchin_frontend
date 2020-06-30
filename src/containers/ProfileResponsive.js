@@ -10,7 +10,6 @@ function ProfileResponsive() {
                 <Profile />
             </MediaQuery>
             <MediaQuery maxDeviceWidth={749}>
-                {/* <FriendsMobile /> */}
                 <ProfileMobile />
             </MediaQuery>
         </React.Fragment>

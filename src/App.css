@@ -42,7 +42,6 @@
   overflow-y: scroll;
   display: flex;
   height: 90vh;
-  
 }
 
 .showContainer {
@@ -68,6 +67,17 @@ a.item.navHeaders.semanticOverride {
 }
 
 .mobileFeed {
+  overflow-x: hidden;
+  overflow-y: auto;
+  word-wrap: break-word;
+  display: block;
+  margin-left: 5vw;
+  margin-right: 1vw;
+  top: 10vh;
+  position: fixed;
+}
+
+.mobileProfile {
   overflow-x: hidden;
   overflow-y: auto;
   word-wrap: break-word;
