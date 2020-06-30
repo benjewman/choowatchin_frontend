@@ -1,18 +1,17 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
 import Profile from './Profile';
+import ProfileMobile from './ProfileMobile'
 
 function ProfileResponsive() {
     return (
         <React.Fragment>
-            <MediaQuery minDeviceWidth={1224}>
+            <MediaQuery minDeviceWidth={750}>
                 <Profile />
             </MediaQuery>
-            <MediaQuery maxDeviceWidth={1224}>
+            <MediaQuery maxDeviceWidth={749}>
                 {/* <FriendsMobile /> */}
-                <h1>Profile Mobile</h1>
-                <h1>Profile Mobile</h1>
-                <h1>Profile Mobile</h1>
+                <ProfileMobile />
             </MediaQuery>
         </React.Fragment>
     )
