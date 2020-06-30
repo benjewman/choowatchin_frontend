@@ -49,7 +49,7 @@ class ProfileMobile extends React.Component {
     }
 
     renderEditButton = () => {
-        return <Button onClick={this.handleEditProfile} content='Edit Profile' />
+        return <Button className='marginCenter' onClick={this.handleEditProfile} content='Edit Profile' />
     }
 
     followFetch = (postOrDelete) => {
@@ -80,14 +80,14 @@ class ProfileMobile extends React.Component {
     renderFollowButton = () => {
         if (this.props.leaders && this.props.leaders.find(leader => leader.id === this.state.user.id)) {
             return (
-                 <Button onClick={() => this.followFetch('DELETE')} animated>
+                 <Button className='marginCenter' onClick={() => this.followFetch('DELETE')} animated>
                     <Button.Content visible>Following</Button.Content>
                     <Button.Content hidden>Unfollow</Button.Content>
                 </Button>
             )
         } else {
             return (
-                <Button onClick={() => this.followFetch('POST')}>
+                <Button className='marginCenter' onClick={() => this.followFetch('POST')}>
                     <Button.Content>Follow</Button.Content>
                 </Button>
             )
@@ -133,8 +133,9 @@ class ProfileMobile extends React.Component {
     render() {
         console.log('PROPS', this.props);
         return ( 
-            <React.Fragment>
-                        <Card style={{height: 'auto', width: '50vh', marginBottom: '5vh'}}>
+            <Grid>
+                <Grid.Row>
+                        <Card style={{height: 'auto', width: '70vw', marginLeft: 'auto', marginRight: 'auto'}}>
                             <Image src={this.state.user.avatar} wrapped ui={false}/>
                             <Card.Content>
                                 <Card.Header>{this.state.user.full_name}</Card.Header>
@@ -143,12 +144,13 @@ class ProfileMobile extends React.Component {
                                 </Card.Meta>
                             </Card.Content>
                         </Card>
+                </Grid.Row>
                         {this.userCondition()}
-                        <div className='' >
+                        <div className='marginCenter' style={{marginTop: '2vh'}}>
                             <h3 style={{textAlign: 'center'}}>User Reviews</h3>
                             <FeedContainer filter={this.state.filter} user={this.props.user} />
                         </div>
-            </React.Fragment>
+            </Grid>
         )
     }
 }
