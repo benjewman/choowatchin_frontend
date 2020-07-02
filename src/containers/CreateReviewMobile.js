@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid, Header, Image, Form, TextArea, Radio, Button } from 'semantic-ui-react'
+import { Grid, Image, Form, TextArea, Radio, Button } from 'semantic-ui-react'
 import WithAuth from '../components/WithAuth'
 import { setFollowedReviews } from '../actions/index'
 import { url } from '../urls.js'
@@ -52,9 +52,9 @@ class CreateReviewMobile extends React.Component {
 
    renderEditPoster = () => {
        return (
-           <Grid.Column style={{width: '40vw', marginLeft: '5vw'}}>
-                <Image centered src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster}/>
-            </Grid.Column>
+           
+                <Image style={{height: '40vh'}} centered src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster}/>
+            
        )
    }
 
@@ -70,9 +70,7 @@ class CreateReviewMobile extends React.Component {
 
    renderEditTitle = () => {
        return (
-           <Grid.Column>
-                <h1 style={{fontSize: '5vh', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.show.title}</h1>
-            </Grid.Column>
+            <h1 className='marginCenter' style={{fontSize: '5vh', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.show.title}</h1>    
        )
    }
 
@@ -155,6 +153,8 @@ class CreateReviewMobile extends React.Component {
    renderForm = () => {
        return (
            <Grid.Row style={{marginLeft: '20vw', marginRight: 'auto'}}>
+           
+           
                 <Form onSubmit={this.handleSubmit}>
                     <h2 style={{textAlign: 'center', fontSize: '3vh'}}>Stamp</h2>
                     <Form.Group style={{width: '70vw', marginBottom: '3vh'}}>
@@ -205,11 +205,11 @@ class CreateReviewMobile extends React.Component {
                         />
                     </Form.Group>
                     {/* Find way to center button */}
-                    <Form.Group style={{marginTop: '1vh'}}>
+                    <Form.Group>
                         <Form.Field control={Button} >{this.props.match.path === "/reviews/:id/edit" ? 'Update' : 'Post'} Review</Form.Field>
                     </Form.Group>
                 </Form>
-                {this.state.review ? <Button onClick={this.deleteReview} content='Delete Review'/> : null }
+                {this.state.review ? <Button style={{marginTop: '0.5vh'}} onClick={this.deleteReview} content='Delete Review'/> : null }
            </Grid.Row>
        )
    }
@@ -232,11 +232,11 @@ class CreateReviewMobile extends React.Component {
         return (
             // duct tape fix for centering this stupid header
             <Grid>
-                <Grid.Row style={{marginTop: '4vw'}}>
-                    <Grid columns={2}>
-                        {this.props.match.path === "/reviews/:id/edit" ? this.renderEditPoster() : this.renderPoster()}
-                        {this.props.match.path === "/reviews/:id/edit" ? this.renderEditTitle() : this.renderTitle()}
-                    </Grid>
+                <Grid.Row style={{marginTop: '2vh', paddingBottom: '0vh'}}>
+                    {this.props.match.path === "/reviews/:id/edit" ? this.renderEditPoster() : this.renderPoster()}
+                </Grid.Row>
+                <Grid.Row style={{paddingTop: '0vh', paddingBottom: '0vh'}}>
+                    {this.props.match.path === "/reviews/:id/edit" ? this.renderEditTitle() : this.renderTitle()}
                 </Grid.Row>
                 {this.renderForm()}
             </Grid>
