@@ -85,7 +85,6 @@ class ReviewFeedCard extends React.Component {
                     <Grid.Row >
                         <Grid columns={2}>
                             <Grid.Column>
-                                {/* <h3>Stamp: {this.props.review.stamp}</h3> */}
                                 {this.renderStamp()}
                             </Grid.Column>
                             <Grid.Column floated="right">
@@ -105,7 +104,7 @@ class ReviewFeedCard extends React.Component {
     renderEditButton = () => {
         if (this.props.user && this.props.user.id === this.props.review.user.id) {
             return (
-                <Button onClick={this.routeToEdit} content='Edit Review' />
+                <Button onClick={this.routeToEdit} content='Edit Review' style={{marginTop: '2vh'}} />
             )
         }
     }
