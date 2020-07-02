@@ -107,18 +107,15 @@ class ProfileMobile extends React.Component {
 
     renderProfileCard = () => {
         return (
-            <Grid.Column width={6} style={{marginLeft: '5em', marginTop: '2em'}}>
-                <Card>
-                    <Image src={this.state.user.avatar} wrapped ui={false} />
-                    <Card.Content>
-                        <Card.Header>{this.state.user.full_name}</Card.Header>
-                        <Card.Meta>
-                            <span>@{this.state.user.username}</span>
-                        </Card.Meta>
-                    </Card.Content>
-                </Card>
-                {this.userCondition()}
-            </Grid.Column>
+            <Card style={{height: 'auto', width: '70vw', marginLeft: 'auto', marginRight: 'auto'}}>
+                <Image src={this.state.user.avatar} wrapped ui={false}/>
+                <Card.Content>
+                    <Card.Header>{this.state.user.full_name}</Card.Header>
+                    <Card.Meta>
+                        <span>@{this.state.user.username}</span>
+                    </Card.Meta>
+                </Card.Content>
+            </Card>
         )
     }
 
@@ -140,22 +137,13 @@ class ProfileMobile extends React.Component {
         return ( 
             <Grid>
                 <Grid.Row>
-                        <Card style={{height: 'auto', width: '70vw', marginLeft: 'auto', marginRight: 'auto'}}>
-                            <Image src={this.state.user.avatar} wrapped ui={false}/>
-                            <Card.Content>
-                                <Card.Header>{this.state.user.full_name}</Card.Header>
-                                <Card.Meta>
-                                    <span>@{this.state.user.username}</span>
-                                </Card.Meta>
-                            </Card.Content>
-                        </Card>
+                    {this.renderProfileCard()}
                 </Grid.Row>
-                        {this.userCondition()}
-                        <div className='marginCenter' style={{marginTop: '2vh'}}>
-                            <h3 style={{textAlign: 'center'}}>User Reviews</h3>
-                            {/* <FeedContainer filter={this.state.filter} user={this.props.user} /> */}
-                            {this.renderProfileReviews()}
-                        </div>
+                {this.userCondition()}
+                <div className='marginCenter' style={{marginTop: '2vh'}}>
+                    <h3 style={{textAlign: 'center'}}>User Reviews</h3>
+                    {this.renderProfileReviews()}
+                </div>
             </Grid>
         )
     }
