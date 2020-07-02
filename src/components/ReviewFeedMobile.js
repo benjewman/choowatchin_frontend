@@ -65,7 +65,7 @@ class ReviewFeedCard extends React.Component {
     renderCard = () => {
         return (
             <Grid columns={2} style={{borderBottom: 'dotted red', width: '100vw'}}>
-                <Grid.Column width={5}>
+                <Grid.Column width={6}>
                     <Card onClick={this.routeToPage}>
                         <Card.Content>
                             <Image src={'http://image.tmdb.org/t/p/w780' + this.state.reviewShow.poster}/>
@@ -75,7 +75,7 @@ class ReviewFeedCard extends React.Component {
                         </Card.Content>
                     </Card>
                 </Grid.Column>
-                <Grid.Column width={10} >
+                <Grid.Column width={9} >
                     <Grid.Row >
                         <div style={{border: 'thin dotted black'}}>
                             <h3 style={{textAlign: 'center'}}>"{this.props.review.content}"</h3>
@@ -104,7 +104,7 @@ class ReviewFeedCard extends React.Component {
     renderEditButton = () => {
         if (this.props.user && this.props.user.id === this.props.review.user.id) {
             return (
-                <Button onClick={this.routeToEdit} content='Edit Review' style={{marginTop: '2vh'}} />
+                <Button onClick={this.routeToEdit} content='Edit Review' style={{marginTop: '5vh'}} />
             )
         }
     }
