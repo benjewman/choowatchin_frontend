@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { addLeader, removeLeader } from '../actions/index';
 import { url } from '../urls.js';
 import FeedContainer from './FeedContainer';
+import ReviewFeedMobile from '../components/ReviewFeedMobile';
 
 class ProfileMobile extends React.Component {
     constructor() {
@@ -129,6 +130,10 @@ class ProfileMobile extends React.Component {
             </Grid.Column>
         )
     }
+
+    renderProfileReviews = () => {
+        return this.state.reviews.map(review => <ReviewFeedMobile noProfPic={true} style={{display: 'block'}} review={review} key={review.id}/>)
+    }
     
     render() {
         console.log('PROPS', this.props);
@@ -148,7 +153,8 @@ class ProfileMobile extends React.Component {
                         {this.userCondition()}
                         <div className='marginCenter' style={{marginTop: '2vh'}}>
                             <h3 style={{textAlign: 'center'}}>User Reviews</h3>
-                            <FeedContainer filter={this.state.filter} user={this.props.user} />
+                            {/* <FeedContainer filter={this.state.filter} user={this.props.user} /> */}
+                            {this.renderProfileReviews()}
                         </div>
             </Grid>
         )

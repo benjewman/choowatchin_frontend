@@ -69,6 +69,7 @@ class NavDefault extends React.Component {
     nonUserRender = () => {
         return (
             <Menu.Menu position='right'>
+                
                 <Menu.Item
                 onClick={() => this.props.history.push('/login')}
                 name='login'
@@ -76,6 +77,7 @@ class NavDefault extends React.Component {
                 >
                 Login
                 </Menu.Item>
+
                 <Menu.Item
                 onClick={() => this.props.history.push('/signup')}
                 name='signup'

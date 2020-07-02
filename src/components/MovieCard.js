@@ -3,7 +3,6 @@ import { Grid, Image, Card } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
 const MovieCard = (props) => {
-    console.log(props)
     
     const routeToMoviePage = () => {
         props.history.push(`/movies/${props.movie.id}`)
@@ -24,4 +23,5 @@ const MovieCard = (props) => {
     )
 }
 
-export default withRouter(MovieCard)
+export default withRouter(MovieCard);
+

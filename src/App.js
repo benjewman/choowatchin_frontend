@@ -20,7 +20,6 @@ import MovieShowResponsive from './components/MovieShowResponsive';
 import SeriesShowResponsive from './components/SeriesShowResponsive';
 
 function App() {
-  
   return (
       <BrowserRouter>
         <Grid>
@@ -51,3 +50,4 @@ function App() {
 }
 
 export default App;
+
