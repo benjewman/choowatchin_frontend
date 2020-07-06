@@ -1,11 +1,11 @@
-import React from 'react';
-import WithAuth from '../components/WithAuth';
-import { connect } from 'react-redux';
-import { Grid, Form, Image, Button, Input } from 'semantic-ui-react';
-import { setUser } from '../actions/index';
-import { url } from '../urls.js';
+import React from 'react'
+import WithAuth from '../components/WithAuth'
+import { connect } from 'react-redux'
+import { Grid, Form, Image, Button, Input } from 'semantic-ui-react'
+import { setUser } from '../actions/index'
+import { url } from '../urls.js'
 
-class EditProfile extends React.Component {
+class EditProfileMobile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -125,9 +125,9 @@ class EditProfile extends React.Component {
     
     render() {
         return (
-            <Grid columns={3} style={{marginTop: '5vh'}}>
-                <Grid.Column style={{textAlign: 'center', marginLeft: '5vw'}}>                   
-                    <Image src={this.state.pic} style={{marginBottom: '2vh'}}/>
+            <Grid columns={3}>
+                <Grid.Column style={{textAlign: 'center', marginLeft: '5em', marginTop: '5em'}}>                   
+                    <Image src={this.state.pic} style={{marginBottom: '2em'}}/>
                     {this.state.uploadToggle ? this.cancelButton() : this.changePicButton()}
                     {this.state.uploadToggle ? this.handleImageUpload() : null}
                 </Grid.Column>
@@ -149,4 +149,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WithAuth(EditProfile));
+export default connect(mapStateToProps, mapDispatchToProps)(WithAuth(EditProfileMobile))
