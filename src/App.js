@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './containers/Login';
 import Signup from './containers/Signup';
-import Dashboard from './containers/Dashboard';
 import { Grid } from 'semantic-ui-react';
 import './App.css';
 import InTheaters from './containers/InTheaters';
@@ -10,14 +9,12 @@ import OnAir from './containers/OnAir';
 import CreateReviewResponsive from './containers/CreateReviewResponsive';
 import FriendsResponsive from './containers/FriendsResponsive';
 import ProfileResponsive from './containers/ProfileResponsive';
-import EditProfile from './containers/EditProfile';
 import SearchPageResponsive from './containers/SearchPageResponsive';
-import MediaQuery from 'react-responsive';
-import NavDefault from './components/NavDefault';
 import DashResponsive from './containers/DashResponsive';
 import NavResponsive from './components/NavResponsive';
 import MovieShowResponsive from './components/MovieShowResponsive';
 import SeriesShowResponsive from './components/SeriesShowResponsive';
+import EditProfileResponsive from './containers/EditProfileResponsive';
 
 function App() {
   return (
@@ -29,7 +26,7 @@ function App() {
           <Grid.Row >
             <Switch>
               <Route exact path='/' component={DashResponsive} />
-              <Route path='/login' component={Login} />>
+              <Route path='/login' component={Login} />
               <Route path='/signup' component={Signup} />
               <Route path='/home' component={DashResponsive} />
               <Route exact path='/movies' component={InTheaters} />
@@ -40,7 +37,7 @@ function App() {
               <Route exact path='/friends' component={FriendsResponsive} />
               <Route exact path='/profile/:id' component={ProfileResponsive} />
               <Route path='/reviews/:id/edit' component={CreateReviewResponsive} />
-              <Route path='/profile/:id/edit' component={EditProfile} />
+              <Route path='/profile/:id/edit' component={EditProfileResponsive} />
               <Route path='/search' component={SearchPageResponsive} />
             </Switch>
           </Grid.Row>
