@@ -93,45 +93,51 @@ class EditProfileMobile extends React.Component {
 
     handleImageUpload = () => {
         return (
-            <Input type='file' onChange={this.handleUpload}/>
+            <Input style={{marginLeft: 'auto', marginRight: 'auto'}} type='file' onChange={this.handleUpload}/>
         )
     }
 
-    renderEditColumn = () => {
+    renderEditForm = () => {
         return (
-            <Grid.Column style={{marginLeft: '4em'}}>
-                <h1 style={{textAlign: 'center', marginBottom: '5em'}}>Edit Profile</h1>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Field>
-                        <label>Full Name</label>
-                        <input onChange={this.changeName} value={this.state.fullName} placeholder={this.props.user ? this.props.user.full_name : null} />
-                        <label style={{marginTop: '1em'}}>Email</label>
-                        <input onChange={this.changeEmail} value={this.state.email} placeholder={this.props.user ? this.props.user.email : null} />
-                    </Form.Field>
-                    <Form.Button>Update Profile</Form.Button>
-                </Form>
-                <Button style={{marginTop: '1em', color: 'red'}} onClick={this.handleDelete} content='Delete User' />
-            </Grid.Column>
+                <Grid.Row>
+                    <Form style={{marginLeft: 'auto', marginRight: 'auto'}} onSubmit={this.handleSubmit}>
+                        <Form.Field>
+                            <label>Full Name</label>
+                            <input onChange={this.changeName} value={this.state.fullName} placeholder={this.props.user ? this.props.user.full_name : null} />
+                            <label style={{marginTop: '1em'}}>Email</label>
+                            <input onChange={this.changeEmail} value={this.state.email} placeholder={this.props.user ? this.props.user.email : null} />
+                        </Form.Field>
+                        <Form.Button>Update Profile</Form.Button>
+                    </Form>
+                </Grid.Row>
         )
     }
 
     cancelButton = () => {
-        return <Button onClick={() => this.setState({uploadToggle: false})} content='Cancel' />
+        return <Button style={{marginLeft: 'auto', marginRight: 'auto'}} onClick={() => this.setState({uploadToggle: false})} content='Cancel' />
     }
 
     changePicButton = () => {
-        return <Button onClick={() => this.setState({uploadToggle: true})} content='Change Profile Picture' />
+        return <Button style={{marginLeft: 'auto', marginRight: 'auto'}} onClick={() => this.setState({uploadToggle: true})} content='Change Profile Picture' />
     }
     
     render() {
         return (
-            <Grid columns={3}>
-                <Grid.Column style={{textAlign: 'center', marginLeft: '5em', marginTop: '5em'}}>                   
-                    <Image src={this.state.pic} style={{marginBottom: '2em'}}/>
+            <Grid>
+                <Grid.Row>
+                    <Image className="marginCenter" src={this.state.pic} style={{height: '25vh', display: 'block', marginTop: '2vh'}}/>
+                </Grid.Row>
+                <Grid.Row style={{paddingBottom: '0vh', paddingTop: '0vh'}}>
                     {this.state.uploadToggle ? this.cancelButton() : this.changePicButton()}
-                    {this.state.uploadToggle ? this.handleImageUpload() : null}
-                </Grid.Column>
-                {this.renderEditColumn()}
+                </Grid.Row>
+                {this.state.uploadToggle ? this.handleImageUpload() : null}
+                <Grid.Row>
+                    <Button className="marginCenter" style={{color: 'red'}} onClick={this.handleDelete} content='Delete User' />
+                </Grid.Row>
+                <Grid.Row style={{marginLeft: 'auto', marginRight: 'auto', paddingTop: '0vh', paddingBottom: '0vh'}}>
+                    <h1 className="marginCenter">Edit Profile</h1>
+                </Grid.Row>
+                {this.renderEditForm()}
             </Grid>
         )
     }
