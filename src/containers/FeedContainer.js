@@ -13,10 +13,12 @@ class FeedContainer extends React.Component {
         }
     }
 
+    abortController = new AbortController();
+
     componentDidMount() {
         if (!this.props.user) {
             console.log("No user");
-            fetch(`${url}/reviews`)
+            fetch(`${url}/reviews`, { signal: this.abortController.signal })
             .then(resp => resp.json())
             .then(data => {
                 this.setState({reviews: data})
@@ -25,6 +27,7 @@ class FeedContainer extends React.Component {
         } else {
             console.log("User");
             const reqObj = {
+                signal: this.abortController.signal,
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -34,7 +37,7 @@ class FeedContainer extends React.Component {
             fetch(`${url}/reviews`, reqObj)
             .then(resp => resp.json())
             .then(data => {
-                this.setState({reviews: data})
+                this.setState({reviews: data});
             })
         }
     }
@@ -43,6 +46,7 @@ class FeedContainer extends React.Component {
         if (this.props.user !== prevProps.user) {
             if (this.props.user) {
                 const reqObj = {
+                    signal: this.abortController.signal,
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -52,16 +56,20 @@ class FeedContainer extends React.Component {
                 fetch(`${url}/reviews`, reqObj)
                 .then(resp => resp.json())
                 .then(data => {
-                    this.setState({reviews: data})
+                    this.setState({reviews: data});
                 })
             } else {
-                fetch(`${url}/reviews`)
+                fetch(`${url}/reviews`, {signal: this.abortController.signal})
                 .then(resp => resp.json())
                 .then(data => {
-                    this.setState({reviews: data})
+                    this.setState({reviews: data});
                 })
             }
         } 
+    }
+
+    componentWillUnmount() {
+        this.abortController.abort();
     }
 
     filterReviews = () => {
