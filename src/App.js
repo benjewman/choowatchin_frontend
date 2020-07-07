@@ -26,6 +26,7 @@ function App() {
           <Grid.Row >
             <Switch>
               <Route exact path='/' component={DashResponsive} />
+              {/* Make Login and Signup pages responsive */}
               <Route path='/login' component={Login} />
               <Route path='/signup' component={Signup} />
               <Route path='/home' component={DashResponsive} />
