@@ -3,7 +3,7 @@ import MediaQuery from 'react-responsive';
 import Login from './Login';
 // import FriendsMobile from './FriendsMobile'
 
-function FriendsResponsive() {
+function LoginResponsive() {
     return (
         <React.Fragment>
             <MediaQuery minDeviceWidth={750}>
