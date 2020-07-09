@@ -1,7 +1,7 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
 import Login from './Login';
-// import FriendsMobile from './FriendsMobile'
+import LoginMobile from './LoginMobile';
 
 function LoginResponsive() {
     return (
@@ -10,8 +10,7 @@ function LoginResponsive() {
                 <Login />
             </MediaQuery>
             <MediaQuery maxDeviceWidth={749}>
-                {/* <FriendsMobile /> */}
-                <h1>Login Mobile</h1>
+                <LoginMobile />
             </MediaQuery>
         </React.Fragment>
     )
