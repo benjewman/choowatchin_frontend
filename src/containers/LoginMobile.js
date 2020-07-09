@@ -6,9 +6,10 @@ import WithAuth from '../components/WithAuth'
 const sectionStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    backgroundImage: `url(${pic})`,
+    // backgroundImage: `url(${pic})`,
+    backgroundColor: 'black',
     height: '100vh',
-    width: '100vw'
+    // width: '100vw'
 }
 
 class LoginMobile extends React.Component {

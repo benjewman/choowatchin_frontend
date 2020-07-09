@@ -4,9 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setUser } from '../actions/index';
 import { url } from '../urls.js';
-import MediaQuery from 'react-responsive';
 
-class LoginForm extends React.Component {
+class LoginFormMobile extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -98,7 +97,9 @@ class LoginForm extends React.Component {
                 </Grid.Column>
                 </Grid>
 
-                <Divider vertical>Or</Divider>
+                <MediaQuery minDeviceWidth={750}>
+                    <Divider vertical>Or</Divider>
+                </MediaQuery>
             </Segment>
             </Container>
         )
@@ -111,4 +112,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(LoginForm))
+export default connect(null, mapDispatchToProps)(withRouter(LoginFormMobile))
