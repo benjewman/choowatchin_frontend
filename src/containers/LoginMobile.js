@@ -9,7 +9,7 @@ const sectionStyle = {
     // backgroundImage: `url(${pic})`,
     backgroundColor: 'black',
     height: '100vh',
-    // width: '100vw'
+    width: '150vw'
 }
 
 class LoginMobile extends React.Component {

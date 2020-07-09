@@ -65,11 +65,11 @@ class LoginFormMobile extends React.Component {
     render() {
         return(
             // Container gives box some room on sides and top
-            <Container style={{width: 500, marginTop: '6em'}}>
-            <Segment placeholder>
-                <Grid style={{height: 330}} columns={2} relaxed='very' stackable>
-                <Grid.Column verticalAlign='middle'>
-                    <Form onSubmit={this.handleSubmit}>
+            <Container style={{marginTop: '10vh'}}>
+            <Segment style={{marginRight: 'auto', marginLeft: 'auto'}} placeholder>
+                <Grid relaxed='very' stackable>
+                <Grid.Row>
+                    <Form onSubmit={this.handleSubmit} style={{marginLeft: 'auto', marginRight: 'auto', marginTop: '3vh'}}>
                     <Form.Input
                         onChange={this.handleInputChange}
                         icon='user'
@@ -88,18 +88,18 @@ class LoginFormMobile extends React.Component {
                         value={this.state.password}
                     />
 
-                    <Button style={{marginTop: '3em'}} content='Login' primary />
+                    <Button style={{marginTop: '3vh', marginBottom: '2vh'}} content='Login' primary />
                     </Form>
-                </Grid.Column>
+                </Grid.Row>
 
-                <Grid.Column verticalAlign='middle'>
-                    <Button onClick={this.routeToSignup} content='Sign up' icon='signup' size='big' />
-                </Grid.Column>
+                <Divider vertical>Or</Divider>
+
+                <Grid.Row>
+                    <Button style={{marginBottom: '3vh', marginTop: '2vh'}} onClick={this.routeToSignup} content='Sign up' icon='signup' size='big' />
+                </Grid.Row>
                 </Grid>
 
-                {/* <MediaQuery minDeviceWidth={750}>
-                    <Divider vertical>Or</Divider>
-                </MediaQuery> */}
+              
 
             </Segment>
             </Container>
