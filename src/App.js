@@ -23,7 +23,7 @@ function App() {
           <Grid.Row style={{ marginBottom: '5vh'}}>
             <NavResponsive />
           </Grid.Row>
-          <Grid.Row >
+          <Grid.Row style={{paddingTop: '0vh'}}>
             <Switch>
               <Route exact path='/' component={DashResponsive} />
               {/* Make Login and Signup pages responsive */}
