@@ -1,6 +1,6 @@
 import React from 'react'
 import pic from '../projector.jpg'
-import LoginForm from '../components/LoginForm'
+import LoginFormMobile from '../components/LoginFormMobile'
 import WithAuth from '../components/WithAuth'
 
 const sectionStyle = {
@@ -17,7 +17,7 @@ class LoginMobile extends React.Component {
     render() {
         return (
                 <div style={ sectionStyle } >
-                    <LoginForm />
+                    <LoginFormMobile />
                 </div>
         )
     }

@@ -97,9 +97,10 @@ class LoginFormMobile extends React.Component {
                 </Grid.Column>
                 </Grid>
 
-                <MediaQuery minDeviceWidth={750}>
+                {/* <MediaQuery minDeviceWidth={750}>
                     <Divider vertical>Or</Divider>
-                </MediaQuery>
+                </MediaQuery> */}
+
             </Segment>
             </Container>
         )
