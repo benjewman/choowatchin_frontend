@@ -4,10 +4,9 @@ import SignupForm from '../components/SignupForm'
 const sectionStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
     backgroundImage: `url(${pic})`,
-    height: '90vh',
-    width: '200vh'
+    height: '100vh',
+    width: '100vw'
 }
 
 

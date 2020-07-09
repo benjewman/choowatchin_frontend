@@ -6,11 +6,9 @@ import WithAuth from '../components/WithAuth'
 const sectionStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    // backgroundRepeat: 'no-repeat',
     backgroundImage: `url(${pic})`,
     height: '100vh',
-    width: '100vw',
-    overflowY: 'hidden'
+    width: '100vw'
 }
 
 class Login extends React.Component {
