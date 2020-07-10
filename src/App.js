@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LoginResponsive from './containers/LoginResponsive';
-import Signup from './containers/Signup';
+import SignupResponsive from './containers/SignupResponsive';
 import { Grid } from 'semantic-ui-react';
 import './App.css';
 import InTheaters from './containers/InTheaters';
@@ -28,7 +28,7 @@ function App() {
               <Route exact path='/' component={DashResponsive} />
               {/* Make Login and Signup pages responsive */}
               <Route path='/login' component={LoginResponsive} />
-              <Route path='/signup' component={Signup} />
+              <Route path='/signup' component={SignupResponsive} />
               <Route path='/home' component={DashResponsive} />
               <Route exact path='/movies' component={InTheaters} />
               <Route path='/movies/:id' component={MovieShowResponsive} />
