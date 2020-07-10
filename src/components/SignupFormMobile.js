@@ -1,9 +1,11 @@
-import React from 'react'
-import { Button, Divider, Form, Grid, Segment, Container, Header } from 'semantic-ui-react'
-import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { setUser } from '../actions/index'
-import { url } from '../urls.js'
+import React from 'react';
+import { Button, Divider, Form, Grid, Segment, Container, Header } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setUser } from '../actions/index';
+import { url } from '../urls.js';
+
+
 
 class SignupFormMobile extends React.Component {
     constructor() {
@@ -63,6 +65,7 @@ class SignupFormMobile extends React.Component {
     }
 
     render() {
+        // Need to adjust the form for mobile 
         return (
             // Container gives box some room on sides and top
             <Container style={{width: 600, marginTop: '6em'}}>
