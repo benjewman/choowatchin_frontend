@@ -1,6 +1,6 @@
 import React from 'react';
 import pic from '../theater.jpg';
-import SignupForm from '../components/SignupForm';
+import SignupFormMobile from '../components/SignupFormMobile';
 
 const sectionStyle = {
     backgroundPosition: 'center',
@@ -15,7 +15,7 @@ class SignupMobile extends React.Component {
     render() {
         return (
             <div style={ sectionStyle } >
-                <SignupForm />
+                <SignupFormMobile />
             </div>
         )
     }
