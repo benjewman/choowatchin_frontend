@@ -1,6 +1,7 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
 import Signup from './Signup';
+import SignupMobile from './SignupMobile';
 
 function SignupResponsive() {
     return (
@@ -9,8 +10,7 @@ function SignupResponsive() {
                 <Signup />
             </MediaQuery>
             <MediaQuery maxDeviceWidth={749}>
-                {/* <LoginMobile /> */}
-                <h1>Signup Mobile</h1>
+                <SignupMobile />
             </MediaQuery>
         </React.Fragment>
     )

@@ -11,7 +11,7 @@ const sectionStyle = {
 }
 
 
-class Signup extends React.Component {
+class SignupMobile extends React.Component {
     render() {
         return (
             <div style={ sectionStyle } >
