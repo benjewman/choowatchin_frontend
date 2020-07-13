@@ -68,7 +68,7 @@ class SignupFormMobile extends React.Component {
         // Need to adjust the form for mobile 
         return (
             // Container gives box some room on sides and top
-            <Container style={{width: 600, marginTop: '6em'}}>
+            <Container style={{marginTop: '10vh'}}>
                 <Segment placeholder>
                     <Grid style={{height: 500}} relaxed='very' stackable>
                     <Grid.Row >

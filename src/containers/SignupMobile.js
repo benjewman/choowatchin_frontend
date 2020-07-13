@@ -6,9 +6,9 @@ import SignupFormMobile from '../components/SignupFormMobile';
 const sectionStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    backgroundImage: `url(${pic})`,
+    backgroundColor: 'black',
     height: '100vh',
-    width: '100vw'
+    width: '150vw'
 }
 
 
