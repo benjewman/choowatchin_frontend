@@ -70,11 +70,11 @@ class SignupFormMobile extends React.Component {
             // Container gives box some room on sides and top
             <Container style={{marginTop: '10vh'}}>
                 <Segment placeholder>
-                    <Grid style={{height: 500}} relaxed='very' stackable>
+                    <Grid relaxed='very' stackable>
                     <Grid.Row >
                         <Grid.Column>
                         <Form onSubmit={this.handleSubmit}>
-                        <Form.Group style={{marginTop: '3em'}} widths='equal'>
+                        <Form.Group style={{}} widths='equal'>
                         <Form.Input
                             onChange={this.handleIputChange}
                             icon='id card'
