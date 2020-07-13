@@ -88,7 +88,11 @@ class FeedContainer extends React.Component {
     }
 
     renderMobileReviewCards = () => {
-        return this.filterReviews().map(review => <ReviewFeedMobile style={{display: 'block'}} review={review} key={review.id}/>)
+        if (this.filterReviews().length < 1) {
+            return <h4 style={{textAlign: 'center'}}>Follow Users to See Their Reviews</h4>
+        } else {
+            return this.filterReviews().map(review => <ReviewFeedMobile style={{display: 'block'}} review={review} key={review.id}/>)
+        }
     }
     
     render() {
