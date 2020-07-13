@@ -74,7 +74,6 @@ class SignupFormMobile extends React.Component {
                     <Grid.Row >
                         <Grid.Column>
                         <Form onSubmit={this.handleSubmit}>
-                        <Form.Group style={{}} widths='equal'>
                         <Form.Input
                             onChange={this.handleIputChange}
                             icon='id card'
@@ -91,8 +90,6 @@ class SignupFormMobile extends React.Component {
                             name='email'
                             value={this.state.email}
                         />
-                        </Form.Group>
-                        <Form.Group style={{marginTop: '3em'}} widths='equal'>
                         <Form.Input
                             onChange={this.handleIputChange}
                             icon='user'
@@ -110,8 +107,8 @@ class SignupFormMobile extends React.Component {
                             name='password'
                             value={this.state.password}
                         />
-                        </Form.Group>
-                        <Button style={{marginTop: '4em'}} content='Create Account' primary />
+                        
+                        <Button style={{marginTop: '3vh'}} content='Create Account' primary />
                         </Form>
                         </Grid.Column>
                     </Grid.Row>
