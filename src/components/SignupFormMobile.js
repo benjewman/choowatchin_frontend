@@ -71,9 +71,8 @@ class SignupFormMobile extends React.Component {
             <Container style={{marginTop: '10vh'}}>
                 <Segment placeholder>
                     <Grid relaxed='very' stackable>
-                    <Grid.Row >
-                        <Grid.Column>
-                        <Form onSubmit={this.handleSubmit}>
+                    <Grid.Row >    
+                        <Form className="marginCenter" style={{marginTop: '2vh'}} onSubmit={this.handleSubmit}>
                         <Form.Input
                             onChange={this.handleIputChange}
                             icon='id card'
@@ -106,11 +105,9 @@ class SignupFormMobile extends React.Component {
                             placeholder='Password'
                             name='password'
                             value={this.state.password}
-                        />
-                        
+                        /> 
                         <Button style={{marginTop: '3vh'}} content='Create Account' primary />
                         </Form>
-                        </Grid.Column>
                     </Grid.Row>
                     <Divider ></Divider>
                     <Grid.Row >
