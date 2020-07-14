@@ -42,7 +42,7 @@ class SeriesShowMobile extends React.Component {
     renderPoster = () => {
         return (
             <Grid.Column>
-                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.tvShow.poster_path} style={{height: '68vh', marginLeft: 'auto', marginRight: 'auto'}}/>
+                <Image src={'http://image.tmdb.org/t/p/w780' + this.state.tvShow.poster_path} style={{height: '65vh', marginLeft: 'auto', marginRight: 'auto'}}/>
             </Grid.Column>
         )
     }
@@ -82,7 +82,7 @@ class SeriesShowMobile extends React.Component {
                 <Grid>
                     <Grid.Row>
                         <Grid.Column>
-                            <h1 style={{marginLeft: 'auto', marginRight: 'auto', fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline', width: '98vw', marginTop: '1vh'}}>{this.state.tvShow.name}</h1>
+                            <h1 style={{marginLeft: 'auto', marginRight: 'auto', fontSize: '10vw', textAlign: 'center', textDecorationLine: 'underline', width: '98vw', marginTop: '2vh'}}>{this.state.tvShow.name}</h1>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
