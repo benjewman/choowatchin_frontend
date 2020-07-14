@@ -44,17 +44,13 @@ class CreateReviewMobile extends React.Component {
 
    renderPoster = () => {
        return (
-            <Grid.Column style={{width: '40vw', marginLeft: '5vw'}}>
-                <Image centered src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster_path}/>
-            </Grid.Column>
+            <Image style={{height: '40vh'}} centered src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster_path}/>
        )
    }
 
    renderEditPoster = () => {
        return (
-           
-                <Image style={{height: '40vh'}} centered src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster}/>
-            
+            <Image style={{height: '40vh'}} centered src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster}/>
        )
    }
 
@@ -153,8 +149,6 @@ class CreateReviewMobile extends React.Component {
    renderForm = () => {
        return (
            <Grid.Row style={{marginLeft: '20vw', marginRight: 'auto'}}>
-           
-           
                 <Form onSubmit={this.handleSubmit}>
                     <h2 style={{textAlign: 'center', fontSize: '3vh'}}>Stamp</h2>
                     <Form.Group style={{width: '70vw', marginBottom: '3vh'}}>
@@ -232,11 +226,11 @@ class CreateReviewMobile extends React.Component {
         return (
             // duct tape fix for centering this stupid header
             <Grid>
-                <Grid.Row style={{marginTop: '2vh', paddingBottom: '0vh'}}>
-                    {this.props.match.path === "/reviews/:id/edit" ? this.renderEditPoster() : this.renderPoster()}
-                </Grid.Row>
-                <Grid.Row style={{paddingTop: '0vh', paddingBottom: '0vh'}}>
+                <Grid.Row style={{marginTop: '4vh', paddingBottom: '0vh'}}>
                     {this.props.match.path === "/reviews/:id/edit" ? this.renderEditTitle() : this.renderTitle()}
+                </Grid.Row>
+                <Grid.Row style={{paddingBottom: '0vh', marginTop: '0vh'}}>
+                    {this.props.match.path === "/reviews/:id/edit" ? this.renderEditPoster() : this.renderPoster()}
                 </Grid.Row>
                 {this.renderForm()}
             </Grid>
