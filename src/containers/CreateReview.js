@@ -45,7 +45,7 @@ class CreateReview extends React.Component {
    renderPoster = () => {
        return (
             <Grid.Column>
-                <Image centered size='large' src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster_path}/>
+                <Image style={{height: '90vh', marginTop: '1vh'}} centered  src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster_path}/>
             </Grid.Column>
        )
    }
@@ -53,7 +53,7 @@ class CreateReview extends React.Component {
    renderEditPoster = () => {
        return (
            <Grid.Column>
-                <Image centered size='large' src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster}/>
+                <Image style={{height: '90vh', marginTop: '1vh'}} centered src={'http://image.tmdb.org/t/p/w780' + this.state.show.poster}/>
             </Grid.Column>
        )
    }
@@ -62,7 +62,7 @@ class CreateReview extends React.Component {
        // conditionally render 'title' or 'name'
        // based on tv or movie
        return (
-            <Grid.Row style={{marginTop: '2em'}}>
+            <Grid.Row style={{marginTop: '2vh'}}>
                 <h1 style={{fontSize: '50px', textAlign: 'center', textDecorationLine: 'underline'}}>{this.props.match.params.medium === 'movies' ? this.state.show.title : this.state.show.name}</h1>
             </Grid.Row>
        )
@@ -70,7 +70,7 @@ class CreateReview extends React.Component {
 
    renderEditTitle = () => {
        return (
-           <Grid.Row style={{marginTop: '2em'}}>
+           <Grid.Row style={{marginTop: '2vh'}}>
                 <h1 style={{fontSize: '50px', textAlign: 'center', textDecorationLine: 'underline'}}>{this.state.show.title}</h1>
             </Grid.Row>
        )
@@ -154,7 +154,7 @@ class CreateReview extends React.Component {
    
    renderForm = () => {
        return (
-           <Grid.Row style={{marginTop: '8em'}}>
+           <Grid.Row style={{marginTop: '4vh'}}>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
                         <Form.Field
@@ -166,8 +166,8 @@ class CreateReview extends React.Component {
                             width={14}
                         />
                     </Form.Group>
-                    <h2 style={{marginTop: '3em'}}>Stamp</h2>
-                    <Form.Group style={{marginTop: '3em'}}>
+                    <h2 style={{marginTop: '3vh'}}>Stamp</h2>
+                    <Form.Group style={{marginTop: '2vh'}}>
                         <Form.Field
                             control={Radio}
                             label='Awful'
@@ -205,7 +205,7 @@ class CreateReview extends React.Component {
                         />
                     </Form.Group>
                     {/* Find way to center button */}
-                    <Form.Group style={{marginTop: '3em'}}>
+                    <Form.Group style={{marginTop: '4vh'}}>
                         <Form.Field control={Button} >{this.props.match.path === "/reviews/:id/edit" ? 'Update' : 'Post'} Review</Form.Field>
                     </Form.Group>
                 </Form>
@@ -234,7 +234,7 @@ class CreateReview extends React.Component {
             <Grid columns={2} centered>
                 {this.props.match.path === "/reviews/:id/edit" ? this.renderEditPoster() : this.renderPoster()}
                 <Grid.Column>
-                    <Header as="h1" style={{textAlign: 'center'}}>Create Review for: </Header>
+                    <Header as="h1" style={{textAlign: 'center', marginTop: '2vh'}}>Create Review for: </Header>
                     {this.props.match.path === "/reviews/:id/edit" ? this.renderEditTitle() : this.renderTitle()}
                     {this.renderForm()}
                 </Grid.Column>
