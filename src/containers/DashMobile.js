@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid, Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import WithAuth from '../components/WithAuth';
 import FeedContainer from './FeedContainer';

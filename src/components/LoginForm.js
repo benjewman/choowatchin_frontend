@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setUser } from '../actions/index';
 import { url } from '../urls.js';
-import MediaQuery from 'react-responsive';
 
 class LoginForm extends React.Component {
     constructor() {

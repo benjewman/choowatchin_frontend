@@ -1,6 +1,5 @@
 import React from 'react'
 import { Grid, Menu } from 'semantic-ui-react'
-import WithAuth from '../components/WithAuth'
 import { connect } from 'react-redux'
 import ShowCard from '../components/ShowCard'
 import InfiniteLoader from 'react-infinite-loader'

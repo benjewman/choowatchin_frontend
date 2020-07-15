@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Form, Icon, Popup } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { withRouter } from 'react-router-dom';
 import { setUser, setSearch } from '../actions/index';

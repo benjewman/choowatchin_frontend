@@ -1,12 +1,9 @@
 import React from 'react';
 import { Grid, Card, Image, Button } from 'semantic-ui-react';
-// import ReviewCard from '../components/ReviewCard'
-import ReviewFeedCard from '../components/ReviewFeedCard';
 import WithAuth from '../components/WithAuth';
 import { connect } from 'react-redux';
 import { addLeader, removeLeader } from '../actions/index';
 import { url } from '../urls.js';
-import FeedContainer from './FeedContainer';
 import ReviewFeedMobile from '../components/ReviewFeedMobile';
 
 class ProfileMobile extends React.Component {

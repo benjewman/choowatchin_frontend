@@ -4,10 +4,6 @@ import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { url } from '../urls.js'
 
-const cardStyle = {
-    border: 'thin dotted black',
-    marginLeft: '0.5em'
-}
 
 class MovieShowMobile extends React.Component {
     constructor(props) {
