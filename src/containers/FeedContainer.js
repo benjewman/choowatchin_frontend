@@ -15,14 +15,12 @@ class FeedContainer extends React.Component {
         }
     }
 
-    abortController = new AbortController();
-
     componentDidMount() {
         this._isMounted = true;
 
         if (!this.props.user) {
             console.log("No user");
-            fetch(`${url}/reviews`, { signal: this.abortController.signal })
+            fetch(`${url}/reviews`)
             .then(resp => resp.json())
             .then(data => {
                 if (this._isMounted === true) {
@@ -33,7 +31,6 @@ class FeedContainer extends React.Component {
         } else {
             console.log("User");
             const reqObj = {
-                signal: this.abortController.signal,
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +51,6 @@ class FeedContainer extends React.Component {
         if (this.props.user !== prevProps.user) {
             if (this.props.user) {
                 const reqObj = {
-                    signal: this.abortController.signal,
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -67,7 +63,7 @@ class FeedContainer extends React.Component {
                     this.setState({reviews: data});
                 })
             } else {
-                fetch(`${url}/reviews`, {signal: this.abortController.signal})
+                fetch(`${url}/reviews`)
                 .then(resp => resp.json())
                 .then(data => {
                     this.setState({reviews: data});
@@ -78,7 +74,6 @@ class FeedContainer extends React.Component {
 
     componentWillUnmount() {
         this._isMounted = false;
-        this.abortController.abort();
     }
 
     filterReviews = () => {
