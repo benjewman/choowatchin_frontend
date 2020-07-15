@@ -6,6 +6,8 @@ import ReviewFeedMobile from '../components/ReviewFeedMobile';
 
 
 class FeedContainer extends React.Component {
+    _isMounted = false;
+
     constructor() {
         super()
         this.state = {
@@ -16,12 +18,16 @@ class FeedContainer extends React.Component {
     abortController = new AbortController();
 
     componentDidMount() {
+        this._isMounted = true;
+
         if (!this.props.user) {
             console.log("No user");
             fetch(`${url}/reviews`, { signal: this.abortController.signal })
             .then(resp => resp.json())
             .then(data => {
-                this.setState({reviews: data})
+                if (this._isMounted === true) {
+                    this.setState({reviews: data});
+                }
             })
 
         } else {
@@ -37,7 +43,9 @@ class FeedContainer extends React.Component {
             fetch(`${url}/reviews`, reqObj)
             .then(resp => resp.json())
             .then(data => {
-                this.setState({reviews: data});
+                if (this._isMounted === true) {
+                    this.setState({reviews: data});
+                }
             })
         }
     }
@@ -69,6 +77,7 @@ class FeedContainer extends React.Component {
     }
 
     componentWillUnmount() {
+        this._isMounted = false;
         this.abortController.abort();
     }
 

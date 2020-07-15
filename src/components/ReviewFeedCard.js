@@ -11,19 +11,30 @@ import MustWatchStamp from '../must_watch_stamp.jpeg'
 import { url } from '../urls.js'
 
 class ReviewFeedCard extends React.Component {
+    _isMounted = false;
+
     constructor() {
         super()
         this.state = {}
     }
+
     componentDidMount() {
+        this._isMounted = true;
+
         fetch(`${url}/reviews/${this.props.review.id}`)
         .then(resp => resp.json())
         .then(reviewInfo => {
-            this.setState({
-                reviewUser: reviewInfo.user,
-                reviewShow: reviewInfo.show
-            })
+            if (this._isMounted === true) {
+                this.setState({
+                    reviewUser: reviewInfo.user,
+                    reviewShow: reviewInfo.show
+                });
+            }
         })
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     routeToPage = () => {
