@@ -111,10 +111,10 @@ class MovieShow extends React.Component {
         )
     }
 
-    renderDetail = (category) => {
+    renderDetail = (category, key) => {
         // DRY code alert!!!
         return (
-            <Grid.Row>
+            <Grid.Row key={key}>
                 <h3 style={{textAlign: 'left', marginTop: '2em'}}>{category}:</h3>
                 <p style={{textAlign: 'right'}}>{this.state.movieDetails[category]}</p>
             </Grid.Row>
@@ -127,7 +127,7 @@ class MovieShow extends React.Component {
         return (
             <Grid.Column style={{marginTop: '3em', marginLeft: '4em'}} width={4}>
                 {/* <p style={{fontSize: '20px', textAlign: 'right', marginRight: '1em'}}><strong>Release Date: </strong>{this.state.movieDetails.Released}</p> */}
-                {this.movieCategories.map(category => this.renderDetail(category))}
+                {this.movieCategories.map((category, key) => this.renderDetail(category, key))}
             </Grid.Column>
         )
     }
