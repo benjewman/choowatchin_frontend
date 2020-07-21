@@ -1,9 +1,9 @@
-import React from 'react'
-import { Grid, Input, Select } from 'semantic-ui-react'
-import WithAuth from '../components/WithAuth'
-import { connect } from 'react-redux'
-import UserCard from '../components/UserCard'
-import { url } from '../urls.js'
+import React from 'react';
+import { Grid, Input, Select } from 'semantic-ui-react';
+import WithAuth from '../components/WithAuth';
+import { connect } from 'react-redux';
+import UserCard from '../components/UserCard';
+import { url } from '../urls.js';
 
 class Friends extends React.Component {
     constructor() {
@@ -91,13 +91,10 @@ class Friends extends React.Component {
     }
     
     renderPeople = (type) => {
-        // console.log(this.state[type])
-
         const filteredUsers = this.state[type].filter(user => user.id !== this.props.user.id &&  user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
-        console.log('FILTERED USERS', filteredUsers);
         return (
             <Grid celled='internally' style={{marginTop: '3vh'}} columns={6}>
-                {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
+                {filteredUsers.map((friend, key) => <UserCard key={key} removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
             </Grid>
         )
     }
@@ -114,7 +111,7 @@ class Friends extends React.Component {
         const filteredUsers = this.state['users'].filter(user => user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
         return (
             <Grid celled='internally' style={{marginTop: '3vh'}} columns={6}>
-                {filteredUsers.map(friend => <UserCard removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
+                {filteredUsers.map((friend, key) => <UserCard key={key} removeFriend={this.removeFriend} addFriend={this.addFriend} friend={friend} />)}
             </Grid>
         )
     }
