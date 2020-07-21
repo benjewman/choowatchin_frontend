@@ -19,28 +19,22 @@ class SearchPage extends React.Component {
     }
     
     componentDidMount() {
-        // console.log('in component did mount', this.props)
         if (this.props.search) {
             const searchString = this.props.search.replace(' ', '%20')
             fetch(`https://api.themoviedb.org/3/search/multi?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&query=${searchString}&include_adult=false`)
             .then(resp => resp.json())
             .then(data => this.setState({shows: data.results.filter(result => !result.known_for_department), totalPages: data.total_pages}))
-        } else {
-            console.log('no search in props')
         }
     }
 
     componentDidUpdate(prevProps) {
-        // console.log('in component did mount', this.props)
         if (this.props.search && prevProps.search !== this.props.search) {
             const searchString = this.props.search.replace(' ', '%20')
             fetch(`https://api.themoviedb.org/3/search/multi?api_key=ab9fca30354bfca27d3ce1ba227e7e1f&language=en-US&query=${searchString}&include_adult=false`)
             .then(resp => resp.json())
             // known_for_department filters out people returned in the results
             .then(data => this.setState({shows: data.results.filter(result => !result.known_for_department), totalPages: data.total_pages}))
-        } else {
-            console.log('no search in props')
-        }
+        } 
     }
     
     renderShows = () => {
