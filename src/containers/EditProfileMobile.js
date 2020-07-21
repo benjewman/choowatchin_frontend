@@ -15,18 +15,15 @@ class EditProfileMobile extends React.Component {
         }
     }
     
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         if (parseInt(this.props.match.params.id) !== this.props.user.id) {
             this.props.history.push(`/profile/${this.props.match.params.id}`)
         }
-    }
-
-    componentWillUpdate(nextProps) {
-        if (nextProps.user !== this.props.user) {
+        if (prevProps.user !== this.props.user) {
             this.setState({
-                fullName: nextProps.user.full_name,
-                email: nextProps.user.email,
-                pic: nextProps.user.avatar
+                fullName: this.props.user.full_name,
+                email: this.props.user.email,
+                pic: this.props.user.avatar
             })
         }
     }
