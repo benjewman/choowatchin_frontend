@@ -62,15 +62,12 @@ class EditProfile extends React.Component {
     
     handleDelete = () => {
         fetch(`${url}/users/${this.props.user.id}`, {method: 'DELETE'})
-        .then(resp => resp.json())
-        .then(data => console.log(data))
         
         localStorage.removeItem('token')
         this.props.history.push('/login')
     }
 
     handleUpload = (event) => {
-        console.log(event.target.files[0])
         // this.setState({avatar: event.target.files[0]})
         const formData = new FormData()
         formData.append("user[avatar]", event.target.files[0])
