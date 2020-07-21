@@ -62,9 +62,10 @@ class EditProfile extends React.Component {
     
     handleDelete = () => {
         fetch(`${url}/users/${this.props.user.id}`, {method: 'DELETE'})
-        
-        localStorage.removeItem('token')
-        this.props.history.push('/login')
+
+        this.props.quitUser();
+        localStorage.removeItem('token');
+        this.props.history.push('/login');
     }
 
     handleUpload = (event) => {
@@ -139,6 +140,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        quitUser: () => dispatch(setUser(undefined)),
         setUser: user => dispatch(setUser(user))
     }
 }
