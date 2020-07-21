@@ -37,7 +37,7 @@ function UserCard(props) {
     
     const renderFollowingButton = () => {
         return (
-            <Button onClick={() => followFetch('DELETE')} animated>
+            <Button style={{marginTop: '2vh'}} onClick={() => followFetch('DELETE')} animated>
                 <Button.Content visible>Following</Button.Content>
                 <Button.Content hidden>Unfollow</Button.Content>
             </Button>
@@ -46,14 +46,13 @@ function UserCard(props) {
 
     const renderFollowButton = () => {
         return (
-            <Button onClick={() => followFetch('POST')}>
+            <Button style={{marginTop: '2vh'}} onClick={() => followFetch('POST')}>
                 <Button.Content>Follow</Button.Content>
             </Button>
         )
     }
 
     const renderButton = () => {
-        console.log('in renderButton');
         return props.leaders.find(leader => leader.id === props.friend.id) ? renderFollowingButton() : renderFollowButton();
     }
     
@@ -62,11 +61,10 @@ function UserCard(props) {
             <Grid.Column width={7}>
                 <h4>{props.friend.full_name}</h4>
                 <a href={'/profile/' + props.friend.id}>@{props.friend.username}</a>
+                {props.user ? renderButton() : null}
             </Grid.Column>
             <Grid.Column width={6}>
-                <Image src={props.friend.avatar} wrapped size="tiny"/>
-                 {/* conditionally render button depending on if user follows this user  */}
-                 {props.user ? renderButton() : null}
+                <Image src={props.friend.avatar} wrapped />
             </Grid.Column>
         </Grid>
     )
