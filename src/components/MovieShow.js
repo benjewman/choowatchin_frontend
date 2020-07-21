@@ -149,7 +149,7 @@ class MovieShow extends React.Component {
 
     renderReviewCard = (review) => {
         return (
-            <Grid style={cardStyle} columns={2}>
+            <Grid key={review.id} style={cardStyle} columns={2}>
                 <Grid.Column>
                     <h4>{this.renderStamp(review.stamp)}</h4>
                     {/* make username clickable */}
@@ -195,7 +195,6 @@ class MovieShow extends React.Component {
 
     // might wanna refactor code below
     render() {
-        console.log(this.state)
         return (
             <Grid className="showContainer" style={{marginLeft: '0.5em'}} columns={3}>
                 {this.renderMoviePoster()}
