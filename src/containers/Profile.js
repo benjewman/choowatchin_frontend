@@ -16,7 +16,6 @@ class Profile extends React.Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
         fetch(`${url}/users/${this.props.match.params.id}`)
         .then(resp => resp.json())
         .then(data => {
@@ -130,7 +129,6 @@ class Profile extends React.Component {
     }
     
     render() {
-        console.log('PROPS', this.props);
         return (
             <Grid columns={2}>
                 {this.renderProfileCard()}

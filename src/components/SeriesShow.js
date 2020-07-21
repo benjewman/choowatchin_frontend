@@ -210,7 +210,6 @@ class SeriesShow extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             // testing out my response 
             <Grid style={{marginLeft: '0.5em'}} columns={3}>

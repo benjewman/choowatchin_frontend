@@ -16,7 +16,6 @@ class ProfileMobile extends React.Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
         fetch(`${url}/users/${this.props.match.params.id}`)
         .then(resp => resp.json())
         .then(data => {
@@ -121,7 +120,6 @@ class ProfileMobile extends React.Component {
     }
     
     render() {
-        console.log('PROPS', this.props);
         return ( 
             <Grid>
                 <Grid.Row>

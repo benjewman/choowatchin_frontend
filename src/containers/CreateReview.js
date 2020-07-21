@@ -23,7 +23,6 @@ class CreateReview extends React.Component {
             fetch(`${url}/reviews/${this.props.match.params.id}`)
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)
                 this.setState({
                 userReview: data.content,
                 radioValue: data.stamp,
@@ -129,7 +128,6 @@ class CreateReview extends React.Component {
         fetch(`${url}/reviews/${this.props.match.params.id}`, fetchObj)
         .then(resp => resp.json())
         .then(review => {
-            console.log(review)
             this.props.history.push(`/profile/${this.props.user.id}`)
         })
 
@@ -218,7 +216,6 @@ class CreateReview extends React.Component {
        fetch(`${url}/reviews/${this.state.review.id}`, {method: 'DELETE'})
        .then(resp => resp.json())
        .then(message => {
-            console.log(message)
             this.props.history.push(`/profile/${this.props.user.id}`)
        })
    }

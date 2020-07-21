@@ -45,7 +45,6 @@ class OnAir extends React.Component {
     }
     
     render() {
-        console.log(this.state.series)
         return (
             <div className="listPage">
                 <h1 style={{textAlign: 'center', fontSize: '5vw'}}>Check Out These Series On the Air</h1>

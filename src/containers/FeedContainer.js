@@ -19,7 +19,6 @@ class FeedContainer extends React.Component {
         this._isMounted = true;
 
         if (!this.props.user) {
-            console.log("No user");
             fetch(`${url}/reviews`)
             .then(resp => resp.json())
             .then(data => {
@@ -29,7 +28,6 @@ class FeedContainer extends React.Component {
             })
 
         } else {
-            console.log("User");
             const reqObj = {
                 method: 'GET',
                 headers: {

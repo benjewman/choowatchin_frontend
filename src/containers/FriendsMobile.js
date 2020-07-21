@@ -91,10 +91,7 @@ class FriendsMobile extends React.Component {
     }
     
     renderPeople = (type) => {
-        // console.log(this.state[type])
-
         const filteredUsers = this.state[type].filter(user => user.id !== this.props.user.id &&  user.full_name.toLowerCase().includes(this.state.filter.toLowerCase()))
-        console.log('FILTERED USERS', filteredUsers);
         return (
             <React.Fragment>
                 <MediaQuery minDeviceWidth={750} >

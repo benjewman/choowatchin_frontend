@@ -49,12 +49,10 @@ class SearchPage extends React.Component {
             default:
                 filterShows = this.state.shows
         }
-        console.log('filter shows', filterShows)
         return filterShows.map(show => <ShowCard show={show} key={uuid()}/>)
     }
 
     handleVisit = () => {
-        console.log('scrolling')
         const searchString = this.props.search.replace(' ', '%20')
         // fetch next page and concat onto state
         // on the condition that the page to be fetched

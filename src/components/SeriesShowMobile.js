@@ -76,7 +76,6 @@ class SeriesShowMobile extends React.Component {
 
     // adjust poster size so it fits properly on each device
     render() {
-        console.log("Mobile TV Show")
         return (
             <React.Fragment>
                 <Grid>

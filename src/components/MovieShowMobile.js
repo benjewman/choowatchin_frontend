@@ -81,7 +81,6 @@ class MovieShowMobile extends React.Component {
 
     // adjust poster size so it fits properly on each device
     render() {
-        console.log(this.state)
         return (
             <React.Fragment>
                 <Grid >
