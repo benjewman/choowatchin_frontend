@@ -53,7 +53,8 @@ function UserCard(props) {
     }
 
     const renderButton = () => {
-        props.leaders.find(leader => leader.id === props.friend.id) ? renderFollowingButton() : renderFollowButton();
+        console.log('in renderButton');
+        return props.leaders.find(leader => leader.id === props.friend.id) ? renderFollowingButton() : renderFollowButton();
     }
     
     return (
