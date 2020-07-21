@@ -5,9 +5,6 @@ import { addLeader, removeLeader } from '../actions/index'
 import { url } from '../urls.js'
 
 function UserCard(props) {
-    console.log(props);
-    console.log("IN THE USER CARD");
-
     const followFetch = (postOrDelete) => {
         const fetchObj = {
             method: `${postOrDelete}`,
