@@ -10,7 +10,6 @@ export default function WithAuth(WrappedComponent) {
         handleFetch = userInfo => {
             
             if (!userInfo.error) {
-                console.log(userInfo)
                 this.props.setUser(userInfo)
                 this.props.setLeaders(userInfo.leaders)
                 //  dispatch followed reviews to store
