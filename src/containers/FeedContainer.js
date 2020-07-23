@@ -58,13 +58,17 @@ class FeedContainer extends React.Component {
                 fetch(`${url}/reviews`, reqObj)
                 .then(resp => resp.json())
                 .then(data => {
+                    if (this._isMounted === true) {
                     this.setState({reviews: data});
+                }
                 })
             } else {
                 fetch(`${url}/reviews`)
                 .then(resp => resp.json())
                 .then(data => {
+                    if (this._isMounted === true) {
                     this.setState({reviews: data});
+                }
                 })
             }
         } 
