@@ -6,8 +6,9 @@ import ReviewFeedMobile from '../components/ReviewFeedMobile';
 
 
 class FeedContainer extends React.Component {
+    
     _isMounted = false;
-
+    
     constructor() {
         super()
         this.state = {
@@ -15,9 +16,12 @@ class FeedContainer extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     componentDidMount() {
         this._isMounted = true;
-
         if (!this.props.user) {
             fetch(`${url}/reviews`)
             .then(resp => resp.json())
@@ -26,7 +30,6 @@ class FeedContainer extends React.Component {
                     this.setState({reviews: data});
                 }
             })
-
         } else {
             const reqObj = {
                 method: 'GET',
@@ -72,10 +75,6 @@ class FeedContainer extends React.Component {
                 })
             }
         } 
-    }
-
-    componentWillUnmount() {
-        this._isMounted = false;
     }
 
     filterReviews = () => {
